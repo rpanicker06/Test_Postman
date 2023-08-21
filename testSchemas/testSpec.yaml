@@ -39,6 +39,33 @@ paths:
       x-hubspot-source-code-class-name: "HelloWorldResource"
       x-hubspot-source-code-method-name: "helloResource"
       x-hubspot-source-code-method-line-number: 37
+  /helloPostman:
+    get:
+      operationId: "get-{BASE_PATH}/helloPostman"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "name"
+          in: "query"
+          required: false
+          type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/HelloWorldMessage"
+      security:
+        - internal_cookie: []
+        - shhkey: []
+        - app_cookie: []
+      x-hubspot-auth-level: "app"
+      x-hubspot-auth-scoping-type: "NONE"
+      x-hubspot-enhanced-error-serialization: false
+      x-hubspot-source-code-class-name: "HelloWorldResource"
+      x-hubspot-source-code-method-name: "helloResource"
+      x-hubspot-source-code-method-line-number: 37
   /hello/checkValidator:
     get:
       operationId: "get-{BASE_PATH}/hello/checkValidator"
