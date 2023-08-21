@@ -77,7 +77,7 @@ paths:
                      ]
                     }
   
-  /v2:
+  /manualEndpointTest:
     get:
       operationId: getVersionDetailsv2
       summary: Show API version details
