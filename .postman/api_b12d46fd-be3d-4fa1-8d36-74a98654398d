@@ -10,6 +10,7 @@ id = b12d46fd-be3d-4fa1-8d36-74a98654398d
 [config.relations.collections]
 rootDirectory = postman/collections
 files[] = {"id":"29216613-50b37b32-4bf1-41f0-a530-c78a2ea13b43","path":"HelloWorldRohitPanickerService.json","metaData":{}}
+files[] = {"id":"29216613-e42f1219-e3e0-493e-8ca5-fccae7a0e493","path":"HelloWorldRohitPanickerServiceT.json","metaData":{}}
 
 [config.relations.collections.metaData]
 
