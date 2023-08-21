@@ -76,7 +76,7 @@ paths:
                          }
                      ]
                     }
-    /listVersions:
+    /manualEndpointPush:
     get:
       operationId: listVersionsv2
       summary: List API versions
