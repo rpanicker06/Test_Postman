@@ -1,0 +1,624 @@
+{
+	"info": {
+		"_postman_id": "d34c00a3-63d7-4366-af75-b572ea2340ea",
+		"name": "HelloWorldRohitPanickerService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "29216613-d34c00a3-63d7-4366-af75-b572ea2340ea"
+	},
+	"item": [
+		{
+			"name": "hello",
+			"item": [
+				{
+					"name": "checkValidator",
+					"item": [
+						{
+							"name": "get-{BASE PATH}/hello/check Validator",
+							"id": "ff66d632-a366-4a42-8e0a-0dff5a6b7573",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/hello/checkValidator",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"hello",
+										"checkValidator"
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "28d79617-a8fa-47dd-a55c-d9554ec22f08",
+									"name": "No content",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/hello/checkValidator",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"hello",
+												"checkValidator"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					],
+					"id": "d0dfcda0-5970-4ab8-9ac1-20927b0bd13e"
+				},
+				{
+					"name": "hubspotters",
+					"item": [
+						{
+							"name": "get-{BASE PATH}/hello/hubspotters",
+							"id": "8bcfeb6d-75e1-49fd-83d8-5ac41547aba5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/hello/hubspotters",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"hello",
+										"hubspotters"
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "8145cc1c-ccd6-4a54-b5ad-3b7d8a22e72b",
+									"name": "successful operation",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/hello/hubspotters",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"hello",
+												"hubspotters"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"createdAt\": \"<integer>\",\n    \"department\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"groups\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"lastName\": \"<string>\",\n    \"username\": \"<string>\",\n    \"title\": \"<string>\"\n  },\n  {\n    \"createdAt\": \"<integer>\",\n    \"department\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"groups\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"lastName\": \"<string>\",\n    \"username\": \"<string>\",\n    \"title\": \"<string>\"\n  }\n]"
+								}
+							]
+						}
+					],
+					"id": "24d3ca21-33f2-4ea3-88df-88beb41d8f9e"
+				},
+				{
+					"name": "get-{BASE PATH}/hello",
+					"id": "dba6270f-1b5f-4fab-bc31-031da194ea1e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/hello?name=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"hello"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "<string>"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "40961643-648b-476a-b9e2-589abce98cfb",
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/hello?name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"hello"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"<string>\"\n}"
+						}
+					]
+				}
+			],
+			"id": "be0b138c-955e-4e7f-b4b4-e2ccb91d2539"
+		},
+		{
+			"name": "kudos",
+			"item": [
+				{
+					"name": "vid",
+					"item": [
+						{
+							"name": "{vid}",
+							"item": [
+								{
+									"name": "get-{BASE PATH}/kudos/vid/{vid}",
+									"id": "097dd783-40ca-48e4-ad85-f3bf4927c866",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/kudos/vid/:vid",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"kudos",
+												"vid",
+												":vid"
+											],
+											"variable": [
+												{
+													"id": "989bade5-c76e-446d-8456-fba06652d044",
+													"key": "vid",
+													"value": "<long>"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "7b122f35-62bc-4b89-b48e-2d683682360d",
+											"name": "successful operation",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/kudos/vid/:vid",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"kudos",
+														"vid",
+														":vid"
+													],
+													"variable": [
+														{
+															"id": "989bade5-c76e-446d-8456-fba06652d044",
+															"key": "vid",
+															"value": "<long>"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"createdAt\": \"<integer>\",\n    \"id\": \"<integer>\",\n    \"senderUsername\": \"<string>\",\n    \"text\": \"<string>\",\n    \"username\": \"<string>\"\n  },\n  {\n    \"createdAt\": \"<integer>\",\n    \"id\": \"<integer>\",\n    \"senderUsername\": \"<string>\",\n    \"text\": \"<string>\",\n    \"username\": \"<string>\"\n  }\n]"
+										}
+									]
+								}
+							],
+							"id": "1cd0882f-fea9-4327-82bd-caca2e3cf138"
+						}
+					],
+					"id": "103038c8-4d98-40d6-a5b0-7edd6210136b"
+				},
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "delete-{BASE PATH}/kudos/{id}",
+							"id": "afa97fa7-bf06-4e0e-97a3-3739ac4e4db9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/kudos/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"kudos",
+										":id"
+									],
+									"variable": [
+										{
+											"id": "e784b016-86c4-445f-9cc0-b3c06c27fc97",
+											"key": "id",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "1356d957-e01c-42bf-950d-fc77e00949f1",
+									"name": "No content",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/kudos/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"kudos",
+												":id"
+											],
+											"variable": [
+												{
+													"id": "e784b016-86c4-445f-9cc0-b3c06c27fc97",
+													"key": "id",
+													"value": "<integer>"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					],
+					"id": "f0b20fbb-9469-42ac-bcd8-38d2feffb12e"
+				},
+				{
+					"name": "{username}",
+					"item": [
+						{
+							"name": "get-{BASE PATH}/kudos/{username}",
+							"id": "d92a5d5b-4b85-474a-8e07-6b147145e195",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/kudos/:username",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"kudos",
+										":username"
+									],
+									"variable": [
+										{
+											"id": "1b2497cd-d35b-45af-866f-02918b681939",
+											"key": "username",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "d95a56d6-7c43-425d-86a5-8d60550d698a",
+									"name": "successful operation",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/kudos/:username",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"kudos",
+												":username"
+											],
+											"variable": [
+												{
+													"id": "1b2497cd-d35b-45af-866f-02918b681939",
+													"key": "username",
+													"value": "<string>"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"createdAt\": \"<integer>\",\n    \"id\": \"<integer>\",\n    \"senderUsername\": \"<string>\",\n    \"text\": \"<string>\",\n    \"username\": \"<string>\"\n  },\n  {\n    \"createdAt\": \"<integer>\",\n    \"id\": \"<integer>\",\n    \"senderUsername\": \"<string>\",\n    \"text\": \"<string>\",\n    \"username\": \"<string>\"\n  }\n]"
+								}
+							]
+						}
+					],
+					"id": "1f4d9ff5-d978-46ef-8efa-568fdf6e2efb"
+				},
+				{
+					"name": "post-{BASE PATH}/kudos",
+					"id": "2652b965-b962-4311-b0fe-81db7edee349",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"senderUsername\": \"<string>\",\n  \"text\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/kudos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"kudos"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "551d93b8-fbc0-4756-a516-0b288895f2c5",
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"senderUsername\": \"<string>\",\n  \"text\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/kudos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"kudos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"createdAt\": \"<integer>\",\n  \"id\": \"<integer>\",\n  \"senderUsername\": \"<string>\",\n  \"text\": \"<string>\",\n  \"username\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "put-{BASE PATH}/kudos",
+					"id": "26e9009f-01d8-41d4-8442-fda516fc86f1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"<integer>\",\n  \"text\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/kudos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"kudos"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "c5b3bdc9-5e1e-43f3-a3b8-b1210478e31e",
+							"name": "No content",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<integer>\",\n  \"text\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/kudos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"kudos"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"id": "78d404d9-0b2f-4abb-8b53-571e1ac7f788"
+		}
+	],
+	"variable": [
+		{
+			"id": "09e325b5-57f9-45f2-afaa-61f8ac7177ca",
+			"key": "baseUrl",
+			"value": "/"
+		}
+	]
+}
