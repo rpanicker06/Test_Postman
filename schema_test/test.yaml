@@ -1,0 +1,312 @@
+---
+swagger: "2.0"
+info:
+  version: "v1"
+  title: "HelloWorldRohitPanickerService"
+  x-hubspot-default-auth-level: "app"
+  x-hubspot-enhanced-error-serialization: false
+  x-hubspot-call-logging-enabled: false
+  x-hubspot-pr-feedback-enabled: true
+  x-hubspot-public-property-filter-enabled: false
+  x-hubspot-load-balancers:
+    - "test"
+  x-hubspot-generation-logic-version: "1.22"
+paths:
+  /hello:
+    get:
+      operationId: "get-{BASE_PATH}/hello"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "name"
+          in: "query"
+          required: false
+          type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/HelloWorldMessage"
+      security:
+        - internal_cookie: []
+        - shhkey: []
+        - app_cookie: []
+      x-hubspot-auth-level: "app"
+      x-hubspot-auth-scoping-type: "NONE"
+      x-hubspot-enhanced-error-serialization: false
+      x-hubspot-source-code-class-name: "HelloWorldResource"
+      x-hubspot-source-code-method-name: "helloResource"
+      x-hubspot-source-code-method-line-number: 37
+  /hello/checkValidator:
+    get:
+      operationId: "get-{BASE_PATH}/hello/checkValidator"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        "204":
+          description: "No content"
+      security:
+        - internal_cookie: []
+        - shhkey: []
+        - app_cookie: []
+      x-hubspot-auth-level: "app"
+      x-hubspot-auth-scoping-type: "NONE"
+      x-hubspot-enhanced-error-serialization: false
+      x-hubspot-source-code-class-name: "HelloWorldResource"
+      x-hubspot-source-code-method-name: "checkValidator"
+      x-hubspot-source-code-method-line-number: 51
+  /hello/hubspotters:
+    get:
+      operationId: "get-{BASE_PATH}/hello/hubspotters"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/HubSpotter"
+      security:
+        - internal_cookie: []
+        - shhkey: []
+        - app_cookie: []
+      x-hubspot-auth-level: "app"
+      x-hubspot-auth-scoping-type: "NONE"
+      x-hubspot-enhanced-error-serialization: false
+      x-hubspot-source-code-class-name: "HelloWorldResource"
+      x-hubspot-source-code-method-name: "getHubSpotters"
+      x-hubspot-source-code-method-line-number: 44
+  /kudos:
+    post:
+      operationId: "post-{BASE_PATH}/kudos"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/KudosRequest"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Kudos"
+      security:
+        - internal_cookie: []
+        - shhkey: []
+        - app_cookie: []
+      x-hubspot-auth-level: "app"
+      x-hubspot-auth-scoping-type: "NONE"
+      x-hubspot-enhanced-error-serialization: false
+      x-hubspot-source-code-class-name: "KudosResource"
+      x-hubspot-source-code-method-name: "createKudos"
+      x-hubspot-source-code-method-line-number: 54
+    put:
+      operationId: "put-{BASE_PATH}/kudos"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/KudosUpdate"
+      responses:
+        "204":
+          description: "No content"
+      security:
+        - internal_cookie: []
+        - shhkey: []
+        - app_cookie: []
+      x-hubspot-auth-level: "app"
+      x-hubspot-auth-scoping-type: "NONE"
+      x-hubspot-enhanced-error-serialization: false
+      x-hubspot-source-code-class-name: "KudosResource"
+      x-hubspot-source-code-method-name: "updateKudos"
+      x-hubspot-source-code-method-line-number: 110
+  /kudos/vid/{vid}:
+    get:
+      operationId: "get-{BASE_PATH}/kudos/vid/{vid}"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "vid"
+          in: "path"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Kudos"
+      security:
+        - internal_cookie: []
+        - shhkey: []
+        - app_cookie: []
+      x-hubspot-auth-level: "app"
+      x-hubspot-auth-scoping-type: "NONE"
+      x-hubspot-enhanced-error-serialization: false
+      x-hubspot-source-code-class-name: "KudosResource"
+      x-hubspot-source-code-method-name: "kudosForVid"
+      x-hubspot-source-code-method-line-number: 81
+  /kudos/{id}:
+    delete:
+      operationId: "delete-{BASE_PATH}/kudos/{id}"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "integer"
+          format: "int32"
+      responses:
+        "204":
+          description: "No content"
+      security:
+        - internal_cookie: []
+        - shhkey: []
+        - app_cookie: []
+      x-hubspot-auth-level: "app"
+      x-hubspot-auth-scoping-type: "NONE"
+      x-hubspot-enhanced-error-serialization: false
+      x-hubspot-source-code-class-name: "KudosResource"
+      x-hubspot-source-code-method-name: "deleteKudos"
+      x-hubspot-source-code-method-line-number: 105
+  /kudos/{username}:
+    get:
+      operationId: "get-{BASE_PATH}/kudos/{username}"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "username"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Kudos"
+      security:
+        - internal_cookie: []
+        - shhkey: []
+        - app_cookie: []
+      x-hubspot-auth-level: "app"
+      x-hubspot-auth-scoping-type: "NONE"
+      x-hubspot-enhanced-error-serialization: false
+      x-hubspot-source-code-class-name: "KudosResource"
+      x-hubspot-source-code-method-name: "kudosForUsername"
+      x-hubspot-source-code-method-line-number: 74
+definitions:
+  HelloWorldMessage:
+    type: "object"
+    required:
+      - "message"
+    properties:
+      message:
+        type: "string"
+    x-hubspot-java-type-name: "com.hubspot.hello.world.rohit.panicker.core.HelloWorldMessage"
+    x-hubspot-external-project-origin: false
+  HubSpotter:
+    type: "object"
+    required:
+      - "createdAt"
+      - "department"
+      - "email"
+      - "firstName"
+      - "groups"
+      - "lastName"
+      - "username"
+    properties:
+      username:
+        type: "string"
+      email:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      department:
+        type: "string"
+      title:
+        type: "string"
+      groups:
+        type: "array"
+        items:
+          type: "string"
+      createdAt:
+        type: "integer"
+    x-hubspot-java-type-name: "com.hubspot.hello.world.rohit.panicker.core.HubSpotter"
+    x-hubspot-external-project-origin: false
+  Kudos:
+    type: "object"
+    required:
+      - "createdAt"
+      - "id"
+      - "senderUsername"
+      - "text"
+      - "username"
+    properties:
+      username:
+        type: "string"
+      senderUsername:
+        type: "string"
+      text:
+        type: "string"
+      id:
+        type: "integer"
+      createdAt:
+        type: "integer"
+    x-hubspot-java-type-name: "com.hubspot.hello.world.rohit.panicker.core.Kudos"
+    x-hubspot-external-project-origin: false
+  KudosRequest:
+    type: "object"
+    required:
+      - "senderUsername"
+      - "text"
+      - "username"
+    properties:
+      username:
+        type: "string"
+      senderUsername:
+        type: "string"
+      text:
+        type: "string"
+    x-hubspot-java-type-name: "com.hubspot.hello.world.rohit.panicker.core.KudosRequest"
+    x-hubspot-external-project-origin: false
+  KudosUpdate:
+    type: "object"
+    required:
+      - "id"
+      - "text"
+    properties:
+      id:
+        type: "integer"
+      text:
+        type: "string"
+    x-hubspot-java-type-name: "com.hubspot.hello.world.rohit.panicker.core.KudosUpdate"
+    x-hubspot-external-project-origin: false
