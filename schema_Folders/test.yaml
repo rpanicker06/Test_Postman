@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   version: "v1"
-  title: "HelloWorldRohitPanickerService"
+  title: "HelloWorldRohitPanickerService2"
   x-hubspot-default-auth-level: "app"
   x-hubspot-enhanced-error-serialization: false
   x-hubspot-call-logging-enabled: false
