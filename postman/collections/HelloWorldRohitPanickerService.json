@@ -145,7 +145,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/hello?name=<string>&checkDiff=<string>",
+							"raw": "{{baseUrl}}/hello?name=<string>",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -155,10 +155,6 @@
 							"query": [
 								{
 									"key": "name",
-									"value": "<string>"
-								},
-								{
-									"key": "checkDiff",
 									"value": "<string>"
 								}
 							]
@@ -248,7 +244,6 @@
 											],
 											"variable": [
 												{
-													"id": "b362fea7-191e-4204-8a04-5e928c064f0a",
 													"key": "vid",
 													"value": "<long>"
 												}
@@ -279,7 +274,6 @@
 													],
 													"variable": [
 														{
-															"id": "b362fea7-191e-4204-8a04-5e928c064f0a",
 															"key": "vid",
 															"value": "<long>"
 														}
@@ -329,7 +323,6 @@
 									],
 									"variable": [
 										{
-											"id": "6c312148-bf0e-4669-bb1a-eed7a43371a3",
 											"key": "id",
 											"value": "<integer>"
 										}
@@ -354,7 +347,6 @@
 											],
 											"variable": [
 												{
-													"id": "6c312148-bf0e-4669-bb1a-eed7a43371a3",
 													"key": "id",
 													"value": "<integer>"
 												}
@@ -401,7 +393,6 @@
 									],
 									"variable": [
 										{
-											"id": "41d112cd-8e99-487f-8ee3-13eb12f702df",
 											"key": "username",
 											"value": "<string>"
 										}
@@ -431,7 +422,6 @@
 											],
 											"variable": [
 												{
-													"id": "41d112cd-8e99-487f-8ee3-13eb12f702df",
 													"key": "username",
 													"value": "<string>"
 												}
