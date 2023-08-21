@@ -24,6 +24,10 @@ paths:
           in: "query"
           required: false
           type: "string"
+        - name: "checkDiff"
+          in: "query"
+          required: false
+          type: "string"
       responses:
         "200":
           description: "successful operation"
@@ -38,7 +42,7 @@ paths:
       x-hubspot-enhanced-error-serialization: false
       x-hubspot-source-code-class-name: "HelloWorldResource"
       x-hubspot-source-code-method-name: "helloResource"
-      x-hubspot-source-code-method-line-number: 37
+      x-hubspot-source-code-method-line-number: 40
   /hello/checkValidator:
     get:
       operationId: "get-{BASE_PATH}/hello/checkValidator"
@@ -58,7 +62,7 @@ paths:
       x-hubspot-enhanced-error-serialization: false
       x-hubspot-source-code-class-name: "HelloWorldResource"
       x-hubspot-source-code-method-name: "checkValidator"
-      x-hubspot-source-code-method-line-number: 51
+      x-hubspot-source-code-method-line-number: 54
   /hello/hubspotters:
     get:
       operationId: "get-{BASE_PATH}/hello/hubspotters"
@@ -82,7 +86,7 @@ paths:
       x-hubspot-enhanced-error-serialization: false
       x-hubspot-source-code-class-name: "HelloWorldResource"
       x-hubspot-source-code-method-name: "getHubSpotters"
-      x-hubspot-source-code-method-line-number: 44
+      x-hubspot-source-code-method-line-number: 47
   /kudos:
     post:
       operationId: "post-{BASE_PATH}/kudos"
