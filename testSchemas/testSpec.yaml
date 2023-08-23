@@ -1,11 +1,11 @@
 openapi: "3.0.0"
 info:
-  title: Simple API overview 
+  title: Simple API overview
   version: 2.0.0
 paths:
   /:
     get:
-      operationId: listVersions
+      operationId: listVersionsv2
       summary: List API versions
       responses:
         '200':
@@ -76,10 +76,10 @@ paths:
                          }
                      ]
                     }
-  /manualSpecUpdate:
+  /v2:
     get:
-      operationId: listVersionsv2
-      summary: Manual Spec Update
+      operationId: getVersionDetailsv2
+      summary: Show API version details
       responses:
         '200':
           description: |-
@@ -90,62 +90,81 @@ paths:
                 foo:
                   value:
                     {
-                      "versions": [
-                        {
-                          "status": "CURRENT",
-                          "updated": "2011-01-21T11:33:21Z",
-                          "id": "v2.0",
-                          "links": [
-                            {
-                              "href": "http://127.0.0.1:8774/v2/",
-                              "rel": "self"
-                            }
-                          ]
-                        },
-                        {
-                          "status": "EXPERIMENTAL",
-                          "updated": "2013-07-23T11:33:21Z",
-                          "id": "v3.0",
-                          "links": [
-                            {
-                              "href": "http://127.0.0.1:8774/v3/",
-                              "rel": "self"
-                            }
-                          ]
-                        }
-                      ]
+                      "version": {
+                        "status": "CURRENT",
+                        "updated": "2011-01-21T11:33:21Z",
+                        "media-types": [
+                          {
+                            "base": "application/xml",
+                            "type": "application/vnd.openstack.compute+xml;version=2"
+                          },
+                          {
+                            "base": "application/json",
+                            "type": "application/vnd.openstack.compute+json;version=2"
+                          }
+                        ],
+                        "id": "v2.0",
+                        "links": [
+                          {
+                            "href": "http://127.0.0.1:8774/v2/",
+                            "rel": "self"
+                          },
+                          {
+                            "href": "http://docs.openstack.org/api/openstack-compute/2/os-compute-devguide-2.pdf",
+                            "type": "application/pdf",
+                            "rel": "describedby"
+                          },
+                          {
+                            "href": "http://docs.openstack.org/api/openstack-compute/2/wadl/os-compute-2.wadl",
+                            "type": "application/vnd.sun.wadl+xml",
+                            "rel": "describedby"
+                          },
+                          {
+                            "href": "http://docs.openstack.org/api/openstack-compute/2/wadl/os-compute-2.wadl",
+                            "type": "application/vnd.sun.wadl+xml",
+                            "rel": "describedby"
+                          }
+                        ]
+                      }
                     }
-        '300':
+        '203':
           description: |-
-            300 response
+            203 response
           content:
             application/json:
               examples:
                 foo:
-                  value: |
+                  value:
                     {
-                     "versions": [
-                           {
-                             "status": "CURRENT",
-                             "updated": "2011-01-21T11:33:21Z",
-                             "id": "v2.0",
-                             "links": [
-                                 {
-                                     "href": "http://127.0.0.1:8774/v2/",
-                                     "rel": "self"
-                                 }
-                             ]
-                         },
-                         {
-                             "status": "EXPERIMENTAL",
-                             "updated": "2013-07-23T11:33:21Z",
-                             "id": "v3.0",
-                             "links": [
-                                 {
-                                     "href": "http://127.0.0.1:8774/v3/",
-                                     "rel": "self"
-                                 }
-                             ]
-                         }
-                     ]
+                      "version": {
+                        "status": "CURRENT",
+                        "updated": "2011-01-21T11:33:21Z",
+                        "media-types": [
+                          {
+                            "base": "application/xml",
+                            "type": "application/vnd.openstack.compute+xml;version=2"
+                          },
+                          {
+                            "base": "application/json",
+                            "type": "application/vnd.openstack.compute+json;version=2"
+                          }
+                        ],
+                        "id": "v2.0",
+                        "links": [
+                          {
+                            "href": "http://23.253.228.211:8774/v2/",
+                            "rel": "self"
+                          },
+                          {
+                            "href": "http://docs.openstack.org/api/openstack-compute/2/os-compute-devguide-2.pdf",
+                            "type": "application/pdf",
+                            "rel": "describedby"
+                          },
+                          {
+                            "href": "http://docs.openstack.org/api/openstack-compute/2/wadl/os-compute-2.wadl",
+                            "type": "application/vnd.sun.wadl+xml",
+                            "rel": "describedby"
+                          }
+                        ]
+                      }
                     }
