@@ -377,7 +377,7 @@
         "tags": [
           "Blog Authors"
         ],
-        "summary": "Create a new Blog Author",
+        "summary": "POST-POSTMAN",
         "description": "Create a new Blog Author.",
         "operationId": "post-/cms/v3/blogs/authors_create",
         "requestBody": {
