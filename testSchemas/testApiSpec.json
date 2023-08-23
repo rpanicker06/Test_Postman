@@ -222,7 +222,7 @@
         "tags": [
           "Blog Authors"
         ],
-        "summary": "Get all Blog Authors",
+        "summary": "Postman Test",
         "description": "Get the list of blog authors. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.\n",
         "operationId": "get-/cms/v3/blogs/authors_getPage",
         "parameters": [
