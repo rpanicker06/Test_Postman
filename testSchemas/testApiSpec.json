@@ -16,207 +16,207 @@
     }
   ],
   "paths": {
-//    "/cms/v3/blogs/TestingPostman": {
-//      "get": {
-//        "tags": [
-//          "Testing Postman"
-//        ],
-//        "summary": "Testing Postman",
-//        "description": "Postman Get the list of blog authors. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.\n",
-//        "operationId": "get-/cms/v3/blogs/authors_getPage",
-//        "parameters": [
-//          {
-//            "name": "createdAt",
-//            "in": "query",
-//            "description": "Only return Blog Authors created at exactly the specified time.",
-//            "required": false,
-//            "style": "form",
-//            "explode": true,
-//            "schema": {
-//              "type": "string",
-//              "format": "date-time"
-//            }
-//          },
-//          {
-//            "name": "createdAfter",
-//            "in": "query",
-//            "description": "Only return Blog Authors created after the specified time.",
-//            "required": false,
-//            "style": "form",
-//            "explode": true,
-//            "schema": {
-//              "type": "string",
-//              "format": "date-time"
-//            }
-//          },
-//          {
-//            "name": "createdBefore",
-//            "in": "query",
-//            "description": "Only return Blog Authors created before the specified time.",
-//            "required": false,
-//            "style": "form",
-//            "explode": true,
-//            "schema": {
-//              "type": "string",
-//              "format": "date-time"
-//            }
-//          },
-//          {
-//            "name": "updatedAt",
-//            "in": "query",
-//            "description": "Only return Blog Authors last updated at exactly the specified time.",
-//            "required": false,
-//            "style": "form",
-//            "explode": true,
-//            "schema": {
-//              "type": "string",
-//              "format": "date-time"
-//            }
-//          },
-//          {
-//            "name": "updatedAfter",
-//            "in": "query",
-//            "description": "Only return Blog Authors last updated after the specified time.",
-//            "required": false,
-//            "style": "form",
-//            "explode": true,
-//            "schema": {
-//              "type": "string",
-//              "format": "date-time"
-//            }
-//          },
-//          {
-//            "name": "updatedBefore",
-//            "in": "query",
-//            "description": "Only return Blog Authors last updated before the specified time.",
-//            "required": false,
-//            "style": "form",
-//            "explode": true,
-//            "schema": {
-//              "type": "string",
-//              "format": "date-time"
-//            }
-//          },
-//          {
-//            "name": "sort",
-//            "in": "query",
-//            "description": "Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.",
-//            "required": false,
-//            "style": "form",
-//            "explode": true,
-//            "schema": {
-//              "type": "array",
-//              "items": {
-//                "type": "string"
-//              }
-//            }
-//          },
-//          {
-//            "name": "after",
-//            "in": "query",
-//            "description": "The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.",
-//            "required": false,
-//            "style": "form",
-//            "explode": true,
-//            "schema": {
-//              "type": "string"
-//            }
-//          },
-//          {
-//            "name": "limit",
-//            "in": "query",
-//            "description": "The maximum number of results to return. Default is 100.",
-//            "required": false,
-//            "style": "form",
-//            "explode": true,
-//            "schema": {
-//              "type": "integer",
-//              "format": "int32"
-//            }
-//          },
-//          {
-//            "name": "archived",
-//            "in": "query",
-//            "description": "Specifies whether to return deleted Blog Authors. Defaults to `false`.",
-//            "required": false,
-//            "style": "form",
-//            "explode": true,
-//            "schema": {
-//              "type": "boolean"
-//            }
-//          }
-//        ],
-//        "responses": {
-//          "200": {
-//            "description": "successful operation",
-//            "content": {
-//              "application/json": {
-//                "schema": {
-//                  "$ref": "#/components/schemas/CollectionResponseWithTotalBlogAuthorForwardPaging"
-//                }
-//              }
-//            }
-//          },
-//          "default": {
-//            "$ref": "#/components/responses/Error"
-//          }
-//        },
-//        "security": [
-//          {
-//            "hapikey": []
-//          },
-//          {
-//            "oauth2_legacy": [
-//              "content"
-//            ]
-//          }
-//        ]
-//      },
-//      "post": {
-//        "tags": [
-//          "POST-POSTMAN"
-//        ],
-//        "summary": "Create a new Blog Author",
-//        "description": "Create a new Blog Author.",
-//        "operationId": "post-/cms/v3/blogs/authors_create",
-//        "requestBody": {
-//          "description": "The JSON representation of a new Blog Author.",
-//          "content": {
-//            "application/json": {
-//              "schema": {
-//                "$ref": "#/components/schemas/BlogAuthor"
-//              }
-//            }
-//          },
-//          "required": true
-//        },
-//        "responses": {
-//          "201": {
-//            "description": "successful operation",
-//            "content": {
-//              "application/json": {
-//                "schema": {
-//                  "$ref": "#/components/schemas/BlogAuthor"
-//                }
-//              }
-//            }
-//          },
-//          "default": {
-//            "$ref": "#/components/responses/Error"
-//          }
-//        },
-//        "security": [
-//          {
-//            "hapikey": []
-//          },
-//          {
-//            "oauth2_legacy": [
-//              "content"
-//            ]
-//          }
-//        ]
-//      }
-//    },
+    "/cms/v3/blogs/TestingPostman": {
+      "get": {
+        "tags": [
+          "Testing Postman"
+        ],
+        "summary": "Testing Postman",
+        "description": "Postman Get the list of blog authors. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.\n",
+        "operationId": "get-/cms/v3/blogs/authors_getPage",
+        "parameters": [
+          {
+            "name": "createdAt",
+            "in": "query",
+            "description": "Only return Blog Authors created at exactly the specified time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "createdAfter",
+            "in": "query",
+            "description": "Only return Blog Authors created after the specified time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "createdBefore",
+            "in": "query",
+            "description": "Only return Blog Authors created before the specified time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "updatedAt",
+            "in": "query",
+            "description": "Only return Blog Authors last updated at exactly the specified time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "updatedAfter",
+            "in": "query",
+            "description": "Only return Blog Authors last updated after the specified time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "updatedBefore",
+            "in": "query",
+            "description": "Only return Blog Authors last updated before the specified time.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of results to return. Default is 100.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "archived",
+            "in": "query",
+            "description": "Specifies whether to return deleted Blog Authors. Defaults to `false`.",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionResponseWithTotalBlogAuthorForwardPaging"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "security": [
+          {
+            "hapikey": []
+          },
+          {
+            "oauth2_legacy": [
+              "content"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "POST-POSTMAN"
+        ],
+        "summary": "Create a new Blog Author",
+        "description": "Create a new Blog Author.",
+        "operationId": "post-/cms/v3/blogs/authors_create",
+        "requestBody": {
+          "description": "The JSON representation of a new Blog Author.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BlogAuthor"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlogAuthor"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        },
+        "security": [
+          {
+            "hapikey": []
+          },
+          {
+            "oauth2_legacy": [
+              "content"
+            ]
+          }
+        ]
+      }
+    },
     "/cms/v3/blogs/authors": {
       "get": {
         "tags": [
