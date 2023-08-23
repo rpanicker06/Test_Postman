@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Blog Post endpoints",
+    "title": "Blog Post endpointss",
     "description": "Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags",
     "version": "v3"
   },
