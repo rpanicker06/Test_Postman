@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Blog Post endpointss",
+    "title": "Blog Post endpoints",
     "description": "Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags",
     "version": "v3"
   },
@@ -16,7 +16,6 @@
     }
   ],
   "paths": {
-
     "/cms/v3/blogs/authors": {
       "get": {
         "tags": [
@@ -177,7 +176,7 @@
         "tags": [
           "Blog Authors"
         ],
-        "summary": "POST-POSTMAN",
+        "summary": "Create a new Blog Author",
         "description": "Create a new Blog Author.",
         "operationId": "post-/cms/v3/blogs/authors_create",
         "requestBody": {
