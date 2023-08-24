@@ -2814,13 +2814,189 @@
 				}
 			],
 			"id": "4ed5e1a9-c92f-4259-a215-7959c6ead08a"
+		},
+		{
+			"name": "Testing v2 Postman",
+			"id": "afa76ba4-d3b5-4df2-9bd2-04becc5082da",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "hapikey",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "{{apiKey}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"inputs\": [\n    \"ex dolore qui aliquip occaecat\",\n    \"veniam do\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"headerFamily": "json",
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/v2Postman",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cms",
+						"v3",
+						"blogs",
+						"authors",
+						"batch",
+						"v2Postman"
+					]
+				},
+				"description": "Testing v2 Postman"
+			},
+			"response": [
+				{
+					"id": "bd664c49-bd0e-4aa9-a200-0187597dedd9",
+					"name": "No content",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inputs\": [\n    \"ex dolore qui aliquip occaecat\",\n    \"veniam do\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/v2Postman?hapikey=<API Key>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors",
+								"batch",
+								"v2Postman"
+							],
+							"query": [
+								{
+									"description": "Added as a part of security scheme: apikey",
+									"key": "hapikey",
+									"value": "<API Key>"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": []
+				},
+				{
+					"id": "d79cf4b0-44b8-44e1-9338-a3ed2577e335",
+					"name": "An error occurred.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inputs\": [\n    \"ex dolore qui aliquip occaecat\",\n    \"veniam do\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/v2Postman?hapikey=<API Key>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors",
+								"batch",
+								"v2Postman"
+							],
+							"query": [
+								{
+									"description": "Added as a part of security scheme: apikey",
+									"key": "hapikey",
+									"value": "<API Key>"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"tempor deserunt do ipsum\",\n      \"in\": \"i\",\n      \"code\": \"officia sed culpa commodo do\",\n      \"subCategory\": \"dolore Duis dolore nulla mollit\",\n      \"context\": {\n        \"culpa0bc\": [\n          \"aute ipsum\",\n          \"cillum\"\n        ],\n        \"anim4bc\": [\n          \"reprehenderit mollit\",\n          \"irure sunt ut laboris\"\n        ]\n      }\n    },\n    {\n      \"message\": \"ad dolor nostrud\",\n      \"in\": \"Lorem ut dolore dolor\",\n      \"code\": \"eiusmod mollit\",\n      \"subCategory\": \"do\",\n      \"context\": {\n        \"anime0\": [\n          \"voluptate cillum consectetur Ut non\",\n          \"fugiat \"\n        ],\n        \"reprehenderit_c0\": [\n          \"nulla dolore dolore officia\",\n          \"et\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut_5e\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"non_cb\": \"<string>\",\n    \"sit34_\": \"<string>\"\n  }\n}"
+				}
+			]
 		}
 	],
 	"variable": [
 		{
 			"id": "32fb5a1a-7f1c-40a6-a78f-1ea0e2a7e947",
 			"key": "baseUrl",
-			"value": "https://api.hubapi.com/"
+			"value": "https://api.hubapi.com/",
+			"type": "string"
 		}
 	]
 }
