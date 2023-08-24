@@ -217,46 +217,7 @@
         ]
       }
     },
-    "/cms/v3/blogs/authors/batch/postman": {
-      "post": {
-        "tags": [
-          "Postman Testing"
-        ],
-        "summary": "Postman Testing",
-        "description": "Delete the Blog Author objects identified in the request body.",
-        "operationId": "post-/cms/v3/blogs/authors/batch/archive_archiveBatch",
-        "requestBody": {
-          "description": "The JSON array of Blog Author ids.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/BatchInputString"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "No content",
-            "content": {}
-          },
-          "default": {
-            "$ref": "#/components/responses/Error"
-          }
-        },
-        "security": [
-          {
-            "hapikey": []
-          },
-          {
-            "oauth2_legacy": [
-              "content"
-            ]
-          }
-        ]
-      }
-    },
+
     "/cms/v3/blogs/authors/batch/archive": {
       "post": {
         "tags": [
