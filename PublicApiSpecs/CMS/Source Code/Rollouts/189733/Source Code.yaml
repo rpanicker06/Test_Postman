@@ -1,0 +1,3124 @@
+class OpenAPI {
+    openapi: 3.0.1
+    info: class Info {
+        title: CMS Source Code
+        description: Endpoints for interacting with files in the CMS Developer File System. These files include HTML templates, CSS, JS, modules, and other assets which are used to create CMS content.
+        termsOfService: null
+        contact: null
+        license: null
+        version: v3
+    }
+    externalDocs: null
+    servers: [class Server {
+        url: https://api.hubapiqa.com
+        description: null
+        variables: null
+    }]
+    security: null
+    tags: [class Tag {
+        name: Content
+        description: null
+        externalDocs: null
+    }, class Tag {
+        name: Validation
+        description: null
+        externalDocs: null
+    }, class Tag {
+        name: Metadata
+        description: null
+        externalDocs: null
+    }, class Tag {
+        name: Extract
+        description: null
+        externalDocs: null
+    }, class Tag {
+        name: Source_Code_Extract
+        description: null
+        externalDocs: null
+    }]
+    paths: class Paths {
+        {/cms/v3/source-code/{environment}/metadata/{path}=class PathItem {
+            summary: null
+            description: null
+            get: class Operation {
+                tags: [Metadata]
+                summary: Get the metadata for a file
+                description: Gets the metadata object for the file at the specified path in the specified environment.
+                externalDocs: null
+                operationId: get-/cms/v3/source-code/{environment}/metadata/{path}
+                parameters: [class PathParameter {
+                    class Parameter {
+                        name: environment
+                        in: null
+                        description: The environment of the file ("draft" or "published").
+                        required: null
+                        deprecated: null
+                        allowEmptyValue: null
+                        style: simple
+                        explode: false
+                        allowReserved: null
+                        schema: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: null
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        examples: null
+                        example: null
+                        content: null
+                        $ref: null
+                    }
+                    in: path
+                    required: true
+                }, class PathParameter {
+                    class Parameter {
+                        name: path
+                        in: null
+                        description: The file system location of the file.
+                        required: null
+                        deprecated: null
+                        allowEmptyValue: null
+                        style: simple
+                        explode: false
+                        allowReserved: null
+                        schema: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: .+
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        examples: null
+                        example: null
+                        content: null
+                        $ref: null
+                    }
+                    in: path
+                    required: true
+                }, class QueryParameter {
+                    class Parameter {
+                        name: properties
+                        in: null
+                        description: null
+                        required: false
+                        deprecated: null
+                        allowEmptyValue: null
+                        style: form
+                        explode: true
+                        allowReserved: null
+                        schema: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: null
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        examples: null
+                        example: null
+                        content: null
+                        $ref: null
+                    }
+                    in: query
+                }]
+                requestBody: null
+                responses: class ApiResponses {
+                    {200=class ApiResponse {
+                        description: successful operation
+                        headers: null
+                        content: class Content {
+                            {application/json=class MediaType {
+                                schema: class Schema {
+                                    type: null
+                                    format: null
+                                    $ref: #/components/schemas/AssetFileMetadata
+                                    description: null
+                                    title: null
+                                    multipleOf: null
+                                    maximum: null
+                                    exclusiveMaximum: null
+                                    minimum: null
+                                    exclusiveMinimum: null
+                                    maxLength: null
+                                    minLength: null
+                                    pattern: null
+                                    maxItems: null
+                                    minItems: null
+                                    uniqueItems: null
+                                    maxProperties: null
+                                    minProperties: null
+                                    required: null
+                                    not: null
+                                    properties: null
+                                    additionalProperties: null
+                                    nullable: null
+                                    readOnly: null
+                                    writeOnly: null
+                                    example: null
+                                    externalDocs: null
+                                    deprecated: null
+                                    discriminator: null
+                                    xml: null
+                                }
+                                examples: null
+                                example: {"id":"/example.json","name":"example.json","folder":false,"children":[],"updatedAt":1608049506,"createdAt":1608049506,"archivedAt":0}
+                                encoding: null
+                            }}
+                        }
+                        links: null
+                        extensions: null
+                        $ref: null
+                    }, default=class ApiResponse {
+                        description: null
+                        headers: null
+                        content: null
+                        links: null
+                        extensions: null
+                        $ref: #/components/responses/Error
+                    }}
+                    extensions: null
+                }
+                callbacks: null
+                deprecated: null
+                security: [class SecurityRequirement {
+                    {private_apps_legacy=[content]}
+                }, class SecurityRequirement {
+                    {oauth2_legacy=[content]}
+                }]
+                servers: null
+            }
+            put: null
+            post: null
+            delete: null
+            options: null
+            head: null
+            patch: null
+            trace: null
+            servers: null
+            parameters: null
+            $ref: null
+        }, /cms/v3/source-code/{environment}/validate/{path}=class PathItem {
+            summary: null
+            description: null
+            get: null
+            put: null
+            post: class Operation {
+                tags: [Validation]
+                summary: Validate the contents of a file
+                description: Validates the file contents passed to the endpoint given a specified path and environment. Accepts multipart/form-data content type.
+                externalDocs: null
+                operationId: post-/cms/v3/source-code/{environment}/validate/{path}
+                parameters: [class PathParameter {
+                    class Parameter {
+                        name: path
+                        in: null
+                        description: The file system location of the file.
+                        required: null
+                        deprecated: null
+                        allowEmptyValue: null
+                        style: simple
+                        explode: false
+                        allowReserved: null
+                        schema: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: .+
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        examples: null
+                        example: null
+                        content: null
+                        $ref: null
+                    }
+                    in: path
+                    required: true
+                }]
+                requestBody: class RequestBody {
+                    description: null
+                    content: class Content {
+                        {multipart/form-data=class MediaType {
+                            schema: class ObjectSchema {
+                                class Schema {
+                                    type: object
+                                    format: null
+                                    $ref: null
+                                    description: null
+                                    title: null
+                                    multipleOf: null
+                                    maximum: null
+                                    exclusiveMaximum: null
+                                    minimum: null
+                                    exclusiveMinimum: null
+                                    maxLength: null
+                                    minLength: null
+                                    pattern: null
+                                    maxItems: null
+                                    minItems: null
+                                    uniqueItems: null
+                                    maxProperties: null
+                                    minProperties: null
+                                    required: null
+                                    not: null
+                                    properties: {file=class BinarySchema {
+                                        class Schema {
+                                            type: string
+                                            format: binary
+                                            $ref: null
+                                            description: The file to validate.
+                                            title: null
+                                            multipleOf: null
+                                            maximum: null
+                                            exclusiveMaximum: null
+                                            minimum: null
+                                            exclusiveMinimum: null
+                                            maxLength: null
+                                            minLength: null
+                                            pattern: null
+                                            maxItems: null
+                                            minItems: null
+                                            uniqueItems: null
+                                            maxProperties: null
+                                            minProperties: null
+                                            required: null
+                                            not: null
+                                            properties: null
+                                            additionalProperties: null
+                                            nullable: null
+                                            readOnly: null
+                                            writeOnly: null
+                                            example: null
+                                            externalDocs: null
+                                            deprecated: null
+                                            discriminator: null
+                                            xml: null
+                                        }
+                                    }}
+                                    additionalProperties: null
+                                    nullable: null
+                                    readOnly: null
+                                    writeOnly: null
+                                    example: null
+                                    externalDocs: null
+                                    deprecated: null
+                                    discriminator: null
+                                    xml: null
+                                }
+                            }
+                            examples: null
+                            example: null
+                            encoding: null
+                        }}
+                    }
+                    required: null
+                }
+                responses: class ApiResponses {
+                    {default=class ApiResponse {
+                        description: null
+                        headers: null
+                        content: null
+                        links: null
+                        extensions: null
+                        $ref: #/components/responses/Error
+                    }}
+                    extensions: null
+                }
+                callbacks: null
+                deprecated: null
+                security: [class SecurityRequirement {
+                    {private_apps_legacy=[content]}
+                }, class SecurityRequirement {
+                    {oauth2_legacy=[content]}
+                }]
+                servers: null
+            }
+            delete: null
+            options: null
+            head: null
+            patch: null
+            trace: null
+            servers: null
+            parameters: null
+            $ref: null
+        }, /cms/v3/source-code/{environment}/content/{path}=class PathItem {
+            summary: null
+            description: null
+            get: class Operation {
+                tags: [Content]
+                summary: Download a file
+                description: Downloads the byte contents of the file at the specified path in the specified environment.
+                externalDocs: null
+                operationId: get-/cms/v3/source-code/{environment}/content/{path}
+                parameters: [class PathParameter {
+                    class Parameter {
+                        name: environment
+                        in: null
+                        description: The environment of the file ("draft" or "published").
+                        required: null
+                        deprecated: null
+                        allowEmptyValue: null
+                        style: simple
+                        explode: false
+                        allowReserved: null
+                        schema: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: null
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        examples: null
+                        example: null
+                        content: null
+                        $ref: null
+                    }
+                    in: path
+                    required: true
+                }, class PathParameter {
+                    class Parameter {
+                        name: path
+                        in: null
+                        description: The file system location of the file.
+                        required: null
+                        deprecated: null
+                        allowEmptyValue: null
+                        style: simple
+                        explode: false
+                        allowReserved: null
+                        schema: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: .+
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        examples: null
+                        example: null
+                        content: null
+                        $ref: null
+                    }
+                    in: path
+                    required: true
+                }]
+                requestBody: null
+                responses: class ApiResponses {
+                    {default=class ApiResponse {
+                        description: null
+                        headers: null
+                        content: null
+                        links: null
+                        extensions: null
+                        $ref: #/components/responses/Error
+                    }}
+                    extensions: null
+                }
+                callbacks: null
+                deprecated: null
+                security: [class SecurityRequirement {
+                    {private_apps_legacy=[content]}
+                }, class SecurityRequirement {
+                    {oauth2_legacy=[content]}
+                }]
+                servers: null
+            }
+            put: class Operation {
+                tags: [Content]
+                summary: Create or update a file
+                description: Upserts a file at the specified path in the specified environment. Accepts multipart/form-data content type.
+                externalDocs: null
+                operationId: put-/cms/v3/source-code/{environment}/content/{path}
+                parameters: [class PathParameter {
+                    class Parameter {
+                        name: environment
+                        in: null
+                        description: The environment of the file ("draft" or "published").
+                        required: null
+                        deprecated: null
+                        allowEmptyValue: null
+                        style: simple
+                        explode: false
+                        allowReserved: null
+                        schema: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: null
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        examples: null
+                        example: null
+                        content: null
+                        $ref: null
+                    }
+                    in: path
+                    required: true
+                }, class PathParameter {
+                    class Parameter {
+                        name: path
+                        in: null
+                        description: The file system location of the file.
+                        required: null
+                        deprecated: null
+                        allowEmptyValue: null
+                        style: simple
+                        explode: false
+                        allowReserved: null
+                        schema: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: .+
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        examples: null
+                        example: null
+                        content: null
+                        $ref: null
+                    }
+                    in: path
+                    required: true
+                }]
+                requestBody: class RequestBody {
+                    description: null
+                    content: class Content {
+                        {multipart/form-data=class MediaType {
+                            schema: class ObjectSchema {
+                                class Schema {
+                                    type: object
+                                    format: null
+                                    $ref: null
+                                    description: null
+                                    title: null
+                                    multipleOf: null
+                                    maximum: null
+                                    exclusiveMaximum: null
+                                    minimum: null
+                                    exclusiveMinimum: null
+                                    maxLength: null
+                                    minLength: null
+                                    pattern: null
+                                    maxItems: null
+                                    minItems: null
+                                    uniqueItems: null
+                                    maxProperties: null
+                                    minProperties: null
+                                    required: null
+                                    not: null
+                                    properties: {file=class BinarySchema {
+                                        class Schema {
+                                            type: string
+                                            format: binary
+                                            $ref: null
+                                            description: The file to upload.
+                                            title: null
+                                            multipleOf: null
+                                            maximum: null
+                                            exclusiveMaximum: null
+                                            minimum: null
+                                            exclusiveMinimum: null
+                                            maxLength: null
+                                            minLength: null
+                                            pattern: null
+                                            maxItems: null
+                                            minItems: null
+                                            uniqueItems: null
+                                            maxProperties: null
+                                            minProperties: null
+                                            required: null
+                                            not: null
+                                            properties: null
+                                            additionalProperties: null
+                                            nullable: null
+                                            readOnly: null
+                                            writeOnly: null
+                                            example: null
+                                            externalDocs: null
+                                            deprecated: null
+                                            discriminator: null
+                                            xml: null
+                                        }
+                                    }}
+                                    additionalProperties: null
+                                    nullable: null
+                                    readOnly: null
+                                    writeOnly: null
+                                    example: null
+                                    externalDocs: null
+                                    deprecated: null
+                                    discriminator: null
+                                    xml: null
+                                }
+                            }
+                            examples: null
+                            example: null
+                            encoding: null
+                        }}
+                    }
+                    required: null
+                }
+                responses: class ApiResponses {
+                    {200=class ApiResponse {
+                        description: successful operation
+                        headers: null
+                        content: class Content {
+                            {application/json=class MediaType {
+                                schema: class Schema {
+                                    type: null
+                                    format: null
+                                    $ref: #/components/schemas/AssetFileMetadata
+                                    description: null
+                                    title: null
+                                    multipleOf: null
+                                    maximum: null
+                                    exclusiveMaximum: null
+                                    minimum: null
+                                    exclusiveMinimum: null
+                                    maxLength: null
+                                    minLength: null
+                                    pattern: null
+                                    maxItems: null
+                                    minItems: null
+                                    uniqueItems: null
+                                    maxProperties: null
+                                    minProperties: null
+                                    required: null
+                                    not: null
+                                    properties: null
+                                    additionalProperties: null
+                                    nullable: null
+                                    readOnly: null
+                                    writeOnly: null
+                                    example: null
+                                    externalDocs: null
+                                    deprecated: null
+                                    discriminator: null
+                                    xml: null
+                                }
+                                examples: null
+                                example: {"id":"/example.json","name":"example.json","folder":false,"children":[],"updatedAt":1608049506,"createdAt":1608049506,"archivedAt":0}
+                                encoding: null
+                            }}
+                        }
+                        links: null
+                        extensions: null
+                        $ref: null
+                    }, default=class ApiResponse {
+                        description: null
+                        headers: null
+                        content: null
+                        links: null
+                        extensions: null
+                        $ref: #/components/responses/Error
+                    }}
+                    extensions: null
+                }
+                callbacks: null
+                deprecated: null
+                security: [class SecurityRequirement {
+                    {private_apps_legacy=[content]}
+                }, class SecurityRequirement {
+                    {oauth2_legacy=[content]}
+                }]
+                servers: null
+            }
+            post: class Operation {
+                tags: [Content]
+                summary: Create a file
+                description: Creates a file at the specified path in the specified environment. Accepts multipart/form-data content type. Throws an error if a file already exists at the specified path.
+                externalDocs: null
+                operationId: post-/cms/v3/source-code/{environment}/content/{path}
+                parameters: [class PathParameter {
+                    class Parameter {
+                        name: environment
+                        in: null
+                        description: The environment of the file ("draft" or "published").
+                        required: null
+                        deprecated: null
+                        allowEmptyValue: null
+                        style: simple
+                        explode: false
+                        allowReserved: null
+                        schema: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: null
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        examples: null
+                        example: null
+                        content: null
+                        $ref: null
+                    }
+                    in: path
+                    required: true
+                }, class PathParameter {
+                    class Parameter {
+                        name: path
+                        in: null
+                        description: The file system location of the file.
+                        required: null
+                        deprecated: null
+                        allowEmptyValue: null
+                        style: simple
+                        explode: false
+                        allowReserved: null
+                        schema: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: .+
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        examples: null
+                        example: null
+                        content: null
+                        $ref: null
+                    }
+                    in: path
+                    required: true
+                }]
+                requestBody: class RequestBody {
+                    description: null
+                    content: class Content {
+                        {multipart/form-data=class MediaType {
+                            schema: class ObjectSchema {
+                                class Schema {
+                                    type: object
+                                    format: null
+                                    $ref: null
+                                    description: null
+                                    title: null
+                                    multipleOf: null
+                                    maximum: null
+                                    exclusiveMaximum: null
+                                    minimum: null
+                                    exclusiveMinimum: null
+                                    maxLength: null
+                                    minLength: null
+                                    pattern: null
+                                    maxItems: null
+                                    minItems: null
+                                    uniqueItems: null
+                                    maxProperties: null
+                                    minProperties: null
+                                    required: null
+                                    not: null
+                                    properties: {file=class BinarySchema {
+                                        class Schema {
+                                            type: string
+                                            format: binary
+                                            $ref: null
+                                            description: The file to upload.
+                                            title: null
+                                            multipleOf: null
+                                            maximum: null
+                                            exclusiveMaximum: null
+                                            minimum: null
+                                            exclusiveMinimum: null
+                                            maxLength: null
+                                            minLength: null
+                                            pattern: null
+                                            maxItems: null
+                                            minItems: null
+                                            uniqueItems: null
+                                            maxProperties: null
+                                            minProperties: null
+                                            required: null
+                                            not: null
+                                            properties: null
+                                            additionalProperties: null
+                                            nullable: null
+                                            readOnly: null
+                                            writeOnly: null
+                                            example: null
+                                            externalDocs: null
+                                            deprecated: null
+                                            discriminator: null
+                                            xml: null
+                                        }
+                                    }}
+                                    additionalProperties: null
+                                    nullable: null
+                                    readOnly: null
+                                    writeOnly: null
+                                    example: null
+                                    externalDocs: null
+                                    deprecated: null
+                                    discriminator: null
+                                    xml: null
+                                }
+                            }
+                            examples: null
+                            example: null
+                            encoding: null
+                        }}
+                    }
+                    required: null
+                }
+                responses: class ApiResponses {
+                    {200=class ApiResponse {
+                        description: successful operation
+                        headers: null
+                        content: class Content {
+                            {application/json=class MediaType {
+                                schema: class Schema {
+                                    type: null
+                                    format: null
+                                    $ref: #/components/schemas/AssetFileMetadata
+                                    description: null
+                                    title: null
+                                    multipleOf: null
+                                    maximum: null
+                                    exclusiveMaximum: null
+                                    minimum: null
+                                    exclusiveMinimum: null
+                                    maxLength: null
+                                    minLength: null
+                                    pattern: null
+                                    maxItems: null
+                                    minItems: null
+                                    uniqueItems: null
+                                    maxProperties: null
+                                    minProperties: null
+                                    required: null
+                                    not: null
+                                    properties: null
+                                    additionalProperties: null
+                                    nullable: null
+                                    readOnly: null
+                                    writeOnly: null
+                                    example: null
+                                    externalDocs: null
+                                    deprecated: null
+                                    discriminator: null
+                                    xml: null
+                                }
+                                examples: null
+                                example: {"id":"/example.json","name":"example.json","folder":false,"children":[],"updatedAt":1608049506,"createdAt":1608049506,"archivedAt":0}
+                                encoding: null
+                            }}
+                        }
+                        links: null
+                        extensions: null
+                        $ref: null
+                    }, default=class ApiResponse {
+                        description: null
+                        headers: null
+                        content: null
+                        links: null
+                        extensions: null
+                        $ref: #/components/responses/Error
+                    }}
+                    extensions: null
+                }
+                callbacks: null
+                deprecated: true
+                security: [class SecurityRequirement {
+                    {private_apps_legacy=[content]}
+                }, class SecurityRequirement {
+                    {oauth2_legacy=[content]}
+                }]
+                servers: null
+            }
+            delete: class Operation {
+                tags: [Content]
+                summary: Delete a file
+                description: Deletes the file at the specified path in the specified environment.
+                externalDocs: null
+                operationId: delete-/cms/v3/source-code/{environment}/content/{path}
+                parameters: [class PathParameter {
+                    class Parameter {
+                        name: environment
+                        in: null
+                        description: The environment of the file ("draft" or "published").
+                        required: null
+                        deprecated: null
+                        allowEmptyValue: null
+                        style: simple
+                        explode: false
+                        allowReserved: null
+                        schema: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: null
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        examples: null
+                        example: null
+                        content: null
+                        $ref: null
+                    }
+                    in: path
+                    required: true
+                }, class PathParameter {
+                    class Parameter {
+                        name: path
+                        in: null
+                        description: The file system location of the file.
+                        required: null
+                        deprecated: null
+                        allowEmptyValue: null
+                        style: simple
+                        explode: false
+                        allowReserved: null
+                        schema: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: .+
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        examples: null
+                        example: null
+                        content: null
+                        $ref: null
+                    }
+                    in: path
+                    required: true
+                }]
+                requestBody: null
+                responses: class ApiResponses {
+                    {204=class ApiResponse {
+                        description: No content
+                        headers: null
+                        content: class Content {
+                            {}
+                        }
+                        links: null
+                        extensions: null
+                        $ref: null
+                    }, default=class ApiResponse {
+                        description: null
+                        headers: null
+                        content: null
+                        links: null
+                        extensions: null
+                        $ref: #/components/responses/Error
+                    }}
+                    extensions: null
+                }
+                callbacks: null
+                deprecated: null
+                security: [class SecurityRequirement {
+                    {private_apps_legacy=[content]}
+                }, class SecurityRequirement {
+                    {oauth2_legacy=[content]}
+                }]
+                servers: null
+            }
+            options: null
+            head: null
+            patch: null
+            trace: null
+            servers: null
+            parameters: null
+            $ref: null
+        }, /cms/v3/source-code/extract/{path}=class PathItem {
+            summary: null
+            description: null
+            get: null
+            put: null
+            post: class Operation {
+                tags: [Extract]
+                summary: Extracts a zip file
+                description: Extracts a zip file in the file system. The zip file will be extracted in-place and not be deleted automatically.
+                externalDocs: null
+                operationId: post-/cms/v3/source-code/extract/{path}
+                parameters: [class PathParameter {
+                    class Parameter {
+                        name: path
+                        in: null
+                        description: The file system location of the zip file.
+                        required: null
+                        deprecated: null
+                        allowEmptyValue: null
+                        style: simple
+                        explode: false
+                        allowReserved: null
+                        schema: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: .+
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        examples: null
+                        example: null
+                        content: null
+                        $ref: null
+                    }
+                    in: path
+                    required: true
+                }]
+                requestBody: null
+                responses: class ApiResponses {
+                    {204=class ApiResponse {
+                        description: No content
+                        headers: null
+                        content: class Content {
+                            {}
+                        }
+                        links: null
+                        extensions: null
+                        $ref: null
+                    }, default=class ApiResponse {
+                        description: null
+                        headers: null
+                        content: null
+                        links: null
+                        extensions: null
+                        $ref: #/components/responses/Error
+                    }}
+                    extensions: null
+                }
+                callbacks: null
+                deprecated: true
+                security: [class SecurityRequirement {
+                    {private_apps_legacy=[content]}
+                }, class SecurityRequirement {
+                    {oauth2_legacy=[content]}
+                }]
+                servers: null
+            }
+            delete: null
+            options: null
+            head: null
+            patch: null
+            trace: null
+            servers: null
+            parameters: null
+            $ref: null
+        }, /cms/v3/source-code/extract/async=class PathItem {
+            summary: null
+            description: null
+            get: null
+            put: null
+            post: class Operation {
+                tags: [Source_Code_Extract]
+                summary: null
+                description: null
+                externalDocs: null
+                operationId: post-/cms/v3/source-code/extract/async
+                parameters: []
+                requestBody: class RequestBody {
+                    description: null
+                    content: class Content {
+                        {application/json=class MediaType {
+                            schema: class Schema {
+                                type: null
+                                format: null
+                                $ref: #/components/schemas/FileExtractRequest
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: null
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                            examples: null
+                            example: null
+                            encoding: null
+                        }}
+                    }
+                    required: true
+                }
+                responses: class ApiResponses {
+                    {202=class ApiResponse {
+                        description: accepted
+                        headers: null
+                        content: class Content {
+                            {application/json=class MediaType {
+                                schema: class Schema {
+                                    type: null
+                                    format: null
+                                    $ref: #/components/schemas/TaskLocator
+                                    description: null
+                                    title: null
+                                    multipleOf: null
+                                    maximum: null
+                                    exclusiveMaximum: null
+                                    minimum: null
+                                    exclusiveMinimum: null
+                                    maxLength: null
+                                    minLength: null
+                                    pattern: null
+                                    maxItems: null
+                                    minItems: null
+                                    uniqueItems: null
+                                    maxProperties: null
+                                    minProperties: null
+                                    required: null
+                                    not: null
+                                    properties: null
+                                    additionalProperties: null
+                                    nullable: null
+                                    readOnly: null
+                                    writeOnly: null
+                                    example: null
+                                    externalDocs: null
+                                    deprecated: null
+                                    discriminator: null
+                                    xml: null
+                                }
+                                examples: null
+                                example: null
+                                encoding: null
+                            }}
+                        }
+                        links: null
+                        extensions: null
+                        $ref: null
+                    }, default=class ApiResponse {
+                        description: null
+                        headers: null
+                        content: null
+                        links: null
+                        extensions: null
+                        $ref: #/components/responses/Error
+                    }}
+                    extensions: null
+                }
+                callbacks: null
+                deprecated: null
+                security: [class SecurityRequirement {
+                    {private_apps_legacy=[content]}
+                }, class SecurityRequirement {
+                    {oauth2_legacy=[content]}
+                }]
+                servers: null
+            }
+            delete: null
+            options: null
+            head: null
+            patch: null
+            trace: null
+            servers: null
+            parameters: null
+            $ref: null
+        }, /cms/v3/source-code/extract/async/tasks/{taskId}/status=class PathItem {
+            summary: null
+            description: null
+            get: class Operation {
+                tags: [Source_Code_Extract]
+                summary: null
+                description: null
+                externalDocs: null
+                operationId: get-/cms/v3/source-code/extract/async/tasks/{taskId}/status
+                parameters: [class PathParameter {
+                    class Parameter {
+                        name: taskId
+                        in: null
+                        description: null
+                        required: null
+                        deprecated: null
+                        allowEmptyValue: null
+                        style: simple
+                        explode: false
+                        allowReserved: null
+                        schema: class IntegerSchema {
+                            class Schema {
+                                type: integer
+                                format: int32
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: null
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        examples: null
+                        example: null
+                        content: null
+                        $ref: null
+                    }
+                    in: path
+                    required: true
+                }]
+                requestBody: null
+                responses: class ApiResponses {
+                    {200=class ApiResponse {
+                        description: successful operation
+                        headers: null
+                        content: class Content {
+                            {application/json=class MediaType {
+                                schema: class Schema {
+                                    type: null
+                                    format: null
+                                    $ref: #/components/schemas/ActionResponse
+                                    description: null
+                                    title: null
+                                    multipleOf: null
+                                    maximum: null
+                                    exclusiveMaximum: null
+                                    minimum: null
+                                    exclusiveMinimum: null
+                                    maxLength: null
+                                    minLength: null
+                                    pattern: null
+                                    maxItems: null
+                                    minItems: null
+                                    uniqueItems: null
+                                    maxProperties: null
+                                    minProperties: null
+                                    required: null
+                                    not: null
+                                    properties: null
+                                    additionalProperties: null
+                                    nullable: null
+                                    readOnly: null
+                                    writeOnly: null
+                                    example: null
+                                    externalDocs: null
+                                    deprecated: null
+                                    discriminator: null
+                                    xml: null
+                                }
+                                examples: null
+                                example: null
+                                encoding: null
+                            }}
+                        }
+                        links: null
+                        extensions: null
+                        $ref: null
+                    }, default=class ApiResponse {
+                        description: null
+                        headers: null
+                        content: null
+                        links: null
+                        extensions: null
+                        $ref: #/components/responses/Error
+                    }}
+                    extensions: null
+                }
+                callbacks: null
+                deprecated: null
+                security: [class SecurityRequirement {
+                    {private_apps_legacy=[content]}
+                }, class SecurityRequirement {
+                    {oauth2_legacy=[content]}
+                }]
+                servers: null
+            }
+            put: null
+            post: null
+            delete: null
+            options: null
+            head: null
+            patch: null
+            trace: null
+            servers: null
+            parameters: null
+            $ref: null
+        }}
+    }
+    components: class Components {
+        schemas: {ErrorDetail=class ObjectSchema {
+            class Schema {
+                type: object
+                format: null
+                $ref: null
+                description: null
+                title: null
+                multipleOf: null
+                maximum: null
+                exclusiveMaximum: null
+                minimum: null
+                exclusiveMinimum: null
+                maxLength: null
+                minLength: null
+                pattern: null
+                maxItems: null
+                minItems: null
+                uniqueItems: null
+                maxProperties: null
+                minProperties: null
+                required: [message]
+                not: null
+                properties: {message=class StringSchema {
+                    class Schema {
+                        type: string
+                        format: null
+                        $ref: null
+                        description: A human readable message describing the error along with remediation steps where appropriate
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, in=class StringSchema {
+                    class Schema {
+                        type: string
+                        format: null
+                        $ref: null
+                        description: The name of the field or parameter in which the error was found.
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, code=class StringSchema {
+                    class Schema {
+                        type: string
+                        format: null
+                        $ref: null
+                        description: The status code associated with the error detail
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, subCategory=class StringSchema {
+                    class Schema {
+                        type: string
+                        format: null
+                        $ref: null
+                        description: A specific category that contains more specific detail about the error
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, context=class ObjectSchema {
+                    class Schema {
+                        type: object
+                        format: null
+                        $ref: null
+                        description: Context about the error condition
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: class ArraySchema {
+                            class Schema {
+                                type: array
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: null
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                            items: class StringSchema {
+                                class Schema {
+                                    type: string
+                                    format: null
+                                    $ref: null
+                                    description: null
+                                    title: null
+                                    multipleOf: null
+                                    maximum: null
+                                    exclusiveMaximum: null
+                                    minimum: null
+                                    exclusiveMinimum: null
+                                    maxLength: null
+                                    minLength: null
+                                    pattern: null
+                                    maxItems: null
+                                    minItems: null
+                                    uniqueItems: null
+                                    maxProperties: null
+                                    minProperties: null
+                                    required: null
+                                    not: null
+                                    properties: null
+                                    additionalProperties: null
+                                    nullable: null
+                                    readOnly: null
+                                    writeOnly: null
+                                    example: null
+                                    externalDocs: null
+                                    deprecated: null
+                                    discriminator: null
+                                    xml: null
+                                }
+                            }
+                        }
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: {"missingScopes":["scope1","scope2"]}
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }}
+                additionalProperties: null
+                nullable: null
+                readOnly: null
+                writeOnly: null
+                example: null
+                externalDocs: null
+                deprecated: null
+                discriminator: null
+                xml: null
+            }
+        }, FileExtractRequest=class ObjectSchema {
+            class Schema {
+                type: object
+                format: null
+                $ref: null
+                description: null
+                title: null
+                multipleOf: null
+                maximum: null
+                exclusiveMaximum: null
+                minimum: null
+                exclusiveMinimum: null
+                maxLength: null
+                minLength: null
+                pattern: null
+                maxItems: null
+                minItems: null
+                uniqueItems: null
+                maxProperties: null
+                minProperties: null
+                required: [path]
+                not: null
+                properties: {path=class StringSchema {
+                    class Schema {
+                        type: string
+                        format: null
+                        $ref: null
+                        description: null
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }}
+                additionalProperties: null
+                nullable: null
+                readOnly: null
+                writeOnly: null
+                example: null
+                externalDocs: null
+                deprecated: null
+                discriminator: null
+                xml: null
+            }
+        }, AssetFileMetadata=class ObjectSchema {
+            class Schema {
+                type: object
+                format: null
+                $ref: null
+                description: The object metadata of a file.
+                title: null
+                multipleOf: null
+                maximum: null
+                exclusiveMaximum: null
+                minimum: null
+                exclusiveMinimum: null
+                maxLength: null
+                minLength: null
+                pattern: null
+                maxItems: null
+                minItems: null
+                uniqueItems: null
+                maxProperties: null
+                minProperties: null
+                required: [createdAt, folder, id, name, updatedAt]
+                not: null
+                properties: {id=class StringSchema {
+                    class Schema {
+                        type: string
+                        format: null
+                        $ref: null
+                        description: The path of the file in the CMS Developer File System.
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, name=class StringSchema {
+                    class Schema {
+                        type: string
+                        format: null
+                        $ref: null
+                        description: The name of the file.
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, folder=class BooleanSchema {
+                    class Schema {
+                        type: boolean
+                        format: null
+                        $ref: null
+                        description: Determines whether or not this path points to a folder.
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, children=class ArraySchema {
+                    class Schema {
+                        type: array
+                        format: null
+                        $ref: null
+                        description: If the object is a folder, contains the filenames of the files within the folder.
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                    items: class StringSchema {
+                        class Schema {
+                            type: string
+                            format: null
+                            $ref: null
+                            description: null
+                            title: null
+                            multipleOf: null
+                            maximum: null
+                            exclusiveMaximum: null
+                            minimum: null
+                            exclusiveMinimum: null
+                            maxLength: null
+                            minLength: null
+                            pattern: null
+                            maxItems: null
+                            minItems: null
+                            uniqueItems: null
+                            maxProperties: null
+                            minProperties: null
+                            required: null
+                            not: null
+                            properties: null
+                            additionalProperties: null
+                            nullable: null
+                            readOnly: null
+                            writeOnly: null
+                            example: null
+                            externalDocs: null
+                            deprecated: null
+                            discriminator: null
+                            xml: null
+                        }
+                    }
+                }, updatedAt=class IntegerSchema {
+                    class Schema {
+                        type: integer
+                        format: int32
+                        $ref: null
+                        description: Timestamp of when the object was last updated.
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, createdAt=class IntegerSchema {
+                    class Schema {
+                        type: integer
+                        format: int32
+                        $ref: null
+                        description: Timestamp of when the object was first created.
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, archivedAt=class IntegerSchema {
+                    class Schema {
+                        type: integer
+                        format: int64
+                        $ref: null
+                        description: Timestamp of when the object was archived (deleted).
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, hash=class StringSchema {
+                    class Schema {
+                        type: string
+                        format: null
+                        $ref: null
+                        description: null
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }}
+                additionalProperties: null
+                nullable: null
+                readOnly: null
+                writeOnly: null
+                example: null
+                externalDocs: null
+                deprecated: null
+                discriminator: null
+                xml: null
+            }
+        }, Error=class ObjectSchema {
+            class Schema {
+                type: object
+                format: null
+                $ref: null
+                description: null
+                title: null
+                multipleOf: null
+                maximum: null
+                exclusiveMaximum: null
+                minimum: null
+                exclusiveMinimum: null
+                maxLength: null
+                minLength: null
+                pattern: null
+                maxItems: null
+                minItems: null
+                uniqueItems: null
+                maxProperties: null
+                minProperties: null
+                required: [category, correlationId, message]
+                not: null
+                properties: {message=class StringSchema {
+                    class Schema {
+                        type: string
+                        format: null
+                        $ref: null
+                        description: A human readable message describing the error along with remediation steps where appropriate
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: An error occurred
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, correlationId=class UUIDSchema {
+                    class Schema {
+                        type: string
+                        format: uuid
+                        $ref: null
+                        description: A unique identifier for the request. Include this value with any error reports or support tickets
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: aeb5f871-7f07-4993-9211-075dc63e7cbf
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, category=class StringSchema {
+                    class Schema {
+                        type: string
+                        format: null
+                        $ref: null
+                        description: The error category
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, subCategory=class StringSchema {
+                    class Schema {
+                        type: string
+                        format: null
+                        $ref: null
+                        description: A specific category that contains more specific detail about the error
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, errors=class ArraySchema {
+                    class Schema {
+                        type: array
+                        format: null
+                        $ref: null
+                        description: further information about the error
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                    items: class Schema {
+                        type: null
+                        format: null
+                        $ref: #/components/schemas/ErrorDetail
+                        description: null
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, context=class ObjectSchema {
+                    class Schema {
+                        type: object
+                        format: null
+                        $ref: null
+                        description: Context about the error condition
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: class ArraySchema {
+                            class Schema {
+                                type: array
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: null
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                            items: class StringSchema {
+                                class Schema {
+                                    type: string
+                                    format: null
+                                    $ref: null
+                                    description: null
+                                    title: null
+                                    multipleOf: null
+                                    maximum: null
+                                    exclusiveMaximum: null
+                                    minimum: null
+                                    exclusiveMinimum: null
+                                    maxLength: null
+                                    minLength: null
+                                    pattern: null
+                                    maxItems: null
+                                    minItems: null
+                                    uniqueItems: null
+                                    maxProperties: null
+                                    minProperties: null
+                                    required: null
+                                    not: null
+                                    properties: null
+                                    additionalProperties: null
+                                    nullable: null
+                                    readOnly: null
+                                    writeOnly: null
+                                    example: null
+                                    externalDocs: null
+                                    deprecated: null
+                                    discriminator: null
+                                    xml: null
+                                }
+                            }
+                        }
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: {"invalidPropertyName":["propertyValue"],"missingScopes":["scope1","scope2"]}
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, links=class ObjectSchema {
+                    class Schema {
+                        type: object
+                        format: null
+                        $ref: null
+                        description: A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: null
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }}
+                additionalProperties: null
+                nullable: null
+                readOnly: null
+                writeOnly: null
+                example: {"message":"Invalid input (details will vary based on the error)","correlationId":"aeb5f871-7f07-4993-9211-075dc63e7cbf","category":"VALIDATION_ERROR","links":{"knowledge-base":"https://www.hubspot.com/products/service/knowledge-base"}}
+                externalDocs: null
+                deprecated: null
+                discriminator: null
+                xml: null
+            }
+        }, ActionResponse=class ObjectSchema {
+            class Schema {
+                type: object
+                format: null
+                $ref: null
+                description: null
+                title: null
+                multipleOf: null
+                maximum: null
+                exclusiveMaximum: null
+                minimum: null
+                exclusiveMinimum: null
+                maxLength: null
+                minLength: null
+                pattern: null
+                maxItems: null
+                minItems: null
+                uniqueItems: null
+                maxProperties: null
+                minProperties: null
+                required: [completedAt, startedAt, status]
+                not: null
+                properties: {status=class StringSchema {
+                    class Schema {
+                        type: string
+                        format: null
+                        $ref: null
+                        description: null
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, requestedAt=class DateTimeSchema {
+                    class Schema {
+                        type: string
+                        format: date-time
+                        $ref: null
+                        description: null
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, startedAt=class DateTimeSchema {
+                    class Schema {
+                        type: string
+                        format: date-time
+                        $ref: null
+                        description: null
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, completedAt=class DateTimeSchema {
+                    class Schema {
+                        type: string
+                        format: date-time
+                        $ref: null
+                        description: null
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, links=class ObjectSchema {
+                    class Schema {
+                        type: object
+                        format: null
+                        $ref: null
+                        description: null
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: null
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }}
+                additionalProperties: null
+                nullable: null
+                readOnly: null
+                writeOnly: null
+                example: null
+                externalDocs: null
+                deprecated: null
+                discriminator: null
+                xml: null
+            }
+        }, TaskLocator=class ObjectSchema {
+            class Schema {
+                type: object
+                format: null
+                $ref: null
+                description: null
+                title: null
+                multipleOf: null
+                maximum: null
+                exclusiveMaximum: null
+                minimum: null
+                exclusiveMinimum: null
+                maxLength: null
+                minLength: null
+                pattern: null
+                maxItems: null
+                minItems: null
+                uniqueItems: null
+                maxProperties: null
+                minProperties: null
+                required: [id]
+                not: null
+                properties: {id=class StringSchema {
+                    class Schema {
+                        type: string
+                        format: null
+                        $ref: null
+                        description: null
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: null
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }, links=class ObjectSchema {
+                    class Schema {
+                        type: object
+                        format: null
+                        $ref: null
+                        description: null
+                        title: null
+                        multipleOf: null
+                        maximum: null
+                        exclusiveMaximum: null
+                        minimum: null
+                        exclusiveMinimum: null
+                        maxLength: null
+                        minLength: null
+                        pattern: null
+                        maxItems: null
+                        minItems: null
+                        uniqueItems: null
+                        maxProperties: null
+                        minProperties: null
+                        required: null
+                        not: null
+                        properties: null
+                        additionalProperties: class StringSchema {
+                            class Schema {
+                                type: string
+                                format: null
+                                $ref: null
+                                description: null
+                                title: null
+                                multipleOf: null
+                                maximum: null
+                                exclusiveMaximum: null
+                                minimum: null
+                                exclusiveMinimum: null
+                                maxLength: null
+                                minLength: null
+                                pattern: null
+                                maxItems: null
+                                minItems: null
+                                uniqueItems: null
+                                maxProperties: null
+                                minProperties: null
+                                required: null
+                                not: null
+                                properties: null
+                                additionalProperties: null
+                                nullable: null
+                                readOnly: null
+                                writeOnly: null
+                                example: null
+                                externalDocs: null
+                                deprecated: null
+                                discriminator: null
+                                xml: null
+                            }
+                        }
+                        nullable: null
+                        readOnly: null
+                        writeOnly: null
+                        example: null
+                        externalDocs: null
+                        deprecated: null
+                        discriminator: null
+                        xml: null
+                    }
+                }}
+                additionalProperties: null
+                nullable: null
+                readOnly: null
+                writeOnly: null
+                example: null
+                externalDocs: null
+                deprecated: null
+                discriminator: null
+                xml: null
+            }
+        }}
+        responses: class ApiResponses {
+            {Error=class ApiResponse {
+                description: An error occurred.
+                headers: null
+                content: class Content {
+                    {*/*=class MediaType {
+                        schema: class Schema {
+                            type: null
+                            format: null
+                            $ref: #/components/schemas/Error
+                            description: null
+                            title: null
+                            multipleOf: null
+                            maximum: null
+                            exclusiveMaximum: null
+                            minimum: null
+                            exclusiveMinimum: null
+                            maxLength: null
+                            minLength: null
+                            pattern: null
+                            maxItems: null
+                            minItems: null
+                            uniqueItems: null
+                            maxProperties: null
+                            minProperties: null
+                            required: null
+                            not: null
+                            properties: null
+                            additionalProperties: null
+                            nullable: null
+                            readOnly: null
+                            writeOnly: null
+                            example: null
+                            externalDocs: null
+                            deprecated: null
+                            discriminator: null
+                            xml: null
+                        }
+                        examples: null
+                        example: null
+                        encoding: null
+                    }}
+                }
+                links: null
+                extensions: null
+                $ref: null
+            }}
+            extensions: null
+        }
+        parameters: null
+        examples: null
+        requestBodies: null
+        headers: null
+        securitySchemes: {oauth2_legacy=class SecurityScheme {
+            type: oauth2
+            description: null
+            name: null
+            in: null
+            scheme: null
+            bearerFormat: null
+            flows: class OAuthFlows {
+                implicit: null
+                password: null
+                clientCredentials: null
+                authorizationCode: class OAuthFlow {
+                    authorizationUrl: https://app.hubspot.com/oauth/authorize
+                    tokenUrl: https://api.hubapi.com/oauth/v1/token
+                    refreshUrl: null
+                    scopes: class Scopes {
+                        {content=Read from and write to my Content}
+                    }
+                }
+            }
+            openIdConnectUrl: null
+            $ref: null
+        }, private_apps_legacy=class SecurityScheme {
+            type: apiKey
+            description: null
+            name: private-app-legacy
+            in: header
+            scheme: null
+            bearerFormat: null
+            flows: null
+            openIdConnectUrl: null
+            $ref: null
+        }}
+        links: null
+        callbacks: null
+    }
+}
