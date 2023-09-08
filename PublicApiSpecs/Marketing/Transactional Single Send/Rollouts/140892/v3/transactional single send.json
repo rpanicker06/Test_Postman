@@ -14,7 +14,7 @@
   } ],
   "paths" : {
     "/marketing/v3/transactional/smtp-tokens/{tokenId}" : {
-      "get" : {
+      "post" : {
         "tags" : [ "Public_Smtp_Tokens" ],
         "summary" : "Query a single token by ID.",
         "description" : "Query a single token by ID.",
