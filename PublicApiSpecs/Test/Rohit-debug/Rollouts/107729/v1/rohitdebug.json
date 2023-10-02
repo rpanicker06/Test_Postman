@@ -1,7 +1,7 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "ApiCatalogPublicService",
+    "title" : "FrontRouterService",
     "version" : "v1"
   },
   "servers" : [ {
@@ -11,6 +11,10 @@
     "name" : "Api_Collection"
   }, {
     "name" : "Documentation"
+  }, {
+    "name" : "Send_Status"
+  }, {
+    "name" : "Webhook"
   } ],
   "paths" : {
     "/api-catalog-public/v1/apis/{pathRoot}" : {
@@ -120,54 +124,119 @@
         },
         "security" : [ ]
       }
+    },
+    "/marketing/v3/email/send-statuses/{statusId}" : {
+      "get" : {
+        "tags" : [ "Send_Status" ],
+        "summary" : "Returns the status of an email send.",
+        "description" : "Get the status of an email send.",
+        "operationId" : "get-/marketing/v3/email/send-statuses/{statusId}",
+        "parameters" : [ {
+          "name" : "statusId",
+          "in" : "path",
+          "description" : "The statusId of the email send. Returned when sending asynchronously through the Transactional Single Send API.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/EmailSendStatusView"
+                }
+              }
+            }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "oauth2_legacy" : [ "transactional-email" ]
+        }, {
+          "private_apps_legacy" : [ "transactional-email" ]
+        } ]
+      }
+    },
+    "/front/router/webhooks/cst" : {
+      "post" : {
+        "tags" : [ "Webhook" ],
+        "operationId" : "post-/front/router/webhooks/cst",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/FrontEvent"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "No content",
+            "content" : { }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ ]
+      }
+    },
+    "/front/router/webhooks/billing" : {
+      "post" : {
+        "tags" : [ "Webhook" ],
+        "operationId" : "post-/front/router/webhooks/billing",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/FrontEvent"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "No content",
+            "content" : { }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ ]
+      }
     }
   },
   "components" : {
     "schemas" : {
-      "ErrorDetail" : {
-        "required" : [ "message" ],
+      "FrontLinks" : {
+        "required" : [ "related" ],
         "type" : "object",
         "properties" : {
-          "subCategory" : {
-            "type" : "string",
-            "description" : "A specific category that contains more specific detail about the error"
-          },
-          "code" : {
-            "type" : "string",
-            "description" : "The status code associated with the error detail"
-          },
-          "in" : {
-            "type" : "string",
-            "description" : "The name of the field or parameter in which the error was found."
-          },
-          "context" : {
+          "related" : {
             "type" : "object",
             "additionalProperties" : {
-              "type" : "array",
-              "items" : {
-                "type" : "string"
-              }
-            },
-            "description" : "Context about the error condition",
-            "example" : {
-              "missingScopes" : [ "scope1", "scope2" ]
+              "type" : "string"
             }
-          },
-          "message" : {
-            "type" : "string",
-            "description" : "A human readable message describing the error along with remediation steps where appropriate"
           }
         }
       },
-      "CollectionResponsePublicDocumentationNoPaging" : {
-        "required" : [ "results" ],
+      "FrontEvent" : {
+        "required" : [ "conversation" ],
         "type" : "object",
         "properties" : {
-          "results" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/PublicDocumentation"
-            }
+          "conversation" : {
+            "$ref" : "#/components/schemas/FrontConversation"
           }
         }
       },
@@ -181,18 +250,6 @@
           "stage" : {
             "type" : "string",
             "enum" : [ "ALPHA", "PRIVATE_BETA", "DEVELOPER_PREVIEW", "LATEST", "STABLE", "DEPRECATED", "ARCHIVED" ]
-          }
-        }
-      },
-      "CollectionResponsePublicApiNoPaging" : {
-        "required" : [ "results" ],
-        "type" : "object",
-        "properties" : {
-          "results" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/PublicApi"
-            }
           }
         }
       },
@@ -257,6 +314,18 @@
           }
         }
       },
+      "FrontConversationRecipient" : {
+        "required" : [ "handle", "role" ],
+        "type" : "object",
+        "properties" : {
+          "role" : {
+            "type" : "string"
+          },
+          "handle" : {
+            "type" : "string"
+          }
+        }
+      },
       "PublicDocumentation" : {
         "required" : [ "api", "description", "endpointUrl", "method", "path", "summary", "topic", "version" ],
         "type" : "object",
@@ -284,6 +353,160 @@
           },
           "version" : {
             "type" : "string"
+          }
+        }
+      },
+      "ErrorDetail" : {
+        "required" : [ "message" ],
+        "type" : "object",
+        "properties" : {
+          "subCategory" : {
+            "type" : "string",
+            "description" : "A specific category that contains more specific detail about the error"
+          },
+          "code" : {
+            "type" : "string",
+            "description" : "The status code associated with the error detail"
+          },
+          "in" : {
+            "type" : "string",
+            "description" : "The name of the field or parameter in which the error was found."
+          },
+          "context" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            },
+            "description" : "Context about the error condition",
+            "example" : {
+              "missingScopes" : [ "scope1", "scope2" ]
+            }
+          },
+          "message" : {
+            "type" : "string",
+            "description" : "A human readable message describing the error along with remediation steps where appropriate"
+          }
+        }
+      },
+      "EmailSendStatusView" : {
+        "required" : [ "status", "statusId" ],
+        "type" : "object",
+        "properties" : {
+          "eventId" : {
+            "$ref" : "#/components/schemas/EventIdView"
+          },
+          "completedAt" : {
+            "type" : "string",
+            "description" : "Time when the send was completed.",
+            "format" : "date-time"
+          },
+          "statusId" : {
+            "type" : "string",
+            "description" : "Identifier used to query the status of the send."
+          },
+          "sendResult" : {
+            "type" : "string",
+            "description" : "Result of the send.",
+            "enum" : [ "SENT", "IDEMPOTENT_IGNORE", "QUEUED", "IDEMPOTENT_FAIL", "THROTTLED", "EMAIL_DISABLED", "PORTAL_SUSPENDED", "INVALID_TO_ADDRESS", "BLOCKED_DOMAIN", "PREVIOUSLY_BOUNCED", "EMAIL_UNCONFIRMED", "PREVIOUS_SPAM", "PREVIOUSLY_UNSUBSCRIBED_MESSAGE", "PREVIOUSLY_UNSUBSCRIBED_PORTAL", "INVALID_FROM_ADDRESS", "CAMPAIGN_CANCELLED", "VALIDATION_FAILED", "MTA_IGNORE", "BLOCKED_ADDRESS", "PORTAL_OVER_LIMIT", "PORTAL_EXPIRED", "PORTAL_MISSING_MARKETING_SCOPE", "MISSING_TEMPLATE_PROPERTIES", "MISSING_REQUIRED_PARAMETER", "PORTAL_AUTHENTICATION_FAILURE", "MISSING_CONTENT", "CORRUPT_INPUT", "TEMPLATE_RENDER_EXCEPTION", "GRAYMAIL_SUPPRESSED", "UNCONFIGURED_SENDING_DOMAIN", "UNDELIVERABLE", "CANCELLED_ABUSE", "QUARANTINED_ADDRESS", "ADDRESS_ONLY_ACCEPTED_ON_PROD", "PORTAL_NOT_AUTHORIZED_FOR_APPLICATION", "ADDRESS_LIST_BOMBED", "ADDRESS_OPTED_OUT", "RECIPIENT_FATIGUE_SUPPRESSED", "TOO_MANY_RECIPIENTS", "PREVIOUSLY_UNSUBSCRIBED_BRAND", "NON_MARKETABLE_CONTACT", "PREVIOUSLY_UNSUBSCRIBED_BUSINESS_UNIT", "GDPR_DOI_ENABLED" ]
+          },
+          "requestedAt" : {
+            "type" : "string",
+            "description" : "Time when the send was requested.",
+            "format" : "date-time"
+          },
+          "startedAt" : {
+            "type" : "string",
+            "description" : "Time when the send began processing.",
+            "format" : "date-time"
+          },
+          "status" : {
+            "type" : "string",
+            "description" : "Status of the send request.",
+            "enum" : [ "PENDING", "PROCESSING", "CANCELED", "COMPLETE" ]
+          }
+        },
+        "description" : "Describes the status of an email send request."
+      },
+      "CollectionResponsePublicDocumentationNoPaging" : {
+        "required" : [ "results" ],
+        "type" : "object",
+        "properties" : {
+          "results" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PublicDocumentation"
+            }
+          }
+        }
+      },
+      "FrontConversation" : {
+        "required" : [ "_links", "existingConversationTagIds", "id", "recipient", "tags" ],
+        "type" : "object",
+        "properties" : {
+          "_links" : {
+            "$ref" : "#/components/schemas/FrontLinks"
+          },
+          "recipient" : {
+            "$ref" : "#/components/schemas/FrontConversationRecipient"
+          },
+          "existingConversationTagIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "messagesLink" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string"
+          },
+          "tags" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/FrontTag"
+            }
+          }
+        }
+      },
+      "EventIdView" : {
+        "required" : [ "created", "id" ],
+        "type" : "object",
+        "properties" : {
+          "created" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        }
+      },
+      "FrontTag" : {
+        "required" : [ "id", "name" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponsePublicApiNoPaging" : {
+        "required" : [ "results" ],
+        "type" : "object",
+        "properties" : {
+          "results" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PublicApi"
+            }
           }
         }
       },
@@ -315,6 +538,24 @@
         }
       }
     },
-    "securitySchemes" : { }
+    "securitySchemes" : {
+      "oauth2_legacy" : {
+        "type" : "oauth2",
+        "flows" : {
+          "authorizationCode" : {
+            "authorizationUrl" : "https://app.hubspot.com/oauth/authorize",
+            "tokenUrl" : "https://api.hubapi.com/oauth/v1/token",
+            "scopes" : {
+              "transactional-email" : "Transactional Emails"
+            }
+          }
+        }
+      },
+      "private_apps_legacy" : {
+        "type" : "apiKey",
+        "name" : "private-app-legacy",
+        "in" : "header"
+      }
+    }
   }
 }
