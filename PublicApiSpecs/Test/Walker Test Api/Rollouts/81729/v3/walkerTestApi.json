@@ -83,80 +83,6 @@
         } ]
       }
     },
-    "/account-info/v3/details" : {
-      "get" : {
-        "tags" : [ "Details" ],
-        "summary" : "Get account details for a HubSpot account.",
-        "description" : "Get account details",
-        "operationId" : "get-/account-info/v3/details",
-        "parameters" : [ ],
-        "responses" : {
-          "200" : {
-            "description" : "successful operation",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/PortalInformationResponse"
-                },
-                "example" : {
-                  "portalId" : 12345678,
-                  "timeZone" : "US/Eastern",
-                  "companyCurrency" : "USD",
-                  "additionalCurrencies" : [ "NZD", "AUD", "EUR" ],
-                  "utcOffset" : "-04:00",
-                  "utcOffsetMilliseconds" : -14400000,
-                  "uiDomain" : "app-eu1.hubspot.com",
-                  "dataHostingLocation" : "eu1"
-                }
-              }
-            }
-          },
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          }
-        },
-        "security" : [ {
-          "private_apps_legacy" : [ "oauth" ]
-        }, {
-          "oauth2_legacy" : [ "oauth" ]
-        } ]
-      }
-    },
-    "/account-info/v3/api-usage/daily" : {
-      "get" : {
-        "tags" : [ "Usage" ],
-        "summary" : "Get the daily API usage and limits for a HubSpot account.",
-        "description" : "Get daily API usage",
-        "operationId" : "get-/account-info/v3/api-usage/daily",
-        "parameters" : [ ],
-        "responses" : {
-          "200" : {
-            "description" : "successful operation",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/CollectionResponseApiUsageNoPaging"
-                },
-                "example" : {
-                  "results" : [ {
-                    "name" : "api-calls-daily",
-                    "usageLimit" : 500000,
-                    "currentUsage" : 1,
-                    "collectedAt" : "2020-04-10T06:46:40.789Z",
-                    "fetchStatus" : "NOTFOUND",
-                    "resetsAt" : "2020-04-10T04:00:00Z"
-                  } ]
-                }
-              }
-            }
-          },
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          }
-        },
-        "security" : [ ]
-      }
-    },
     "/account-info/v3/activity/audit-logs" : {
       "get" : {
         "tags" : [ "Activity" ],
@@ -247,6 +173,80 @@
           "oauth2_legacy" : [ "account-info.security.read" ]
         }, {
           "private_apps_legacy" : [ "account-info.security.read" ]
+        } ]
+      }
+    },
+    "/account-info/v3/api-usage/daily" : {
+      "get" : {
+        "tags" : [ "Usage" ],
+        "summary" : "Get the daily API usage and limits for a HubSpot account.",
+        "description" : "Get daily API usage",
+        "operationId" : "get-/account-info/v3/api-usage/daily",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResponseApiUsageNoPaging"
+                },
+                "example" : {
+                  "results" : [ {
+                    "name" : "api-calls-daily",
+                    "usageLimit" : 500000,
+                    "currentUsage" : 1,
+                    "collectedAt" : "2020-04-10T06:46:40.789Z",
+                    "fetchStatus" : "NOTFOUND",
+                    "resetsAt" : "2020-04-10T04:00:00Z"
+                  } ]
+                }
+              }
+            }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ ]
+      }
+    },
+    "/account-info/v3/details" : {
+      "get" : {
+        "tags" : [ "Details" ],
+        "summary" : "Get account details for a HubSpot account.",
+        "description" : "Get account details",
+        "operationId" : "get-/account-info/v3/details",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PortalInformationResponse"
+                },
+                "example" : {
+                  "portalId" : 12345678,
+                  "timeZone" : "US/Eastern",
+                  "companyCurrency" : "USD",
+                  "additionalCurrencies" : [ "NZD", "AUD", "EUR" ],
+                  "utcOffset" : "-04:00",
+                  "utcOffsetMilliseconds" : -14400000,
+                  "uiDomain" : "app-eu1.hubspot.com",
+                  "dataHostingLocation" : "eu1"
+                }
+              }
+            }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "private_apps_legacy" : [ "oauth" ]
+        }, {
+          "oauth2_legacy" : [ "oauth" ]
         } ]
       }
     },
@@ -517,56 +517,6 @@
         } ]
       }
     },
-    "/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}" : {
-      "get" : {
-        "tags" : [ "Rows" ],
-        "summary" : "Get a table row",
-        "description" : "Get a single row by ID from a table's `published` version.\n**Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.",
-        "operationId" : "get-/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}",
-        "parameters" : [ {
-          "name" : "tableIdOrName",
-          "in" : "path",
-          "description" : "The ID or name of the table",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "rowId",
-          "in" : "path",
-          "description" : "The ID of the row",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "pattern" : "\\d+",
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "successful operation",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/HubDbTableRowV3"
-                }
-              }
-            }
-          },
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          }
-        },
-        "security" : [ {
-          "private_apps_legacy" : [ "hubdb" ]
-        }, {
-          "oauth2_legacy" : [ "hubdb" ]
-        } ]
-      }
-    },
     "/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft" : {
       "get" : {
         "tags" : [ "Rows" ],
@@ -653,6 +603,56 @@
         } ]
       }
     },
+    "/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}" : {
+      "get" : {
+        "tags" : [ "Rows" ],
+        "summary" : "Get a table row",
+        "description" : "Get a single row by ID from a table's `published` version.\n**Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.",
+        "operationId" : "get-/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}",
+        "parameters" : [ {
+          "name" : "tableIdOrName",
+          "in" : "path",
+          "description" : "The ID or name of the table",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "rowId",
+          "in" : "path",
+          "description" : "The ID of the row",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "pattern" : "\\d+",
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/HubDbTableRowV3"
+                }
+              }
+            }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "private_apps_legacy" : [ "hubdb" ]
+        }, {
+          "oauth2_legacy" : [ "hubdb" ]
+        } ]
+      }
+    },
     "/cms/v3/hubdb/tables/{tableIdOrName}/rows/{rowId}/draft/clone" : {
       "post" : {
         "tags" : [ "Rows" ],
@@ -688,6 +688,55 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/HubDbTableRowV3"
+                }
+              }
+            }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "private_apps_legacy" : [ "hubdb" ]
+        }, {
+          "oauth2_legacy" : [ "hubdb" ]
+        } ]
+      }
+    },
+    "/cms/v3/hubdb/tables/{tableIdOrName}/draft/reset" : {
+      "post" : {
+        "tags" : [ "Tables" ],
+        "summary" : "Reset a draft table",
+        "description" : "Replaces the data in the `draft` version of the table with values from the `published` version. Any unpublished changes in the `draft` will be lost after this call is made.",
+        "operationId" : "post-/cms/v3/hubdb/tables/{tableIdOrName}/draft/reset",
+        "parameters" : [ {
+          "name" : "tableIdOrName",
+          "in" : "path",
+          "description" : "The ID or name of the table to reset.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "includeForeignIds",
+          "in" : "query",
+          "description" : "Set this to `true` to populate foreign ID values in the response.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/HubDbTableV3"
                 }
               }
             }
@@ -744,55 +793,6 @@
                 "schema" : {
                   "type" : "string",
                   "format" : "binary"
-                }
-              }
-            }
-          },
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          }
-        },
-        "security" : [ {
-          "private_apps_legacy" : [ "hubdb" ]
-        }, {
-          "oauth2_legacy" : [ "hubdb" ]
-        } ]
-      }
-    },
-    "/cms/v3/hubdb/tables/{tableIdOrName}/draft/reset" : {
-      "post" : {
-        "tags" : [ "Tables" ],
-        "summary" : "Reset a draft table",
-        "description" : "Replaces the data in the `draft` version of the table with values from the `published` version. Any unpublished changes in the `draft` will be lost after this call is made.",
-        "operationId" : "post-/cms/v3/hubdb/tables/{tableIdOrName}/draft/reset",
-        "parameters" : [ {
-          "name" : "tableIdOrName",
-          "in" : "path",
-          "description" : "The ID or name of the table to reset.",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "includeForeignIds",
-          "in" : "query",
-          "description" : "Set this to `true` to populate foreign ID values in the response.",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "boolean"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "successful operation",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/HubDbTableV3"
                 }
               }
             }
@@ -1911,55 +1911,6 @@
         } ]
       }
     },
-    "/cms/v3/hubdb/tables/{tableIdOrName}/draft/publish" : {
-      "post" : {
-        "tags" : [ "Tables" ],
-        "summary" : "Publish a table from draft",
-        "description" : "Publishes the table by copying the data and table schema changes from draft version to the published version, meaning any website pages using data from the table will be updated.",
-        "operationId" : "post-/cms/v3/hubdb/tables/{tableIdOrName}/draft/publish",
-        "parameters" : [ {
-          "name" : "tableIdOrName",
-          "in" : "path",
-          "description" : "The ID or name of the table to publish.",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "includeForeignIds",
-          "in" : "query",
-          "description" : "Set this to `true` to populate foreign ID values in the response.",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "boolean"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "successful operation",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/HubDbTableV3"
-                }
-              }
-            }
-          },
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          }
-        },
-        "security" : [ {
-          "private_apps_legacy" : [ "hubdb" ]
-        }, {
-          "oauth2_legacy" : [ "hubdb" ]
-        } ]
-      }
-    },
     "/cms/v3/hubdb/tables/{tableIdOrName}/draft" : {
       "get" : {
         "tags" : [ "Tables" ],
@@ -2065,6 +2016,55 @@
           },
           "required" : true
         },
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/HubDbTableV3"
+                }
+              }
+            }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "private_apps_legacy" : [ "hubdb" ]
+        }, {
+          "oauth2_legacy" : [ "hubdb" ]
+        } ]
+      }
+    },
+    "/cms/v3/hubdb/tables/{tableIdOrName}/draft/publish" : {
+      "post" : {
+        "tags" : [ "Tables" ],
+        "summary" : "Publish a table from draft",
+        "description" : "Publishes the table by copying the data and table schema changes from draft version to the published version, meaning any website pages using data from the table will be updated.",
+        "operationId" : "post-/cms/v3/hubdb/tables/{tableIdOrName}/draft/publish",
+        "parameters" : [ {
+          "name" : "tableIdOrName",
+          "in" : "path",
+          "description" : "The ID or name of the table to publish.",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "includeForeignIds",
+          "in" : "query",
+          "description" : "Set this to `true` to populate foreign ID values in the response.",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
+        } ],
         "responses" : {
           "200" : {
             "description" : "successful operation",
@@ -2264,24 +2264,6 @@
           "loginSucceeded" : true
         }
       },
-      "SimpleUser" : {
-        "required" : [ "email", "firstName", "id", "lastName" ],
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "type" : "string"
-          },
-          "email" : {
-            "type" : "string"
-          },
-          "firstName" : {
-            "type" : "string"
-          },
-          "lastName" : {
-            "type" : "string"
-          }
-        }
-      },
       "HubDbTableCloneRequest" : {
         "required" : [ "copyRows" ],
         "type" : "object",
@@ -2303,6 +2285,24 @@
           "newName" : "test_table_new",
           "newLabel" : "Test Table New",
           "copyRows" : "true"
+        }
+      },
+      "SimpleUser" : {
+        "required" : [ "email", "firstName", "id", "lastName" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "firstName" : {
+            "type" : "string"
+          },
+          "lastName" : {
+            "type" : "string"
+          }
         }
       },
       "CollectionResponseWithTotalHubDbTableV3ForwardPaging" : {
@@ -3039,9 +3039,6 @@
           }
         }
       },
-      "Variant" : {
-        "type" : "object"
-      },
       "ColumnRequest" : {
         "required" : [ "id", "label", "name", "options", "type" ],
         "type" : "object",
@@ -3089,6 +3086,9 @@
           "type" : "TEXT",
           "id" : 1
         }
+      },
+      "Variant" : {
+        "type" : "object"
       },
       "ApiUsage" : {
         "required" : [ "collectedAt", "currentUsage", "fetchStatus", "name", "usageLimit" ],
@@ -3181,56 +3181,6 @@
           "childTableId" : "1902373"
         }
       },
-      "HubDbTableRowV3Request" : {
-        "required" : [ "values" ],
-        "type" : "object",
-        "properties" : {
-          "path" : {
-            "type" : "string",
-            "description" : "Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages"
-          },
-          "name" : {
-            "type" : "string",
-            "description" : "Specifies the value for `hs_name` column, which will be used as title in the dynamic pages"
-          },
-          "childTableId" : {
-            "type" : "integer",
-            "description" : "Specifies the value for the column child table id",
-            "format" : "int64"
-          },
-          "values" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "$ref" : "#/components/schemas/Variant"
-            },
-            "description" : "List of key value pairs with the column name and column value"
-          },
-          "displayIndex" : {
-            "type" : "integer",
-            "format" : "int32"
-          }
-        },
-        "example" : {
-          "values" : {
-            "text_column" : "sample text value",
-            "number_column" : 76,
-            "multiselect" : [ {
-              "id" : "1",
-              "name" : "Option 1",
-              "type" : "option",
-              "order" : 0
-            }, {
-              "id" : "2",
-              "name" : "Option 2",
-              "type" : "option",
-              "order" : 1
-            } ]
-          },
-          "path" : "test_path",
-          "name" : "test_title",
-          "childTableId" : "1902373"
-        }
-      },
       "HubDbTableRowV3" : {
         "required" : [ "values" ],
         "type" : "object",
@@ -3278,6 +3228,56 @@
           "id" : "4099275931",
           "createdAt" : "2020-03-30T20:39:52.328Z",
           "updatedAt" : "2020-03-30T20:39:52.328Z",
+          "values" : {
+            "text_column" : "sample text value",
+            "number_column" : 76,
+            "multiselect" : [ {
+              "id" : "1",
+              "name" : "Option 1",
+              "type" : "option",
+              "order" : 0
+            }, {
+              "id" : "2",
+              "name" : "Option 2",
+              "type" : "option",
+              "order" : 1
+            } ]
+          },
+          "path" : "test_path",
+          "name" : "test_title",
+          "childTableId" : "1902373"
+        }
+      },
+      "HubDbTableRowV3Request" : {
+        "required" : [ "values" ],
+        "type" : "object",
+        "properties" : {
+          "path" : {
+            "type" : "string",
+            "description" : "Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "Specifies the value for `hs_name` column, which will be used as title in the dynamic pages"
+          },
+          "childTableId" : {
+            "type" : "integer",
+            "description" : "Specifies the value for the column child table id",
+            "format" : "int64"
+          },
+          "values" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "$ref" : "#/components/schemas/Variant"
+            },
+            "description" : "List of key value pairs with the column name and column value"
+          },
+          "displayIndex" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        },
+        "example" : {
           "values" : {
             "text_column" : "sample text value",
             "number_column" : 76,
