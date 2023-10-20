@@ -1,9 +1,18 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "Video Conference Extension",
+    "title" : "Video Conferencing Extension",
     "description" : "These APIs allow you to specify URLs that can be used to interact with a video conferencing application, to allow HubSpot to add video conference links to meeting requests with contacts.",
-    "version" : "v3"
+    "version" : "v3",
+    "x-hubspot-product-tier-requirements" : {
+      "marketing" : "FREE",
+      "sales" : "FREE",
+      "service" : "FREE",
+      "cms" : "FREE"
+    },
+    "x-hubspot-documentation-banner" : "NONE",
+    "x-hubspot-api-use-case" : "If your company often conducts meetings over Zoom, use this API to enable users to add Zoom information to meeting invitations when schedule meetings in HubSpot.",
+    "x-hubspot-introduction" : "Use the video conference API to add video conferencing options when scheduling a meeting in HubSpot."
   },
   "servers" : [ {
     "url" : "https://api.hubapiqa.com"
@@ -133,21 +142,17 @@
         "required" : [ "message" ],
         "type" : "object",
         "properties" : {
-          "message" : {
+          "subCategory" : {
             "type" : "string",
-            "description" : "A human readable message describing the error along with remediation steps where appropriate"
-          },
-          "in" : {
-            "type" : "string",
-            "description" : "The name of the field or parameter in which the error was found."
+            "description" : "A specific category that contains more specific detail about the error"
           },
           "code" : {
             "type" : "string",
             "description" : "The status code associated with the error detail"
           },
-          "subCategory" : {
+          "in" : {
             "type" : "string",
-            "description" : "A specific category that contains more specific detail about the error"
+            "description" : "The name of the field or parameter in which the error was found."
           },
           "context" : {
             "type" : "object",
@@ -161,6 +166,10 @@
             "example" : {
               "missingScopes" : [ "scope1", "scope2" ]
             }
+          },
+          "message" : {
+            "type" : "string",
+            "description" : "A human readable message describing the error along with remediation steps where appropriate"
           }
         }
       },
@@ -168,31 +177,10 @@
         "required" : [ "category", "correlationId", "message" ],
         "type" : "object",
         "properties" : {
-          "message" : {
-            "type" : "string",
-            "description" : "A human readable message describing the error along with remediation steps where appropriate",
-            "example" : "An error occurred"
-          },
-          "correlationId" : {
-            "type" : "string",
-            "description" : "A unique identifier for the request. Include this value with any error reports or support tickets",
-            "format" : "uuid",
-            "example" : "aeb5f871-7f07-4993-9211-075dc63e7cbf"
-          },
-          "category" : {
-            "type" : "string",
-            "description" : "The error category"
-          },
           "subCategory" : {
             "type" : "string",
-            "description" : "A specific category that contains more specific detail about the error"
-          },
-          "errors" : {
-            "type" : "array",
-            "description" : "further information about the error",
-            "items" : {
-              "$ref" : "#/components/schemas/ErrorDetail"
-            }
+            "description" : "A specific category that contains more specific detail about the error",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
           },
           "context" : {
             "type" : "object",
@@ -203,17 +191,38 @@
               }
             },
             "description" : "Context about the error condition",
-            "example" : {
-              "invalidPropertyName" : [ "propertyValue" ],
-              "missingScopes" : [ "scope1", "scope2" ]
-            }
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
+          },
+          "correlationId" : {
+            "type" : "string",
+            "description" : "A unique identifier for the request. Include this value with any error reports or support tickets",
+            "format" : "uuid"
           },
           "links" : {
             "type" : "object",
             "additionalProperties" : {
               "type" : "string"
             },
-            "description" : "A map of link names to associated URIs containing documentation about the error or recommended remediation steps"
+            "description" : "A map of link names to associated URIs containing documentation about the error or recommended remediation steps",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
+          },
+          "message" : {
+            "type" : "string",
+            "description" : "A human readable message describing the error along with remediation steps where appropriate",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
+          },
+          "category" : {
+            "type" : "string",
+            "description" : "The error category",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
+          },
+          "errors" : {
+            "type" : "array",
+            "description" : "further information about the error",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}",
+            "items" : {
+              "$ref" : "#/components/schemas/ErrorDetail"
+            }
           }
         },
         "example" : {
@@ -229,24 +238,29 @@
         "required" : [ "createMeetingUrl" ],
         "type" : "object",
         "properties" : {
+          "userVerifyUrl" : {
+            "type" : "string",
+            "description" : "The URL that HubSpot will use to verify that a user exists in the video conference application.",
+            "example" : "{\"createMeetingUrl\":\"https://example.com/create-meeting\",\"updateMeetingUrl\":\"https://example.com/update-meeting\",\"deleteMeetingUrl\":\"https://example.com/delete-meeting\",\"userVerifyUrl\":\"https://example.com/user-verify\"}"
+          },
+          "fetchAccountsUri" : {
+            "type" : "string",
+            "example" : "{\"createMeetingUrl\":\"https://example.com/create-meeting\",\"updateMeetingUrl\":\"https://example.com/update-meeting\",\"deleteMeetingUrl\":\"https://example.com/delete-meeting\",\"userVerifyUrl\":\"https://example.com/user-verify\"}"
+          },
           "createMeetingUrl" : {
             "type" : "string",
-            "description" : "The URL that HubSpot will send requests to create a new video conference."
+            "description" : "The URL that HubSpot will send requests to create a new video conference.",
+            "example" : "{\"createMeetingUrl\":\"https://example.com/create-meeting\",\"updateMeetingUrl\":\"https://example.com/update-meeting\",\"deleteMeetingUrl\":\"https://example.com/delete-meeting\",\"userVerifyUrl\":\"https://example.com/user-verify\"}"
           },
           "updateMeetingUrl" : {
             "type" : "string",
-            "description" : "The URL that HubSpot will send updates to existing meetings. Typically called when the user changes the topic or times of a meeting."
+            "description" : "The URL that HubSpot will send updates to existing meetings. Typically called when the user changes the topic or times of a meeting.",
+            "example" : "{\"createMeetingUrl\":\"https://example.com/create-meeting\",\"updateMeetingUrl\":\"https://example.com/update-meeting\",\"deleteMeetingUrl\":\"https://example.com/delete-meeting\",\"userVerifyUrl\":\"https://example.com/user-verify\"}"
           },
           "deleteMeetingUrl" : {
             "type" : "string",
-            "description" : "The URL that HubSpot will send notifications of meetings that have been deleted in HubSpot."
-          },
-          "userVerifyUrl" : {
-            "type" : "string",
-            "description" : "The URL that HubSpot will use to verify that a user exists in the video conference application."
-          },
-          "fetchAccountsUri" : {
-            "type" : "string"
+            "description" : "The URL that HubSpot will send notifications of meetings that have been deleted in HubSpot.",
+            "example" : "{\"createMeetingUrl\":\"https://example.com/create-meeting\",\"updateMeetingUrl\":\"https://example.com/update-meeting\",\"deleteMeetingUrl\":\"https://example.com/delete-meeting\",\"userVerifyUrl\":\"https://example.com/user-verify\"}"
           }
         },
         "description" : "The URLs of the various actions provided by the video conferencing application. All URLs must use the `https` protocol.",
