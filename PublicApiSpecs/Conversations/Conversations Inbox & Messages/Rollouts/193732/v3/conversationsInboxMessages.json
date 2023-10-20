@@ -1,9 +1,18 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "Conversations",
+    "title" : "Conversations Inbox & Messages",
     "description" : "Query and interact with existing Conversation threads, messages, and channels",
-    "version" : "v3"
+    "version" : "v3",
+    "x-hubspot-product-tier-requirements" : {
+      "marketing" : "FREE",
+      "sales" : "FREE",
+      "service" : "FREE",
+      "cms" : "FREE"
+    },
+    "x-hubspot-documentation-banner" : "NONE",
+    "x-hubspot-api-use-case" : "If you're using the conversations inbox in HubSpot, but you want to report on support agent productivity in an external tool or export message data to an external service, you can build an integration with the conversations and messages API.",
+    "x-hubspot-introduction" : "Use the conversations API to manage and send messages via the connected channels in your conversations inbox. You can retrieve existing messages, update threads, and provide internal comments for agents on your team. "
   },
   "servers" : [ {
     "url" : "https://api.hubapiqa.com"
@@ -41,6 +50,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -53,6 +63,7 @@
         }, {
           "name" : "defaultPageLength",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -124,6 +135,7 @@
         }, {
           "name" : "property",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -287,6 +299,7 @@
         }, {
           "name" : "property",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -383,6 +396,7 @@
         }, {
           "name" : "property",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -540,6 +554,7 @@
         "parameters" : [ {
           "name" : "property",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -664,6 +679,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -676,6 +692,7 @@
         }, {
           "name" : "defaultPageLength",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -797,6 +814,7 @@
         }, {
           "name" : "property",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -885,6 +903,7 @@
         }, {
           "name" : "sort",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -897,6 +916,7 @@
         }, {
           "name" : "defaultPageLength",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -958,6 +978,7 @@
         }, {
           "name" : "property",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -1091,6 +1112,7 @@
         }, {
           "name" : "property",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -1264,7 +1286,63 @@
           }
         }
       },
+      "BatchInputString" : {
+        "required" : [ "inputs" ],
+        "type" : "object",
+        "properties" : {
+          "inputs" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "StandardError" : {
+        "required" : [ "category", "context", "errors", "links", "message", "status" ],
+        "type" : "object",
+        "properties" : {
+          "subCategory" : {
+            "type" : "object",
+            "properties" : { }
+          },
+          "context" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          },
+          "links" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "string"
+            }
+          },
+          "id" : {
+            "type" : "string"
+          },
+          "category" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "errors" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ErrorDetail"
+            }
+          },
+          "status" : {
+            "type" : "string"
+          }
+        }
+      },
       "PublicMessageEgg" : {
+        "properties" : { },
         "discriminator" : {
           "propertyName" : "type",
           "mapping" : {
@@ -1278,60 +1356,83 @@
           "$ref" : "#/components/schemas/PublicCommentEgg"
         } ]
       },
-      "PublicMessageHeader" : {
-        "title" : "MESSAGE_HEADER",
-        "required" : [ "type" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "default" : "MESSAGE_HEADER",
-            "enum" : [ "MESSAGE_HEADER" ]
-          },
-          "text" : {
-            "type" : "string"
-          },
-          "fileId" : {
-            "type" : "integer",
-            "format" : "int64"
-          }
-        }
-      },
       "PublicChannelAccount" : {
         "type" : "object",
         "properties" : {
-          "id" : {
+          "createdAt" : {
             "type" : "string",
-            "description" : "The ID of the channel account."
+            "format" : "date-time"
           },
-          "channelId" : {
-            "type" : "string",
-            "description" : "The ID of the channel that the channel account is an instance of."
+          "authorized" : {
+            "type" : "boolean"
           },
           "name" : {
             "type" : "string",
             "description" : "The name of the channel account."
           },
-          "inboxId" : {
-            "type" : "string",
-            "description" : "The ID of the conversations inbox that contains the channel account."
-          },
           "active" : {
             "type" : "boolean",
             "description" : "Whether the channel account is turned on."
           },
-          "authorized" : {
-            "type" : "boolean"
-          },
-          "createdAt" : {
-            "type" : "string",
-            "format" : "date-time"
-          },
           "deliveryIdentifier" : {
             "$ref" : "#/components/schemas/PublicDeliveryIdentifier"
+          },
+          "id" : {
+            "type" : "string",
+            "description" : "The ID of the channel account."
+          },
+          "inboxId" : {
+            "type" : "string",
+            "description" : "The ID of the conversations inbox that contains the channel account."
+          },
+          "channelId" : {
+            "type" : "string",
+            "description" : "The ID of the channel that the channel account is an instance of."
           }
         },
         "description" : "An instance of a conversations channel. Examples include team emails and chatflows. All conversations messages occur on a channel account."
+      },
+      "CollectionResponsePublicMessageForwardPaging" : {
+        "required" : [ "results" ],
+        "type" : "object",
+        "properties" : {
+          "paging" : {
+            "$ref" : "#/components/schemas/ForwardPaging"
+          },
+          "results" : {
+            "type" : "array",
+            "items" : {
+              "oneOf" : [ {
+                "$ref" : "#/components/schemas/PublicConversationsMessage"
+              }, {
+                "$ref" : "#/components/schemas/PublicComment"
+              }, {
+                "$ref" : "#/components/schemas/PublicWelcomeMessage"
+              }, {
+                "$ref" : "#/components/schemas/PublicAssignmentMessage"
+              }, {
+                "$ref" : "#/components/schemas/PublicThreadStatusChange"
+              }, {
+                "$ref" : "#/components/schemas/PublicThreadInboxChange"
+              } ]
+            }
+          }
+        }
+      },
+      "PublicMessageFailureDetails" : {
+        "required" : [ "errorMessageTokens" ],
+        "type" : "object",
+        "properties" : {
+          "errorMessage" : {
+            "type" : "string"
+          },
+          "errorMessageTokens" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "string"
+            }
+          }
+        }
       },
       "CollectionResponseWithTotalPublicChannelForwardPaging" : {
         "required" : [ "results", "total" ],
@@ -1341,29 +1442,116 @@
             "type" : "integer",
             "format" : "int32"
           },
+          "paging" : {
+            "$ref" : "#/components/schemas/ForwardPaging"
+          },
           "results" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/PublicChannel"
             }
-          },
-          "paging" : {
-            "$ref" : "#/components/schemas/ForwardPaging"
           }
         }
+      },
+      "PublicMessage" : {
+        "properties" : { },
+        "discriminator" : {
+          "propertyName" : "type",
+          "mapping" : {
+            "MESSAGE" : "#/components/schemas/PublicConversationsMessage",
+            "COMMENT" : "#/components/schemas/PublicComment",
+            "WELCOME_MESSAGE" : "#/components/schemas/PublicWelcomeMessage",
+            "ASSIGNMENT" : "#/components/schemas/PublicAssignmentMessage",
+            "THREAD_STATUS_CHANGE" : "#/components/schemas/PublicThreadStatusChange",
+            "THREAD_INBOX_CHANGE" : "#/components/schemas/PublicThreadInboxChange"
+          }
+        },
+        "oneOf" : [ {
+          "$ref" : "#/components/schemas/PublicConversationsMessage"
+        }, {
+          "$ref" : "#/components/schemas/PublicComment"
+        }, {
+          "$ref" : "#/components/schemas/PublicWelcomeMessage"
+        }, {
+          "$ref" : "#/components/schemas/PublicAssignmentMessage"
+        }, {
+          "$ref" : "#/components/schemas/PublicThreadStatusChange"
+        }, {
+          "$ref" : "#/components/schemas/PublicThreadInboxChange"
+        } ]
+      },
+      "PublicDeliveryIdentifier" : {
+        "required" : [ "type", "value" ],
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "description" : "The type of identifier. HS_EMAIL_ADDRESS for email addresses; HS_PHONE_NUMBER for a phone number; CHANNEL_SPECIFIC_OPAQUE_ID for channels that use their own proprietary identifiers, like Facebook Messenger or LiveChat."
+          },
+          "value" : {
+            "type" : "string",
+            "description" : "A string representation of the PublicDeliveryIdentifier, either an an E.164 phone number, an email address, or a channel-specific identifier."
+          }
+        },
+        "description" : "An identifier that represents how a message is sent."
+      },
+      "PublicCommentEgg" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/PublicMessageEgg"
+        }, {
+          "required" : [ "attachments", "text", "type" ],
+          "type" : "object",
+          "properties" : {
+            "type" : {
+              "type" : "string",
+              "default" : "COMMENT",
+              "enum" : [ "COMMENT" ]
+            },
+            "text" : {
+              "type" : "string"
+            },
+            "richText" : {
+              "type" : "string"
+            },
+            "attachments" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : { }
+              }
+            }
+          }
+        } ]
       },
       "CollectionResponsePublicThreadForwardPaging" : {
         "required" : [ "results" ],
         "type" : "object",
         "properties" : {
+          "paging" : {
+            "$ref" : "#/components/schemas/ForwardPaging"
+          },
           "results" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/PublicThread"
             }
+          }
+        }
+      },
+      "PublicSender" : {
+        "type" : "object",
+        "properties" : {
+          "actorId" : {
+            "$ref" : "#/components/schemas/ActorId"
           },
-          "paging" : {
-            "$ref" : "#/components/schemas/ForwardPaging"
+          "name" : {
+            "type" : "string"
+          },
+          "senderField" : {
+            "type" : "string"
+          },
+          "deliveryIdentifier" : {
+            "$ref" : "#/components/schemas/PublicDeliveryIdentifier"
           }
         }
       },
@@ -1371,21 +1559,17 @@
         "required" : [ "message" ],
         "type" : "object",
         "properties" : {
-          "message" : {
+          "subCategory" : {
             "type" : "string",
-            "description" : "A human readable message describing the error along with remediation steps where appropriate"
-          },
-          "in" : {
-            "type" : "string",
-            "description" : "The name of the field or parameter in which the error was found."
+            "description" : "A specific category that contains more specific detail about the error"
           },
           "code" : {
             "type" : "string",
             "description" : "The status code associated with the error detail"
           },
-          "subCategory" : {
+          "in" : {
             "type" : "string",
-            "description" : "A specific category that contains more specific detail about the error"
+            "description" : "The name of the field or parameter in which the error was found."
           },
           "context" : {
             "type" : "object",
@@ -1399,6 +1583,10 @@
             "example" : {
               "missingScopes" : [ "scope1", "scope2" ]
             }
+          },
+          "message" : {
+            "type" : "string",
+            "description" : "A human readable message describing the error along with remediation steps where appropriate"
           }
         }
       },
@@ -1406,25 +1594,13 @@
         "required" : [ "completedAt", "results", "startedAt", "status" ],
         "type" : "object",
         "properties" : {
-          "status" : {
+          "completedAt" : {
             "type" : "string",
-            "enum" : [ "PENDING", "PROCESSING", "CANCELED", "COMPLETE" ]
-          },
-          "results" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/PublicActor"
-            }
+            "format" : "date-time"
           },
           "numErrors" : {
             "type" : "integer",
             "format" : "int32"
-          },
-          "errors" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/StandardError"
-            }
           },
           "requestedAt" : {
             "type" : "string",
@@ -1434,15 +1610,27 @@
             "type" : "string",
             "format" : "date-time"
           },
-          "completedAt" : {
-            "type" : "string",
-            "format" : "date-time"
-          },
           "links" : {
             "type" : "object",
             "additionalProperties" : {
               "type" : "string"
             }
+          },
+          "results" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/PublicActor"
+            }
+          },
+          "errors" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/StandardError"
+            }
+          },
+          "status" : {
+            "type" : "string",
+            "enum" : [ "PENDING", "PROCESSING", "CANCELED", "COMPLETE" ]
           }
         }
       },
@@ -1454,20 +1642,80 @@
           }
         }
       },
-      "PublicContact" : {
-        "title" : "CONTACT",
-        "required" : [ "contactProfile", "type" ],
+      "PublicClient" : {
         "type" : "object",
         "properties" : {
-          "type" : {
+          "clientType" : {
             "type" : "string",
-            "default" : "CONTACT",
-            "enum" : [ "CONTACT" ]
+            "description" : "The type of the client.",
+            "enum" : [ "HUBSPOT", "SYSTEM", "INTEGRATION", "UNKNOWN" ]
           },
-          "contactProfile" : {
-            "$ref" : "#/components/schemas/ContactProfile"
+          "integrationAppId" : {
+            "type" : "integer",
+            "description" : "The ID of the client if the client is an integration.",
+            "format" : "int32"
+          }
+        },
+        "description" : "A client that sends conversations messages."
+      },
+      "PublicMessageStatus" : {
+        "required" : [ "statusType" ],
+        "type" : "object",
+        "properties" : {
+          "statusType" : {
+            "type" : "string",
+            "enum" : [ "SENT", "FAILED", "RECEIVED", "READ" ]
+          },
+          "failureDetails" : {
+            "$ref" : "#/components/schemas/PublicMessageFailureDetails"
           }
         }
+      },
+      "PublicConversationsMessageEgg" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/PublicMessageEgg"
+        }, {
+          "required" : [ "attachments", "channelAccountId", "channelId", "recipients", "senderActorId", "text", "type" ],
+          "type" : "object",
+          "properties" : {
+            "type" : {
+              "type" : "string",
+              "default" : "MESSAGE",
+              "enum" : [ "MESSAGE" ]
+            },
+            "text" : {
+              "type" : "string"
+            },
+            "richText" : {
+              "type" : "string"
+            },
+            "attachments" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : { }
+              }
+            },
+            "recipients" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/PublicRecipientEgg"
+              }
+            },
+            "senderActorId" : {
+              "$ref" : "#/components/schemas/ActorId"
+            },
+            "channelId" : {
+              "type" : "string"
+            },
+            "channelAccountId" : {
+              "type" : "string"
+            },
+            "subject" : {
+              "type" : "string"
+            }
+          }
+        } ]
       },
       "PublicAssignmentMessage" : {
         "allOf" : [ {
@@ -1558,32 +1806,196 @@
           }
         } ]
       },
-      "ContactAddress" : {
+      "PublicConversationsMessage" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/PublicMessage"
+        }, {
+          "required" : [ "archived", "attachments", "client", "createdAt", "createdBy", "direction", "id", "recipients", "senders", "text", "truncationStatus", "type" ],
+          "type" : "object",
+          "properties" : {
+            "type" : {
+              "type" : "string",
+              "default" : "MESSAGE",
+              "enum" : [ "MESSAGE" ]
+            },
+            "id" : {
+              "type" : "string"
+            },
+            "createdAt" : {
+              "type" : "string",
+              "format" : "date-time"
+            },
+            "updatedAt" : {
+              "type" : "string",
+              "format" : "date-time"
+            },
+            "createdBy" : {
+              "$ref" : "#/components/schemas/ActorId"
+            },
+            "client" : {
+              "$ref" : "#/components/schemas/PublicClient"
+            },
+            "senders" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/PublicSender"
+              }
+            },
+            "recipients" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/PublicRecipient"
+              }
+            },
+            "archived" : {
+              "type" : "boolean"
+            },
+            "text" : {
+              "type" : "string"
+            },
+            "richText" : {
+              "type" : "string"
+            },
+            "attachments" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : { }
+              }
+            },
+            "subject" : {
+              "type" : "string"
+            },
+            "truncationStatus" : {
+              "type" : "string",
+              "enum" : [ "NOT_TRUNCATED", "TRUNCATED_TO_MOST_RECENT_REPLY", "TRUNCATED" ]
+            },
+            "inReplyToId" : {
+              "type" : "string"
+            },
+            "status" : {
+              "$ref" : "#/components/schemas/PublicMessageStatus"
+            },
+            "direction" : {
+              "type" : "string",
+              "enum" : [ "INCOMING", "OUTGOING", "NOT_APPLICABLE" ]
+            },
+            "channelId" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "channelAccountId" : {
+              "type" : "integer",
+              "format" : "int64"
+            },
+            "conversationsThreadId" : {
+              "type" : "integer",
+              "format" : "int64"
+            }
+          }
+        } ]
+      },
+      "SystemActor" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/PublicActor"
+        }, {
+          "required" : [ "id", "type" ],
+          "type" : "object",
+          "properties" : {
+            "type" : {
+              "type" : "string",
+              "default" : "SYSTEM",
+              "enum" : [ "SYSTEM" ]
+            },
+            "id" : {
+              "$ref" : "#/components/schemas/ActorId"
+            }
+          }
+        } ]
+      },
+      "PublicThread" : {
+        "required" : [ "associatedContactId", "createdAt", "id", "inboxId", "spam", "status" ],
         "type" : "object",
         "properties" : {
-          "type" : {
+          "createdAt" : {
             "type" : "string",
-            "enum" : [ "HOME", "WORK" ]
+            "description" : "When the thread was created.",
+            "format" : "date-time"
           },
-          "street" : {
-            "type" : "string"
+          "archived" : {
+            "type" : "boolean",
+            "description" : "Whether this thread is archived."
           },
-          "city" : {
-            "type" : "string"
+          "associatedContactId" : {
+            "type" : "string",
+            "description" : "The ID of the associated Contact in the CRM."
           },
-          "state" : {
-            "type" : "string"
+          "latestMessageTimestamp" : {
+            "type" : "string",
+            "description" : "The time that the latest message was sent or received on the thread.",
+            "format" : "date-time"
           },
-          "zip" : {
-            "type" : "string"
+          "latestMessageSentTimestamp" : {
+            "type" : "string",
+            "description" : "The time that the latest message was sent on the thread.",
+            "format" : "date-time"
           },
-          "country" : {
-            "type" : "string"
+          "id" : {
+            "type" : "string",
+            "description" : "The unique ID of the thread."
           },
-          "countryCode" : {
-            "type" : "string"
+          "closedAt" : {
+            "type" : "string",
+            "description" : "When the thread was closed. Only set if the thread is closed.",
+            "format" : "date-time"
+          },
+          "spam" : {
+            "type" : "boolean",
+            "description" : "Whether the thread is marked as spam."
+          },
+          "inboxId" : {
+            "type" : "string",
+            "description" : "The ID of the conversations inbox containing the thread."
+          },
+          "assignedTo" : {
+            "$ref" : "#/components/schemas/ActorId"
+          },
+          "status" : {
+            "type" : "string",
+            "description" : "The thread's status: `OPEN` or `CLOSED`.",
+            "enum" : [ "OPEN", "CLOSED" ]
+          },
+          "latestMessageReceivedTimestamp" : {
+            "type" : "string",
+            "description" : "The time that the latest message was sent on the thread.",
+            "format" : "date-time"
           }
-        }
+        },
+        "description" : "A conversation thread."
+      },
+      "IntegratorActor" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/PublicActor"
+        }, {
+          "required" : [ "id", "name", "type" ],
+          "type" : "object",
+          "properties" : {
+            "type" : {
+              "type" : "string",
+              "default" : "INTEGRATOR",
+              "enum" : [ "INTEGRATOR" ]
+            },
+            "id" : {
+              "$ref" : "#/components/schemas/ActorId"
+            },
+            "name" : {
+              "type" : "string"
+            },
+            "avatar" : {
+              "type" : "string"
+            }
+          }
+        } ]
       },
       "PublicThreadInboxChange" : {
         "allOf" : [ {
@@ -1650,6 +2062,27 @@
           }
         } ]
       },
+      "EmailActor" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/PublicActor"
+        }, {
+          "required" : [ "email", "id", "type" ],
+          "type" : "object",
+          "properties" : {
+            "type" : {
+              "type" : "string",
+              "default" : "EMAIL",
+              "enum" : [ "EMAIL" ]
+            },
+            "id" : {
+              "$ref" : "#/components/schemas/ActorId"
+            },
+            "email" : {
+              "type" : "string"
+            }
+          }
+        } ]
+      },
       "PublicWelcomeMessage" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/PublicMessage"
@@ -1712,6 +2145,67 @@
           }
         } ]
       },
+      "Error" : {
+        "required" : [ "category", "correlationId", "message" ],
+        "type" : "object",
+        "properties" : {
+          "subCategory" : {
+            "type" : "string",
+            "description" : "A specific category that contains more specific detail about the error",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
+          },
+          "context" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            },
+            "description" : "Context about the error condition",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
+          },
+          "correlationId" : {
+            "type" : "string",
+            "description" : "A unique identifier for the request. Include this value with any error reports or support tickets",
+            "format" : "uuid"
+          },
+          "links" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "string"
+            },
+            "description" : "A map of link names to associated URIs containing documentation about the error or recommended remediation steps",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
+          },
+          "message" : {
+            "type" : "string",
+            "description" : "A human readable message describing the error along with remediation steps where appropriate",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
+          },
+          "category" : {
+            "type" : "string",
+            "description" : "The error category",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
+          },
+          "errors" : {
+            "type" : "array",
+            "description" : "further information about the error",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}",
+            "items" : {
+              "$ref" : "#/components/schemas/ErrorDetail"
+            }
+          }
+        },
+        "example" : {
+          "message" : "Invalid input (details will vary based on the error)",
+          "correlationId" : "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+          "category" : "VALIDATION_ERROR",
+          "links" : {
+            "knowledge-base" : "https://www.hubspot.com/products/service/knowledge-base"
+          }
+        }
+      },
       "CollectionResponseWithTotalPublicInboxForwardPaging" : {
         "required" : [ "results", "total" ],
         "type" : "object",
@@ -1720,88 +2214,38 @@
             "type" : "integer",
             "format" : "int32"
           },
+          "paging" : {
+            "$ref" : "#/components/schemas/ForwardPaging"
+          },
           "results" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/PublicInbox"
             }
-          },
-          "paging" : {
-            "$ref" : "#/components/schemas/ForwardPaging"
-          }
-        }
-      },
-      "PublicUnsupportedContent" : {
-        "title" : "UNSUPPORTED_CONTENT",
-        "required" : [ "type" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "default" : "UNSUPPORTED_CONTENT",
-            "enum" : [ "UNSUPPORTED_CONTENT" ]
           }
         }
       },
       "ActorId" : {
         "type" : "string",
+        "properties" : { },
         "description" : "The ID of an actor/participant in a conversation.",
         "example" : "A-123"
-      },
-      "QuickReply" : {
-        "required" : [ "value", "valueType" ],
-        "type" : "object",
-        "properties" : {
-          "value" : {
-            "type" : "string"
-          },
-          "label" : {
-            "type" : "string"
-          },
-          "valueType" : {
-            "type" : "string"
-          }
-        }
-      },
-      "PublicQuickReplies" : {
-        "title" : "QUICK_REPLIES",
-        "required" : [ "allowMultiSelect", "allowUserInput", "quickReplies", "type" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "default" : "QUICK_REPLIES",
-            "enum" : [ "QUICK_REPLIES" ]
-          },
-          "quickReplies" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/QuickReply"
-            }
-          },
-          "allowUserInput" : {
-            "type" : "boolean"
-          },
-          "allowMultiSelect" : {
-            "type" : "boolean"
-          }
-        }
       },
       "PublicInbox" : {
         "type" : "object",
         "properties" : {
-          "id" : {
+          "createdAt" : {
             "type" : "string",
-            "description" : "The ID of the inbox."
+            "description" : "When the inbox was created.",
+            "format" : "date-time"
           },
           "name" : {
             "type" : "string",
             "description" : "The name of the inbox."
           },
-          "createdAt" : {
+          "id" : {
             "type" : "string",
-            "description" : "When the inbox was created.",
-            "format" : "date-time"
+            "description" : "The ID of the inbox."
           },
           "updatedAt" : {
             "type" : "string",
@@ -1810,16 +2254,27 @@
         },
         "description" : "A conversations inbox, which contains channel accounts and threads."
       },
+      "PublicMessageContent" : {
+        "type" : "object",
+        "properties" : {
+          "text" : {
+            "type" : "string"
+          },
+          "richText" : {
+            "type" : "string"
+          }
+        }
+      },
       "PublicChannel" : {
         "type" : "object",
         "properties" : {
-          "id" : {
-            "type" : "string",
-            "description" : "The ID of the channel."
-          },
           "name" : {
             "type" : "string",
             "description" : "The name of the channel."
+          },
+          "id" : {
+            "type" : "string",
+            "description" : "The ID of the channel."
           }
         },
         "description" : "A conversations channel. Examples include Email, Facebook Messenger, and HubSpot LiveChat."
@@ -1887,33 +2342,6 @@
           }
         } ]
       },
-      "PublicLocation" : {
-        "title" : "LOCATION",
-        "required" : [ "latitude", "longitude", "type" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "default" : "LOCATION",
-            "enum" : [ "LOCATION" ]
-          },
-          "latitude" : {
-            "type" : "number"
-          },
-          "longitude" : {
-            "type" : "number"
-          },
-          "name" : {
-            "type" : "string"
-          },
-          "address" : {
-            "type" : "string"
-          },
-          "url" : {
-            "type" : "string"
-          }
-        }
-      },
       "CollectionResponseWithTotalPublicChannelAccountForwardPaging" : {
         "required" : [ "results", "total" ],
         "type" : "object",
@@ -1922,33 +2350,46 @@
             "type" : "integer",
             "format" : "int32"
           },
+          "paging" : {
+            "$ref" : "#/components/schemas/ForwardPaging"
+          },
           "results" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/PublicChannelAccount"
             }
-          },
-          "paging" : {
-            "$ref" : "#/components/schemas/ForwardPaging"
           }
         }
       },
-      "PublicFileEgg" : {
-        "title" : "FILE",
-        "required" : [ "fileId", "type" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "default" : "FILE",
-            "enum" : [ "FILE" ]
-          },
-          "fileId" : {
-            "type" : "string"
+      "VisitorActor" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/PublicActor"
+        }, {
+          "required" : [ "id", "type" ],
+          "type" : "object",
+          "properties" : {
+            "type" : {
+              "type" : "string",
+              "default" : "VISITOR",
+              "enum" : [ "VISITOR" ]
+            },
+            "id" : {
+              "$ref" : "#/components/schemas/ActorId"
+            },
+            "name" : {
+              "type" : "string"
+            },
+            "email" : {
+              "type" : "string"
+            },
+            "avatar" : {
+              "type" : "string"
+            }
           }
-        }
+        } ]
       },
       "PublicActor" : {
+        "properties" : { },
         "discriminator" : {
           "propertyName" : "type",
           "mapping" : {
@@ -2100,31 +2541,37 @@
       "PublicThreadUpdateRequest" : {
         "type" : "object",
         "properties" : {
+          "archived" : {
+            "type" : "boolean",
+            "description" : "Whether this thread is archived. Set to false to restore the thread."
+          },
           "status" : {
             "type" : "string",
             "description" : "The thread's status: `OPEN` or `CLOSED`.",
             "enum" : [ "OPEN", "CLOSED" ]
-          },
-          "archived" : {
-            "type" : "boolean",
-            "description" : "Whether this thread is archived. Set to false to restore the thread."
           }
         },
         "description" : "The properties of the thread to update. If restoring a thread, the archived property should be the only field in the request body. For other updates, PATCH requests should exclude the archived property from the body of the request."
+      },
+      "NextPage" : {
+        "required" : [ "after" ],
+        "type" : "object",
+        "properties" : {
+          "link" : {
+            "type" : "string"
+          },
+          "after" : {
+            "type" : "string"
+          }
+        }
       },
       "BatchResponsePublicActor" : {
         "required" : [ "completedAt", "results", "startedAt", "status" ],
         "type" : "object",
         "properties" : {
-          "status" : {
+          "completedAt" : {
             "type" : "string",
-            "enum" : [ "PENDING", "PROCESSING", "CANCELED", "COMPLETE" ]
-          },
-          "results" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/PublicActor"
-            }
+            "format" : "date-time"
           },
           "requestedAt" : {
             "type" : "string",
@@ -2134,772 +2581,21 @@
             "type" : "string",
             "format" : "date-time"
           },
-          "completedAt" : {
-            "type" : "string",
-            "format" : "date-time"
-          },
           "links" : {
             "type" : "object",
             "additionalProperties" : {
               "type" : "string"
             }
-          }
-        }
-      },
-      "BatchInputString" : {
-        "required" : [ "inputs" ],
-        "type" : "object",
-        "properties" : {
-          "inputs" : {
-            "type" : "array",
-            "items" : {
-              "type" : "string"
-            }
-          }
-        }
-      },
-      "StandardError" : {
-        "required" : [ "category", "context", "errors", "links", "message", "status" ],
-        "type" : "object",
-        "properties" : {
-          "status" : {
-            "type" : "string"
           },
-          "id" : {
-            "type" : "string"
-          },
-          "category" : {
-            "type" : "string"
-          },
-          "subCategory" : {
-            "type" : "object",
-            "properties" : { }
-          },
-          "message" : {
-            "type" : "string"
-          },
-          "errors" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/ErrorDetail"
-            }
-          },
-          "context" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "type" : "array",
-              "items" : {
-                "type" : "string"
-              }
-            }
-          },
-          "links" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "type" : "string"
-            }
-          }
-        }
-      },
-      "CollectionResponsePublicMessageForwardPaging" : {
-        "required" : [ "results" ],
-        "type" : "object",
-        "properties" : {
           "results" : {
             "type" : "array",
             "items" : {
-              "oneOf" : [ {
-                "$ref" : "#/components/schemas/PublicConversationsMessage"
-              }, {
-                "$ref" : "#/components/schemas/PublicComment"
-              }, {
-                "$ref" : "#/components/schemas/PublicWelcomeMessage"
-              }, {
-                "$ref" : "#/components/schemas/PublicAssignmentMessage"
-              }, {
-                "$ref" : "#/components/schemas/PublicThreadStatusChange"
-              }, {
-                "$ref" : "#/components/schemas/PublicThreadInboxChange"
-              } ]
+              "$ref" : "#/components/schemas/PublicActor"
             }
-          },
-          "paging" : {
-            "$ref" : "#/components/schemas/ForwardPaging"
-          }
-        }
-      },
-      "PublicMessageFailureDetails" : {
-        "required" : [ "errorMessageTokens" ],
-        "type" : "object",
-        "properties" : {
-          "errorMessage" : {
-            "type" : "string"
-          },
-          "errorMessageTokens" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "type" : "string"
-            }
-          }
-        }
-      },
-      "PublicMessage" : {
-        "discriminator" : {
-          "propertyName" : "type",
-          "mapping" : {
-            "MESSAGE" : "#/components/schemas/PublicConversationsMessage",
-            "COMMENT" : "#/components/schemas/PublicComment",
-            "WELCOME_MESSAGE" : "#/components/schemas/PublicWelcomeMessage",
-            "ASSIGNMENT" : "#/components/schemas/PublicAssignmentMessage",
-            "THREAD_STATUS_CHANGE" : "#/components/schemas/PublicThreadStatusChange",
-            "THREAD_INBOX_CHANGE" : "#/components/schemas/PublicThreadInboxChange"
-          }
-        },
-        "oneOf" : [ {
-          "$ref" : "#/components/schemas/PublicConversationsMessage"
-        }, {
-          "$ref" : "#/components/schemas/PublicComment"
-        }, {
-          "$ref" : "#/components/schemas/PublicWelcomeMessage"
-        }, {
-          "$ref" : "#/components/schemas/PublicAssignmentMessage"
-        }, {
-          "$ref" : "#/components/schemas/PublicThreadStatusChange"
-        }, {
-          "$ref" : "#/components/schemas/PublicThreadInboxChange"
-        } ]
-      },
-      "PublicDeliveryIdentifier" : {
-        "required" : [ "type", "value" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "description" : "The type of identifier. HS_EMAIL_ADDRESS for email addresses; HS_PHONE_NUMBER for a phone number; CHANNEL_SPECIFIC_OPAQUE_ID for channels that use their own proprietary identifiers, like Facebook Messenger or LiveChat."
-          },
-          "value" : {
-            "type" : "string",
-            "description" : "A string representation of the PublicDeliveryIdentifier, either an an E.164 phone number, an email address, or a channel-specific identifier."
-          }
-        },
-        "description" : "An identifier that represents how a message is sent."
-      },
-      "PublicCommentEgg" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/PublicMessageEgg"
-        }, {
-          "required" : [ "attachments", "text", "type" ],
-          "type" : "object",
-          "properties" : {
-            "type" : {
-              "type" : "string",
-              "default" : "COMMENT",
-              "enum" : [ "COMMENT" ]
-            },
-            "text" : {
-              "type" : "string"
-            },
-            "richText" : {
-              "type" : "string"
-            },
-            "attachments" : {
-              "type" : "array",
-              "items" : {
-                "type" : "object",
-                "properties" : { }
-              }
-            }
-          }
-        } ]
-      },
-      "PublicSender" : {
-        "type" : "object",
-        "properties" : {
-          "actorId" : {
-            "$ref" : "#/components/schemas/ActorId"
-          },
-          "name" : {
-            "type" : "string"
-          },
-          "senderField" : {
-            "type" : "string"
-          },
-          "deliveryIdentifier" : {
-            "$ref" : "#/components/schemas/PublicDeliveryIdentifier"
-          }
-        }
-      },
-      "ContactPhone" : {
-        "required" : [ "phone" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "CELL", "MAIN", "HOME", "WORK" ]
-          },
-          "phone" : {
-            "type" : "string"
-          }
-        }
-      },
-      "PublicClient" : {
-        "type" : "object",
-        "properties" : {
-          "clientType" : {
-            "type" : "string",
-            "description" : "The type of the client.",
-            "enum" : [ "HUBSPOT", "SYSTEM", "INTEGRATION", "UNKNOWN" ]
-          },
-          "integrationAppId" : {
-            "type" : "integer",
-            "description" : "The ID of the client if the client is an integration.",
-            "format" : "int32"
-          }
-        },
-        "description" : "A client that sends conversations messages."
-      },
-      "PublicMessageStatus" : {
-        "required" : [ "statusType" ],
-        "type" : "object",
-        "properties" : {
-          "statusType" : {
-            "type" : "string",
-            "enum" : [ "SENT", "FAILED", "RECEIVED", "READ" ]
-          },
-          "failureDetails" : {
-            "$ref" : "#/components/schemas/PublicMessageFailureDetails"
-          }
-        }
-      },
-      "PublicWhatsAppTemplateMetadata" : {
-        "title" : "WHATSAPP_TEMPLATE_METADATA",
-        "required" : [ "crmObjectIds", "mappedTemplateId", "parameters", "type" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "default" : "WHATSAPP_TEMPLATE_METADATA",
-            "enum" : [ "WHATSAPP_TEMPLATE_METADATA" ]
-          },
-          "mappedTemplateId" : {
-            "type" : "string"
-          },
-          "crmObjectIds" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "type" : "integer",
-              "format" : "int64"
-            }
-          },
-          "parameters" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "type" : "string"
-            }
-          }
-        }
-      },
-      "PublicConversationsMessageEgg" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/PublicMessageEgg"
-        }, {
-          "required" : [ "attachments", "channelAccountId", "channelId", "recipients", "senderActorId", "text", "type" ],
-          "type" : "object",
-          "properties" : {
-            "type" : {
-              "type" : "string",
-              "default" : "MESSAGE",
-              "enum" : [ "MESSAGE" ]
-            },
-            "text" : {
-              "type" : "string"
-            },
-            "richText" : {
-              "type" : "string"
-            },
-            "attachments" : {
-              "type" : "array",
-              "items" : {
-                "type" : "object",
-                "properties" : { }
-              }
-            },
-            "recipients" : {
-              "type" : "array",
-              "items" : {
-                "$ref" : "#/components/schemas/PublicRecipientEgg"
-              }
-            },
-            "senderActorId" : {
-              "$ref" : "#/components/schemas/ActorId"
-            },
-            "channelId" : {
-              "type" : "string"
-            },
-            "channelAccountId" : {
-              "type" : "string"
-            },
-            "subject" : {
-              "type" : "string"
-            }
-          }
-        } ]
-      },
-      "PublicConversationsMessage" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/PublicMessage"
-        }, {
-          "required" : [ "archived", "attachments", "client", "createdAt", "createdBy", "direction", "id", "recipients", "senders", "text", "truncationStatus", "type" ],
-          "type" : "object",
-          "properties" : {
-            "type" : {
-              "type" : "string",
-              "default" : "MESSAGE",
-              "enum" : [ "MESSAGE" ]
-            },
-            "id" : {
-              "type" : "string"
-            },
-            "createdAt" : {
-              "type" : "string",
-              "format" : "date-time"
-            },
-            "updatedAt" : {
-              "type" : "string",
-              "format" : "date-time"
-            },
-            "createdBy" : {
-              "$ref" : "#/components/schemas/ActorId"
-            },
-            "client" : {
-              "$ref" : "#/components/schemas/PublicClient"
-            },
-            "senders" : {
-              "type" : "array",
-              "items" : {
-                "$ref" : "#/components/schemas/PublicSender"
-              }
-            },
-            "recipients" : {
-              "type" : "array",
-              "items" : {
-                "$ref" : "#/components/schemas/PublicRecipient"
-              }
-            },
-            "archived" : {
-              "type" : "boolean"
-            },
-            "text" : {
-              "type" : "string"
-            },
-            "richText" : {
-              "type" : "string"
-            },
-            "attachments" : {
-              "type" : "array",
-              "items" : {
-                "type" : "object",
-                "properties" : { }
-              }
-            },
-            "subject" : {
-              "type" : "string"
-            },
-            "truncationStatus" : {
-              "type" : "string",
-              "enum" : [ "NOT_TRUNCATED", "TRUNCATED_TO_MOST_RECENT_REPLY", "TRUNCATED" ]
-            },
-            "inReplyToId" : {
-              "type" : "string"
-            },
-            "status" : {
-              "$ref" : "#/components/schemas/PublicMessageStatus"
-            },
-            "direction" : {
-              "type" : "string",
-              "enum" : [ "INCOMING", "OUTGOING", "NOT_APPLICABLE" ]
-            },
-            "channelId" : {
-              "type" : "integer",
-              "format" : "int32"
-            },
-            "channelAccountId" : {
-              "type" : "integer",
-              "format" : "int64"
-            },
-            "conversationsThreadId" : {
-              "type" : "integer",
-              "format" : "int64"
-            }
-          }
-        } ]
-      },
-      "SystemActor" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/PublicActor"
-        }, {
-          "required" : [ "id", "type" ],
-          "type" : "object",
-          "properties" : {
-            "type" : {
-              "type" : "string",
-              "default" : "SYSTEM",
-              "enum" : [ "SYSTEM" ]
-            },
-            "id" : {
-              "$ref" : "#/components/schemas/ActorId"
-            }
-          }
-        } ]
-      },
-      "PublicThread" : {
-        "required" : [ "associatedContactId", "createdAt", "id", "inboxId", "spam", "status" ],
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "type" : "string",
-            "description" : "The unique ID of the thread."
-          },
-          "createdAt" : {
-            "type" : "string",
-            "description" : "When the thread was created.",
-            "format" : "date-time"
-          },
-          "closedAt" : {
-            "type" : "string",
-            "description" : "When the thread was closed. Only set if the thread is closed.",
-            "format" : "date-time"
           },
           "status" : {
             "type" : "string",
-            "description" : "The thread's status: `OPEN` or `CLOSED`.",
-            "enum" : [ "OPEN", "CLOSED" ]
-          },
-          "latestMessageTimestamp" : {
-            "type" : "string",
-            "description" : "The time that the latest message was sent or received on the thread.",
-            "format" : "date-time"
-          },
-          "latestMessageSentTimestamp" : {
-            "type" : "string",
-            "description" : "The time that the latest message was sent on the thread.",
-            "format" : "date-time"
-          },
-          "latestMessageReceivedTimestamp" : {
-            "type" : "string",
-            "description" : "The time that the latest message was sent on the thread.",
-            "format" : "date-time"
-          },
-          "assignedTo" : {
-            "$ref" : "#/components/schemas/ActorId"
-          },
-          "spam" : {
-            "type" : "boolean",
-            "description" : "Whether the thread is marked as spam."
-          },
-          "inboxId" : {
-            "type" : "string",
-            "description" : "The ID of the conversations inbox containing the thread."
-          },
-          "associatedContactId" : {
-            "type" : "string",
-            "description" : "The ID of the associated Contact in the CRM."
-          },
-          "archived" : {
-            "type" : "boolean",
-            "description" : "Whether this thread is archived."
-          }
-        },
-        "description" : "A conversation thread."
-      },
-      "IntegratorActor" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/PublicActor"
-        }, {
-          "required" : [ "id", "name", "type" ],
-          "type" : "object",
-          "properties" : {
-            "type" : {
-              "type" : "string",
-              "default" : "INTEGRATOR",
-              "enum" : [ "INTEGRATOR" ]
-            },
-            "id" : {
-              "$ref" : "#/components/schemas/ActorId"
-            },
-            "name" : {
-              "type" : "string"
-            },
-            "avatar" : {
-              "type" : "string"
-            }
-          }
-        } ]
-      },
-      "ContactProfile" : {
-        "required" : [ "addresses", "emails", "phones", "urls" ],
-        "type" : "object",
-        "properties" : {
-          "name" : {
-            "$ref" : "#/components/schemas/ContactName"
-          },
-          "org" : {
-            "$ref" : "#/components/schemas/ContactOrg"
-          },
-          "addresses" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/ContactAddress"
-            }
-          },
-          "emails" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/ContactEmail"
-            }
-          },
-          "phones" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/ContactPhone"
-            }
-          },
-          "urls" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/ContactUrl"
-            }
-          }
-        }
-      },
-      "ContactOrg" : {
-        "type" : "object",
-        "properties" : {
-          "company" : {
-            "type" : "string"
-          },
-          "department" : {
-            "type" : "string"
-          },
-          "title" : {
-            "type" : "string"
-          }
-        }
-      },
-      "EmailActor" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/PublicActor"
-        }, {
-          "required" : [ "email", "id", "type" ],
-          "type" : "object",
-          "properties" : {
-            "type" : {
-              "type" : "string",
-              "default" : "EMAIL",
-              "enum" : [ "EMAIL" ]
-            },
-            "id" : {
-              "$ref" : "#/components/schemas/ActorId"
-            },
-            "email" : {
-              "type" : "string"
-            }
-          }
-        } ]
-      },
-      "ContactUrl" : {
-        "required" : [ "url" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "HOME", "WORK" ]
-          },
-          "url" : {
-            "type" : "string"
-          }
-        }
-      },
-      "Error" : {
-        "required" : [ "category", "correlationId", "message" ],
-        "type" : "object",
-        "properties" : {
-          "message" : {
-            "type" : "string",
-            "description" : "A human readable message describing the error along with remediation steps where appropriate",
-            "example" : "An error occurred"
-          },
-          "correlationId" : {
-            "type" : "string",
-            "description" : "A unique identifier for the request. Include this value with any error reports or support tickets",
-            "format" : "uuid",
-            "example" : "aeb5f871-7f07-4993-9211-075dc63e7cbf"
-          },
-          "category" : {
-            "type" : "string",
-            "description" : "The error category"
-          },
-          "subCategory" : {
-            "type" : "string",
-            "description" : "A specific category that contains more specific detail about the error"
-          },
-          "errors" : {
-            "type" : "array",
-            "description" : "further information about the error",
-            "items" : {
-              "$ref" : "#/components/schemas/ErrorDetail"
-            }
-          },
-          "context" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "type" : "array",
-              "items" : {
-                "type" : "string"
-              }
-            },
-            "description" : "Context about the error condition",
-            "example" : {
-              "invalidPropertyName" : [ "propertyValue" ],
-              "missingScopes" : [ "scope1", "scope2" ]
-            }
-          },
-          "links" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "type" : "string"
-            },
-            "description" : "A map of link names to associated URIs containing documentation about the error or recommended remediation steps"
-          }
-        },
-        "example" : {
-          "message" : "Invalid input (details will vary based on the error)",
-          "correlationId" : "aeb5f871-7f07-4993-9211-075dc63e7cbf",
-          "category" : "VALIDATION_ERROR",
-          "links" : {
-            "knowledge-base" : "https://www.hubspot.com/products/service/knowledge-base"
-          }
-        }
-      },
-      "PublicFile" : {
-        "title" : "FILE",
-        "required" : [ "fileId", "fileUsageType", "type", "url" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "default" : "FILE",
-            "enum" : [ "FILE" ]
-          },
-          "fileId" : {
-            "type" : "string"
-          },
-          "fileUsageType" : {
-            "type" : "string"
-          },
-          "url" : {
-            "type" : "string"
-          }
-        }
-      },
-      "PublicQuickRepliesEgg" : {
-        "title" : "QUICK_REPLIES",
-        "required" : [ "quickReplies", "type" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "default" : "QUICK_REPLIES",
-            "enum" : [ "QUICK_REPLIES" ]
-          },
-          "quickReplies" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/QuickReply"
-            }
-          }
-        }
-      },
-      "PublicMessageContent" : {
-        "type" : "object",
-        "properties" : {
-          "text" : {
-            "type" : "string"
-          },
-          "richText" : {
-            "type" : "string"
-          }
-        }
-      },
-      "VisitorActor" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/PublicActor"
-        }, {
-          "required" : [ "id", "type" ],
-          "type" : "object",
-          "properties" : {
-            "type" : {
-              "type" : "string",
-              "default" : "VISITOR",
-              "enum" : [ "VISITOR" ]
-            },
-            "id" : {
-              "$ref" : "#/components/schemas/ActorId"
-            },
-            "name" : {
-              "type" : "string"
-            },
-            "email" : {
-              "type" : "string"
-            },
-            "avatar" : {
-              "type" : "string"
-            }
-          }
-        } ]
-      },
-      "ContactEmail" : {
-        "required" : [ "email" ],
-        "type" : "object",
-        "properties" : {
-          "type" : {
-            "type" : "string",
-            "enum" : [ "HOME", "WORK" ]
-          },
-          "email" : {
-            "type" : "string"
-          }
-        }
-      },
-      "NextPage" : {
-        "required" : [ "after" ],
-        "type" : "object",
-        "properties" : {
-          "after" : {
-            "type" : "string"
-          },
-          "link" : {
-            "type" : "string"
-          }
-        }
-      },
-      "ContactName" : {
-        "type" : "object",
-        "properties" : {
-          "prefix" : {
-            "type" : "string"
-          },
-          "firstName" : {
-            "type" : "string"
-          },
-          "middleName" : {
-            "type" : "string"
-          },
-          "lastName" : {
-            "type" : "string"
-          },
-          "suffix" : {
-            "type" : "string"
+            "enum" : [ "PENDING", "PROCESSING", "CANCELED", "COMPLETE" ]
           }
         }
       }
