@@ -3,7 +3,16 @@
   "info" : {
     "title" : "Lists",
     "description" : "CRUD operations to manage lists and list memberships",
-    "version" : "v3"
+    "version" : "v3",
+    "x-hubspot-product-tier-requirements" : {
+      "marketing" : "FREE",
+      "sales" : "FREE",
+      "service" : "FREE",
+      "cms" : "FREE"
+    },
+    "x-hubspot-documentation-banner" : "NONE",
+    "x-hubspot-api-use-case" : "You want to bulk add contacts to a particular list, or remove company records from a company list.",
+    "x-hubspot-introduction" : "Use the lists API to manage list memberships for contact, company, and custom object lists."
   },
   "servers" : [ {
     "url" : "https://api.hubapiqa.com"
@@ -64,9 +73,9 @@
           }
         },
         "security" : [ {
-          "private_apps" : [ "crm.lists.read", "crm.lists.write" ]
+          "private_apps" : [ "crm.lists.write", "crm.lists.read" ]
         }, {
-          "oauth2" : [ "crm.lists.read", "crm.lists.write" ]
+          "oauth2" : [ "crm.lists.write", "crm.lists.read" ]
         } ]
       }
     },
@@ -76,6 +85,7 @@
         "summary" : "Search Lists",
         "description" : "Search lists by list name or page through all lists by providing an empty `query` value.",
         "operationId" : "post-/crm/v3/lists/search",
+        "parameters" : [ ],
         "requestBody" : {
           "description" : "The IDs of the records to add and/or remove from the list.",
           "content" : {
@@ -162,9 +172,9 @@
           }
         },
         "security" : [ {
-          "private_apps" : [ "crm.lists.read", "crm.lists.write" ]
+          "private_apps" : [ "crm.lists.write", "crm.lists.read" ]
         }, {
-          "oauth2" : [ "crm.lists.read", "crm.lists.write" ]
+          "oauth2" : [ "crm.lists.write", "crm.lists.read" ]
         } ]
       }
     },
@@ -207,9 +217,9 @@
           }
         },
         "security" : [ {
-          "private_apps" : [ "crm.lists.read", "crm.lists.write" ]
+          "private_apps" : [ "crm.lists.write", "crm.lists.read" ]
         }, {
-          "oauth2" : [ "crm.lists.read", "crm.lists.write" ]
+          "oauth2" : [ "crm.lists.write", "crm.lists.read" ]
         } ]
       }
     },
@@ -324,9 +334,9 @@
           }
         },
         "security" : [ {
-          "private_apps" : [ "crm.lists.read", "crm.lists.write" ]
+          "private_apps" : [ "crm.lists.write", "crm.lists.read" ]
         }, {
-          "oauth2" : [ "crm.lists.read", "crm.lists.write" ]
+          "oauth2" : [ "crm.lists.write", "crm.lists.read" ]
         } ]
       }
     },
@@ -383,9 +393,9 @@
           }
         },
         "security" : [ {
-          "private_apps" : [ "crm.lists.read", "crm.lists.write" ]
+          "private_apps" : [ "crm.lists.write", "crm.lists.read" ]
         }, {
-          "oauth2" : [ "crm.lists.read", "crm.lists.write" ]
+          "oauth2" : [ "crm.lists.write", "crm.lists.read" ]
         } ]
       }
     }
@@ -680,6 +690,21 @@
         },
         "description" : "The results and paging cursor for a membership fetch request."
       },
+      "NextPage" : {
+        "required" : [ "after" ],
+        "type" : "object",
+        "properties" : {
+          "link" : {
+            "type" : "string",
+            "description" : "A direct link to the request for the next page of records."
+          },
+          "after" : {
+            "type" : "string",
+            "description" : "The offset for the next page of records."
+          }
+        },
+        "description" : "The cursor for the next page of records."
+      },
       "PublicObjectListSearchResultIF" : {
         "required" : [ "additionalProperties", "listId", "listVersion", "name", "objectTypeId", "processingStatus", "processingType" ],
         "type" : "object",
@@ -709,15 +734,15 @@
             "description" : "The **ILS ID** of the list.",
             "format" : "int32"
           },
-          "createdAt" : {
-            "type" : "string",
-            "description" : "The time when the list was created.",
-            "format" : "date-time"
-          },
           "processingStatus" : {
             "type" : "string",
             "description" : "The processing status of the list.",
             "example" : "{\"objectTypeId\":\"0-1\",\"processingType\":\"SNAPSHOT\",\"updatedById\":1,\"filtersUpdatedAt\":\"2023-09-28T22:03:17.998Z\",\"listId\":123,\"createdAt\":\"2023-09-28T22:03:17.998Z\",\"processingStatus\":\"COMPLETED\",\"listVersion\":1,\"name\":\"Test list\",\"additionalProperties\":{\"hs_list_size\":59,\"hs_last_record_added_at\":1695938616824,\"hs_list_reference_count\":0,\"hs_list_size_week_delta\":-1}}"
+          },
+          "createdAt" : {
+            "type" : "string",
+            "description" : "The time when the list was created.",
+            "format" : "date-time"
           },
           "deletedAt" : {
             "type" : "string",
@@ -770,21 +795,6 @@
             "hs_list_size_week_delta" : -1
           }
         }
-      },
-      "NextPage" : {
-        "required" : [ "after" ],
-        "type" : "object",
-        "properties" : {
-          "link" : {
-            "type" : "string",
-            "description" : "A direct link to the request for the next page of records."
-          },
-          "after" : {
-            "type" : "string",
-            "description" : "The offset for the next page of records."
-          }
-        },
-        "description" : "The cursor for the next page of records."
       }
     },
     "responses" : {
