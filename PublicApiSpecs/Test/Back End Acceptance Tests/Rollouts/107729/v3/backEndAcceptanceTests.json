@@ -10,7 +10,7 @@
       "service" : "FREE",
       "cms" : "FREE"
     },
-    "x-hubspot-documentation-banner" : "NONE"
+    "x-hubspot-documentation-banner" : "BETA"
   },
   "servers" : [ {
     "url" : "https://api.hubapiqa.com"
@@ -18,8 +18,11 @@
   "tags" : [ {
     "name" : "Basic"
   }, {
-    "name" : "Batch",
-    "description" : "Batch tag"
+    "name" : "Read",
+    "description" : "Read tag"
+  }, {
+    "name" : "List",
+    "description" : "List tag"
   } ],
   "paths" : {
     "/crm/v3/objects/{objectType}/{objectId}" : {
