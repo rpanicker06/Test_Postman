@@ -1,9 +1,18 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "Webhooks API",
+    "title" : "Webhooks",
     "description" : "Provides a way for apps to subscribe to certain change events in HubSpot. Once configured, apps will receive event payloads containing details about the changes at a specified target URL. There can only be one target URL for receiving event notifications per app.",
-    "version" : "v3"
+    "version" : "v3",
+    "x-hubspot-product-tier-requirements" : {
+      "marketing" : "FREE",
+      "sales" : "FREE",
+      "service" : "FREE",
+      "cms" : "FREE"
+    },
+    "x-hubspot-documentation-banner" : "NONE",
+    "x-hubspot-api-use-case" : "You're building a custom integration that syncs contact data with HubSpot and you need to programmatically determine when certain fields are updated in your HubSpot account.",
+    "x-hubspot-introduction" : "The Webhooks API allows you to subscribe to events happening in a HubSpot account with your integration installed. Rather than making an API call when an event happens in a connected account, HubSpot can send an HTTP request to an endpoint you configure."
   },
   "servers" : [ {
     "url" : "https://api.hubapiqa.com"
@@ -21,6 +30,7 @@
         "parameters" : [ {
           "name" : "appId",
           "in" : "path",
+          "description" : "",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -54,6 +64,7 @@
         "parameters" : [ {
           "name" : "appId",
           "in" : "path",
+          "description" : "",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -97,6 +108,7 @@
         "parameters" : [ {
           "name" : "appId",
           "in" : "path",
+          "description" : "",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -126,6 +138,7 @@
         "parameters" : [ {
           "name" : "subscriptionId",
           "in" : "path",
+          "description" : "",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -136,6 +149,7 @@
         }, {
           "name" : "appId",
           "in" : "path",
+          "description" : "",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -169,6 +183,7 @@
         "parameters" : [ {
           "name" : "subscriptionId",
           "in" : "path",
+          "description" : "",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -179,6 +194,7 @@
         }, {
           "name" : "appId",
           "in" : "path",
+          "description" : "",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -206,6 +222,7 @@
         "parameters" : [ {
           "name" : "subscriptionId",
           "in" : "path",
+          "description" : "",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -216,6 +233,7 @@
         }, {
           "name" : "appId",
           "in" : "path",
+          "description" : "",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -261,6 +279,7 @@
         "parameters" : [ {
           "name" : "appId",
           "in" : "path",
+          "description" : "",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -294,6 +313,7 @@
         "parameters" : [ {
           "name" : "appId",
           "in" : "path",
+          "description" : "",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -339,6 +359,7 @@
         "parameters" : [ {
           "name" : "appId",
           "in" : "path",
+          "description" : "",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -394,15 +415,15 @@
         "required" : [ "maxConcurrentRequests", "period" ],
         "type" : "object",
         "properties" : {
-          "maxConcurrentRequests" : {
-            "type" : "integer",
-            "description" : "The maximum number of HTTP requests HubSpot will attempt to make to your app in a given time frame determined by `period`.",
-            "format" : "int32"
-          },
           "period" : {
             "type" : "string",
             "description" : "Time scale for this setting. Can be either `SECONDLY` (per second) or `ROLLING_MINUTE` (per minute).",
             "enum" : [ "SECONDLY", "ROLLING_MINUTE" ]
+          },
+          "maxConcurrentRequests" : {
+            "type" : "integer",
+            "description" : "The maximum number of HTTP requests HubSpot will attempt to make to your app in a given time frame determined by `period`.",
+            "format" : "int32"
           }
         },
         "description" : "Configuration details for webhook throttling."
@@ -411,27 +432,9 @@
         "required" : [ "category", "context", "errors", "links", "message", "status" ],
         "type" : "object",
         "properties" : {
-          "status" : {
-            "type" : "string"
-          },
-          "id" : {
-            "type" : "string"
-          },
-          "category" : {
-            "type" : "string"
-          },
           "subCategory" : {
             "type" : "object",
             "properties" : { }
-          },
-          "message" : {
-            "type" : "string"
-          },
-          "errors" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/ErrorDetail"
-            }
           },
           "context" : {
             "type" : "object",
@@ -447,6 +450,24 @@
             "additionalProperties" : {
               "type" : "string"
             }
+          },
+          "id" : {
+            "type" : "string"
+          },
+          "category" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "errors" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ErrorDetail"
+            }
+          },
+          "status" : {
+            "type" : "string"
           }
         }
       },
@@ -454,15 +475,9 @@
         "required" : [ "completedAt", "results", "startedAt", "status" ],
         "type" : "object",
         "properties" : {
-          "status" : {
+          "completedAt" : {
             "type" : "string",
-            "enum" : [ "PENDING", "PROCESSING", "CANCELED", "COMPLETE" ]
-          },
-          "results" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/SubscriptionResponse"
-            }
+            "format" : "date-time"
           },
           "requestedAt" : {
             "type" : "string",
@@ -472,15 +487,21 @@
             "type" : "string",
             "format" : "date-time"
           },
-          "completedAt" : {
-            "type" : "string",
-            "format" : "date-time"
-          },
           "links" : {
             "type" : "object",
             "additionalProperties" : {
               "type" : "string"
             }
+          },
+          "results" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/SubscriptionResponse"
+            }
+          },
+          "status" : {
+            "type" : "string",
+            "enum" : [ "PENDING", "PROCESSING", "CANCELED", "COMPLETE" ]
           }
         }
       },
@@ -502,12 +523,12 @@
         "required" : [ "targetUrl", "throttling" ],
         "type" : "object",
         "properties" : {
+          "throttling" : {
+            "$ref" : "#/components/schemas/ThrottlingSettings"
+          },
           "targetUrl" : {
             "type" : "string",
             "description" : "A publicly available URL for Hubspot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads."
-          },
-          "throttling" : {
-            "$ref" : "#/components/schemas/ThrottlingSettings"
           }
         },
         "description" : "New or updated webhook settings for an app.",
@@ -523,31 +544,9 @@
         "required" : [ "category", "correlationId", "message" ],
         "type" : "object",
         "properties" : {
-          "message" : {
-            "type" : "string",
-            "description" : "A human readable message describing the error along with remediation steps where appropriate",
-            "example" : "An error occurred"
-          },
-          "correlationId" : {
-            "type" : "string",
-            "description" : "A unique identifier for the request. Include this value with any error reports or support tickets",
-            "format" : "uuid",
-            "example" : "aeb5f871-7f07-4993-9211-075dc63e7cbf"
-          },
-          "category" : {
-            "type" : "string",
-            "description" : "The error category"
-          },
           "subCategory" : {
             "type" : "string",
             "description" : "A specific category that contains more specific detail about the error"
-          },
-          "errors" : {
-            "type" : "array",
-            "description" : "further information about the error",
-            "items" : {
-              "$ref" : "#/components/schemas/ErrorDetail"
-            }
           },
           "context" : {
             "type" : "object",
@@ -563,12 +562,34 @@
               "missingScopes" : [ "scope1", "scope2" ]
             }
           },
+          "correlationId" : {
+            "type" : "string",
+            "description" : "A unique identifier for the request. Include this value with any error reports or support tickets",
+            "format" : "uuid",
+            "example" : "aeb5f871-7f07-4993-9211-075dc63e7cbf"
+          },
           "links" : {
             "type" : "object",
             "additionalProperties" : {
               "type" : "string"
             },
             "description" : "A map of link names to associated URIs containing documentation about the error or recommended remediation steps"
+          },
+          "message" : {
+            "type" : "string",
+            "description" : "A human readable message describing the error along with remediation steps where appropriate",
+            "example" : "An error occurred"
+          },
+          "category" : {
+            "type" : "string",
+            "description" : "The error category"
+          },
+          "errors" : {
+            "type" : "array",
+            "description" : "further information about the error",
+            "items" : {
+              "$ref" : "#/components/schemas/ErrorDetail"
+            }
           }
         },
         "example" : {
@@ -597,25 +618,13 @@
         "required" : [ "completedAt", "results", "startedAt", "status" ],
         "type" : "object",
         "properties" : {
-          "status" : {
+          "completedAt" : {
             "type" : "string",
-            "enum" : [ "PENDING", "PROCESSING", "CANCELED", "COMPLETE" ]
-          },
-          "results" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/SubscriptionResponse"
-            }
+            "format" : "date-time"
           },
           "numErrors" : {
             "type" : "integer",
             "format" : "int32"
-          },
-          "errors" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/StandardError"
-            }
           },
           "requestedAt" : {
             "type" : "string",
@@ -625,15 +634,27 @@
             "type" : "string",
             "format" : "date-time"
           },
-          "completedAt" : {
-            "type" : "string",
-            "format" : "date-time"
-          },
           "links" : {
             "type" : "object",
             "additionalProperties" : {
               "type" : "string"
             }
+          },
+          "results" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/SubscriptionResponse"
+            }
+          },
+          "errors" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/StandardError"
+            }
+          },
+          "status" : {
+            "type" : "string",
+            "enum" : [ "PENDING", "PROCESSING", "CANCELED", "COMPLETE" ]
           }
         }
       },
@@ -641,21 +662,17 @@
         "required" : [ "message" ],
         "type" : "object",
         "properties" : {
-          "message" : {
+          "subCategory" : {
             "type" : "string",
-            "description" : "A human readable message describing the error along with remediation steps where appropriate"
-          },
-          "in" : {
-            "type" : "string",
-            "description" : "The name of the field or parameter in which the error was found."
+            "description" : "A specific category that contains more specific detail about the error"
           },
           "code" : {
             "type" : "string",
             "description" : "The status code associated with the error detail"
           },
-          "subCategory" : {
+          "in" : {
             "type" : "string",
-            "description" : "A specific category that contains more specific detail about the error"
+            "description" : "The name of the field or parameter in which the error was found."
           },
           "context" : {
             "type" : "object",
@@ -669,6 +686,10 @@
             "example" : {
               "missingScopes" : [ "scope1", "scope2" ]
             }
+          },
+          "message" : {
+            "type" : "string",
+            "description" : "A human readable message describing the error along with remediation steps where appropriate"
           }
         }
       },
@@ -676,17 +697,17 @@
         "required" : [ "createdAt", "targetUrl", "throttling" ],
         "type" : "object",
         "properties" : {
-          "targetUrl" : {
-            "type" : "string",
-            "description" : "A publicly available URL for Hubspot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads."
-          },
-          "throttling" : {
-            "$ref" : "#/components/schemas/ThrottlingSettings"
-          },
           "createdAt" : {
             "type" : "string",
             "description" : "When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).",
             "format" : "date-time"
+          },
+          "throttling" : {
+            "$ref" : "#/components/schemas/ThrottlingSettings"
+          },
+          "targetUrl" : {
+            "type" : "string",
+            "description" : "A publicly available URL for Hubspot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads."
           },
           "updatedAt" : {
             "type" : "string",
@@ -721,10 +742,10 @@
         "required" : [ "active", "createdAt", "eventType", "id" ],
         "type" : "object",
         "properties" : {
-          "eventType" : {
+          "createdAt" : {
             "type" : "string",
-            "description" : "Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.",
-            "enum" : [ "contact.propertyChange", "company.propertyChange", "deal.propertyChange", "ticket.propertyChange", "product.propertyChange", "line_item.propertyChange", "contact.creation", "contact.deletion", "contact.privacyDeletion", "company.creation", "company.deletion", "deal.creation", "deal.deletion", "ticket.creation", "ticket.deletion", "product.creation", "product.deletion", "line_item.creation", "line_item.deletion", "conversation.creation", "conversation.deletion", "conversation.newMessage", "conversation.privacyDeletion", "conversation.propertyChange", "contact.merge", "company.merge", "deal.merge", "ticket.merge", "product.merge", "line_item.merge", "contact.restore", "company.restore", "deal.restore", "ticket.restore", "product.restore", "line_item.restore", "contact.associationChange", "company.associationChange", "deal.associationChange", "ticket.associationChange", "line_item.associationChange" ]
+            "description" : "When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).",
+            "format" : "date-time"
           },
           "propertyName" : {
             "type" : "string",
@@ -734,14 +755,14 @@
             "type" : "boolean",
             "description" : "Determines if the subscription is active or paused."
           },
+          "eventType" : {
+            "type" : "string",
+            "description" : "Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.",
+            "enum" : [ "contact.propertyChange", "company.propertyChange", "deal.propertyChange", "ticket.propertyChange", "product.propertyChange", "line_item.propertyChange", "contact.creation", "contact.deletion", "contact.privacyDeletion", "company.creation", "company.deletion", "deal.creation", "deal.deletion", "ticket.creation", "ticket.deletion", "product.creation", "product.deletion", "line_item.creation", "line_item.deletion", "conversation.creation", "conversation.deletion", "conversation.newMessage", "conversation.privacyDeletion", "conversation.propertyChange", "contact.merge", "company.merge", "deal.merge", "ticket.merge", "product.merge", "line_item.merge", "contact.restore", "company.restore", "deal.restore", "ticket.restore", "product.restore", "line_item.restore", "contact.associationChange", "company.associationChange", "deal.associationChange", "ticket.associationChange", "line_item.associationChange" ]
+          },
           "id" : {
             "type" : "string",
             "description" : "The unique ID of the subscription."
-          },
-          "createdAt" : {
-            "type" : "string",
-            "description" : "When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).",
-            "format" : "date-time"
           },
           "updatedAt" : {
             "type" : "string",
@@ -755,12 +776,12 @@
         "required" : [ "active", "id" ],
         "type" : "object",
         "properties" : {
+          "active" : {
+            "type" : "boolean"
+          },
           "id" : {
             "type" : "integer",
             "format" : "int32"
-          },
-          "active" : {
-            "type" : "boolean"
           }
         }
       },
@@ -768,11 +789,6 @@
         "required" : [ "eventType" ],
         "type" : "object",
         "properties" : {
-          "eventType" : {
-            "type" : "string",
-            "description" : "Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.",
-            "enum" : [ "contact.propertyChange", "company.propertyChange", "deal.propertyChange", "ticket.propertyChange", "product.propertyChange", "line_item.propertyChange", "contact.creation", "contact.deletion", "contact.privacyDeletion", "company.creation", "company.deletion", "deal.creation", "deal.deletion", "ticket.creation", "ticket.deletion", "product.creation", "product.deletion", "line_item.creation", "line_item.deletion", "conversation.creation", "conversation.deletion", "conversation.newMessage", "conversation.privacyDeletion", "conversation.propertyChange", "contact.merge", "company.merge", "deal.merge", "ticket.merge", "product.merge", "line_item.merge", "contact.restore", "company.restore", "deal.restore", "ticket.restore", "product.restore", "line_item.restore", "contact.associationChange", "company.associationChange", "deal.associationChange", "ticket.associationChange", "line_item.associationChange" ]
-          },
           "propertyName" : {
             "type" : "string",
             "description" : "The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`."
@@ -780,6 +796,11 @@
           "active" : {
             "type" : "boolean",
             "description" : "Determines if the subscription is active or paused. Defaults to false."
+          },
+          "eventType" : {
+            "type" : "string",
+            "description" : "Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.",
+            "enum" : [ "contact.propertyChange", "company.propertyChange", "deal.propertyChange", "ticket.propertyChange", "product.propertyChange", "line_item.propertyChange", "contact.creation", "contact.deletion", "contact.privacyDeletion", "company.creation", "company.deletion", "deal.creation", "deal.deletion", "ticket.creation", "ticket.deletion", "product.creation", "product.deletion", "line_item.creation", "line_item.deletion", "conversation.creation", "conversation.deletion", "conversation.newMessage", "conversation.privacyDeletion", "conversation.propertyChange", "contact.merge", "company.merge", "deal.merge", "ticket.merge", "product.merge", "line_item.merge", "contact.restore", "company.restore", "deal.restore", "ticket.restore", "product.restore", "line_item.restore", "contact.associationChange", "company.associationChange", "deal.associationChange", "ticket.associationChange", "line_item.associationChange" ]
           }
         },
         "description" : "New webhook settings for an app.",
@@ -809,5 +830,13 @@
         "in" : "query"
       }
     }
-  }
+  },
+  "x-hubspot-available-client-libraries" : [ "PHP", "Node", "Ruby", "Python" ],
+  "x-hubspot-product-tier-requirements" : {
+    "marketing" : "FREE",
+    "sales" : "FREE",
+    "service" : "FREE",
+    "cms" : "FREE"
+  },
+  "x-hubspot-documentation-banner" : "NONE"
 }
