@@ -1,9 +1,18 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "Landing Page and Site Page endpoints",
+    "title" : "Pages",
     "description" : "Use these endpoints for interacting with Landing Pages and Site Pages",
-    "version" : "v3"
+    "version" : "v3",
+    "x-hubspot-product-tier-requirements" : {
+      "marketing" : "FREE",
+      "sales" : "FREE",
+      "service" : "FREE",
+      "cms" : "FREE"
+    },
+    "x-hubspot-documentation-banner" : "NONE",
+    "x-hubspot-api-use-case" : "After noticing that a website page was updated incorrectly, use the API to view revisions of that page, then restore the page to a previous version.",
+    "x-hubspot-introduction" : "Use the pages API to create and manage website pages."
   },
   "servers" : [ {
     "url" : "https://api.hubapiqa.com"
@@ -100,6 +109,7 @@
         }, {
           "name" : "before",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -245,6 +255,7 @@
         }, {
           "name" : "before",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -347,78 +358,6 @@
           "oauth2_legacy" : [ "content" ]
         }, {
           "oauth2_legacy" : [ "cms.pages.site_pages.read_write" ]
-        } ]
-      }
-    },
-    "/cms/v3/pages/site-pages/schedule" : {
-      "post" : {
-        "tags" : [ "Site Pages" ],
-        "summary" : "Schedule a Site Page to be Published",
-        "description" : "Schedule a Site Page to be Published",
-        "operationId" : "post-/cms/v3/pages/site-pages/schedule",
-        "parameters" : [ ],
-        "requestBody" : {
-          "description" : "The JSON representation of the ContentScheduleRequestVNext object.",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/ContentScheduleRequestVNext"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "204" : {
-            "description" : "No content",
-            "content" : { }
-          },
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          }
-        },
-        "security" : [ {
-          "private_apps_legacy" : [ "content" ]
-        }, {
-          "private_apps_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
-        }, {
-          "oauth2_legacy" : [ "content" ]
-        } ]
-      }
-    },
-    "/cms/v3/pages/site-pages/multi-language/attach-to-lang-group" : {
-      "post" : {
-        "tags" : [ "Site Pages" ],
-        "summary" : "Attach a site page to a multi-language group",
-        "description" : "Attach a site page to a multi-language group.",
-        "operationId" : "post-/cms/v3/pages/site-pages/multi-language/attach-to-lang-group",
-        "parameters" : [ ],
-        "requestBody" : {
-          "description" : "The JSON representation of the AttachToLangPrimaryRequest object.",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/AttachToLangPrimaryRequestVNext"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          },
-          "200" : {
-            "description" : "successful operation",
-            "content" : { }
-          }
-        },
-        "security" : [ {
-          "private_apps_legacy" : [ "content" ]
-        }, {
-          "oauth2_legacy" : [ "content" ]
         } ]
       }
     },
@@ -541,6 +480,7 @@
         }, {
           "name" : "property",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -621,6 +561,78 @@
           "oauth2_legacy" : [ "content" ]
         }, {
           "private_apps_legacy" : [ "cms.pages.landing_pages.read_write" ]
+        } ]
+      }
+    },
+    "/cms/v3/pages/site-pages/multi-language/attach-to-lang-group" : {
+      "post" : {
+        "tags" : [ "Site Pages" ],
+        "summary" : "Attach a site page to a multi-language group",
+        "description" : "Attach a site page to a multi-language group.",
+        "operationId" : "post-/cms/v3/pages/site-pages/multi-language/attach-to-lang-group",
+        "parameters" : [ ],
+        "requestBody" : {
+          "description" : "The JSON representation of the AttachToLangPrimaryRequest object.",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/AttachToLangPrimaryRequestVNext"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          },
+          "200" : {
+            "description" : "successful operation",
+            "content" : { }
+          }
+        },
+        "security" : [ {
+          "private_apps_legacy" : [ "content" ]
+        }, {
+          "oauth2_legacy" : [ "content" ]
+        } ]
+      }
+    },
+    "/cms/v3/pages/site-pages/schedule" : {
+      "post" : {
+        "tags" : [ "Site Pages" ],
+        "summary" : "Schedule a Site Page to be Published",
+        "description" : "Schedule a Site Page to be Published",
+        "operationId" : "post-/cms/v3/pages/site-pages/schedule",
+        "parameters" : [ ],
+        "requestBody" : {
+          "description" : "The JSON representation of the ContentScheduleRequestVNext object.",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ContentScheduleRequestVNext"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "No content",
+            "content" : { }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "private_apps_legacy" : [ "content" ]
+        }, {
+          "private_apps_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "content" ]
         } ]
       }
     },
@@ -745,6 +757,7 @@
         }, {
           "name" : "before",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -1015,6 +1028,7 @@
         }, {
           "name" : "property",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -1102,6 +1116,48 @@
         } ]
       }
     },
+    "/cms/v3/pages/site-pages/ab-test/end" : {
+      "post" : {
+        "tags" : [ "Site Pages" ],
+        "summary" : "End an active A/B test",
+        "description" : "End an active A/B test and designate a winner.",
+        "operationId" : "post-/cms/v3/pages/site-pages/ab-test/end",
+        "parameters" : [ ],
+        "requestBody" : {
+          "description" : "The JSON representation of the AbTestEndRequest object.",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/AbTestEndRequestVNext"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "No content",
+            "content" : { }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "private_apps_legacy" : [ "content" ]
+        }, {
+          "private_apps_legacy" : [ "cms.pages.site_pages.read_write" ]
+        }, {
+          "private_apps_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "content" ]
+        }, {
+          "oauth2_legacy" : [ "cms.pages.site_pages.read_write" ]
+        } ]
+      }
+    },
     "/cms/v3/pages/site-pages/{objectId}/revisions/{revisionId}/restore-to-draft" : {
       "post" : {
         "tags" : [ "Site Pages" ],
@@ -1140,48 +1196,6 @@
                 }
               }
             }
-          },
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          }
-        },
-        "security" : [ {
-          "private_apps_legacy" : [ "content" ]
-        }, {
-          "private_apps_legacy" : [ "cms.pages.site_pages.read_write" ]
-        }, {
-          "private_apps_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
-        }, {
-          "oauth2_legacy" : [ "content" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.site_pages.read_write" ]
-        } ]
-      }
-    },
-    "/cms/v3/pages/site-pages/ab-test/end" : {
-      "post" : {
-        "tags" : [ "Site Pages" ],
-        "summary" : "End an active A/B test",
-        "description" : "End an active A/B test and designate a winner.",
-        "operationId" : "post-/cms/v3/pages/site-pages/ab-test/end",
-        "parameters" : [ ],
-        "requestBody" : {
-          "description" : "The JSON representation of the AbTestEndRequest object.",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/AbTestEndRequestVNext"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "204" : {
-            "description" : "No content",
-            "content" : { }
           },
           "default" : {
             "$ref" : "#/components/responses/Error"
@@ -1724,6 +1738,7 @@
         }, {
           "name" : "property",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -1796,25 +1811,25 @@
           }
         },
         "security" : [ {
+          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write", "cms.pages.landing_pages.read_write_publish" ]
+        }, {
           "private_apps_legacy" : [ "content" ]
         }, {
-          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write", "content" ]
+          "oauth2_legacy" : [ "content", "cms.pages.landing_pages.read_write" ]
         }, {
           "oauth2_legacy" : [ "cms.pages.landing_pages.read_write_publish" ]
         }, {
-          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write_publish", "cms.pages.landing_pages.read_write" ]
+          "private_apps_legacy" : [ "content", "cms.pages.landing_pages.read_write_publish" ]
         }, {
-          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write_publish", "content" ]
+          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write", "cms.pages.landing_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "content", "cms.pages.landing_pages.read_write_publish" ]
         }, {
           "private_apps_legacy" : [ "cms.pages.landing_pages.read_write_publish" ]
         }, {
-          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write_publish", "content" ]
-        }, {
           "oauth2_legacy" : [ "content" ]
         }, {
-          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write_publish", "cms.pages.landing_pages.read_write" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write", "content" ]
+          "private_apps_legacy" : [ "content", "cms.pages.landing_pages.read_write" ]
         } ]
       },
       "patch" : {
@@ -2000,6 +2015,40 @@
         } ]
       }
     },
+    "/cms/v3/pages/landing-pages/multi-language/attach-to-lang-group" : {
+      "post" : {
+        "tags" : [ "Landing Pages" ],
+        "summary" : "Attach a landing page to a multi-language group",
+        "description" : "Attach a landing page to a multi-language group.",
+        "operationId" : "post-/cms/v3/pages/landing-pages/multi-language/attach-to-lang-group",
+        "parameters" : [ ],
+        "requestBody" : {
+          "description" : "The JSON representation of the AttachToLangPrimaryRequest object.",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/AttachToLangPrimaryRequestVNext"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          },
+          "200" : {
+            "description" : "successful operation",
+            "content" : { }
+          }
+        },
+        "security" : [ {
+          "private_apps_legacy" : [ "content" ]
+        }, {
+          "oauth2_legacy" : [ "content" ]
+        } ]
+      }
+    },
     "/cms/v3/pages/site-pages" : {
       "get" : {
         "tags" : [ "Site Pages" ],
@@ -2119,6 +2168,7 @@
         }, {
           "name" : "property",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -2206,80 +2256,6 @@
         } ]
       }
     },
-    "/cms/v3/pages/landing-pages/multi-language/attach-to-lang-group" : {
-      "post" : {
-        "tags" : [ "Landing Pages" ],
-        "summary" : "Attach a landing page to a multi-language group",
-        "description" : "Attach a landing page to a multi-language group.",
-        "operationId" : "post-/cms/v3/pages/landing-pages/multi-language/attach-to-lang-group",
-        "parameters" : [ ],
-        "requestBody" : {
-          "description" : "The JSON representation of the AttachToLangPrimaryRequest object.",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/AttachToLangPrimaryRequestVNext"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          },
-          "200" : {
-            "description" : "successful operation",
-            "content" : { }
-          }
-        },
-        "security" : [ {
-          "private_apps_legacy" : [ "content" ]
-        }, {
-          "oauth2_legacy" : [ "content" ]
-        } ]
-      }
-    },
-    "/cms/v3/pages/site-pages/multi-language/create-language-variation" : {
-      "post" : {
-        "tags" : [ "Site Pages" ],
-        "summary" : "Create a new language variation",
-        "description" : "Create a new language variation from an existing site page",
-        "operationId" : "post-/cms/v3/pages/site-pages/multi-language/create-language-variation",
-        "parameters" : [ ],
-        "requestBody" : {
-          "description" : "The JSON representation of the ContentLanguageCloneRequest object.",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/ContentLanguageCloneRequestVNext"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "200" : {
-            "description" : "successful operation",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/Page"
-                }
-              }
-            }
-          },
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          }
-        },
-        "security" : [ {
-          "private_apps_legacy" : [ "content" ]
-        }, {
-          "oauth2_legacy" : [ "content" ]
-        } ]
-      }
-    },
     "/cms/v3/pages/landing-pages/{objectId}/revisions/{revisionId}" : {
       "get" : {
         "tags" : [ "Landing Pages" ],
@@ -2334,6 +2310,46 @@
           "oauth2_legacy" : [ "content" ]
         }, {
           "private_apps_legacy" : [ "cms.pages.landing_pages.read_write" ]
+        } ]
+      }
+    },
+    "/cms/v3/pages/site-pages/multi-language/create-language-variation" : {
+      "post" : {
+        "tags" : [ "Site Pages" ],
+        "summary" : "Create a new language variation",
+        "description" : "Create a new language variation from an existing site page",
+        "operationId" : "post-/cms/v3/pages/site-pages/multi-language/create-language-variation",
+        "parameters" : [ ],
+        "requestBody" : {
+          "description" : "The JSON representation of the ContentLanguageCloneRequest object.",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ContentLanguageCloneRequestVNext"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Page"
+                }
+              }
+            }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "private_apps_legacy" : [ "content" ]
+        }, {
+          "oauth2_legacy" : [ "content" ]
         } ]
       }
     },
@@ -2450,6 +2466,40 @@
         } ]
       }
     },
+    "/cms/v3/pages/landing-pages/multi-language/update-languages" : {
+      "post" : {
+        "tags" : [ "Landing Pages" ],
+        "summary" : "Update languages of multi-language group",
+        "description" : "Explicitly set new languages for each landing page in a multi-language group.",
+        "operationId" : "post-/cms/v3/pages/landing-pages/multi-language/update-languages",
+        "parameters" : [ ],
+        "requestBody" : {
+          "description" : "The JSON representation of the UpdateLanguagesRequest object.",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UpdateLanguagesRequestVNext"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          },
+          "200" : {
+            "description" : "successful operation",
+            "content" : { }
+          }
+        },
+        "security" : [ {
+          "private_apps_legacy" : [ "content" ]
+        }, {
+          "oauth2_legacy" : [ "content" ]
+        } ]
+      }
+    },
     "/cms/v3/pages/landing-pages/schedule" : {
       "post" : {
         "tags" : [ "Landing Pages" ],
@@ -2536,40 +2586,6 @@
         } ]
       }
     },
-    "/cms/v3/pages/landing-pages/multi-language/update-languages" : {
-      "post" : {
-        "tags" : [ "Landing Pages" ],
-        "summary" : "Update languages of multi-language group",
-        "description" : "Explicitly set new languages for each landing page in a multi-language group.",
-        "operationId" : "post-/cms/v3/pages/landing-pages/multi-language/update-languages",
-        "parameters" : [ ],
-        "requestBody" : {
-          "description" : "The JSON representation of the UpdateLanguagesRequest object.",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/UpdateLanguagesRequestVNext"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          },
-          "200" : {
-            "description" : "successful operation",
-            "content" : { }
-          }
-        },
-        "security" : [ {
-          "private_apps_legacy" : [ "content" ]
-        }, {
-          "oauth2_legacy" : [ "content" ]
-        } ]
-      }
-    },
     "/cms/v3/pages/site-pages/multi-language/update-languages" : {
       "post" : {
         "tags" : [ "Site Pages" ],
@@ -2646,6 +2662,106 @@
         } ]
       }
     },
+    "/cms/v3/pages/landing-pages/folders/batch/archive" : {
+      "post" : {
+        "tags" : [ "Landing Pages" ],
+        "summary" : "Delete a batch of Folders",
+        "description" : "Delete the Folder objects identified in the request body.",
+        "operationId" : "post-/cms/v3/pages/landing-pages/folders/batch/archive",
+        "parameters" : [ ],
+        "requestBody" : {
+          "description" : "The JSON array of Folder ids.",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/BatchInputString"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "No content",
+            "content" : { }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write", "cms.pages.landing_pages.read_write_publish" ]
+        }, {
+          "private_apps_legacy" : [ "content" ]
+        }, {
+          "oauth2_legacy" : [ "content", "cms.pages.landing_pages.read_write" ]
+        }, {
+          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write_publish" ]
+        }, {
+          "private_apps_legacy" : [ "content", "cms.pages.landing_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write", "cms.pages.landing_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "content", "cms.pages.landing_pages.read_write_publish" ]
+        }, {
+          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "content" ]
+        }, {
+          "private_apps_legacy" : [ "content", "cms.pages.landing_pages.read_write" ]
+        } ]
+      }
+    },
+    "/cms/v3/pages/site-pages/batch/archive" : {
+      "post" : {
+        "tags" : [ "Site Pages" ],
+        "summary" : "Delete a batch of Site Pages",
+        "description" : "Delete the Site Page objects identified in the request body.\nNote: This is not the same as the dashboard `archive` function. To perform a dashboard `archive` send an normal update with the `archivedInDashboard` field set to true.",
+        "operationId" : "post-/cms/v3/pages/site-pages/batch/archive",
+        "parameters" : [ ],
+        "requestBody" : {
+          "description" : "The JSON array of Site Page ids.",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/BatchInputString"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "No content",
+            "content" : { }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "private_apps_legacy" : [ "content" ]
+        }, {
+          "oauth2_legacy" : [ "content", "cms.pages.site_pages.read_write" ]
+        }, {
+          "private_apps_legacy" : [ "cms.pages.site_pages.read_write", "cms.pages.site_pages.read_write_publish" ]
+        }, {
+          "private_apps_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "content", "cms.pages.site_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
+        }, {
+          "private_apps_legacy" : [ "content", "cms.pages.site_pages.read_write" ]
+        }, {
+          "oauth2_legacy" : [ "cms.pages.site_pages.read_write", "cms.pages.site_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "content" ]
+        }, {
+          "private_apps_legacy" : [ "content", "cms.pages.site_pages.read_write_publish" ]
+        } ]
+      }
+    },
     "/cms/v3/pages/site-pages/batch/create" : {
       "post" : {
         "tags" : [ "Site Pages" ],
@@ -2701,106 +2817,6 @@
           "oauth2_legacy" : [ "content" ]
         }, {
           "oauth2_legacy" : [ "cms.pages.site_pages.read_write" ]
-        } ]
-      }
-    },
-    "/cms/v3/pages/site-pages/batch/archive" : {
-      "post" : {
-        "tags" : [ "Site Pages" ],
-        "summary" : "Delete a batch of Site Pages",
-        "description" : "Delete the Site Page objects identified in the request body.\nNote: This is not the same as the dashboard `archive` function. To perform a dashboard `archive` send an normal update with the `archivedInDashboard` field set to true.",
-        "operationId" : "post-/cms/v3/pages/site-pages/batch/archive",
-        "parameters" : [ ],
-        "requestBody" : {
-          "description" : "The JSON array of Site Page ids.",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/BatchInputString"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "204" : {
-            "description" : "No content",
-            "content" : { }
-          },
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          }
-        },
-        "security" : [ {
-          "private_apps_legacy" : [ "content" ]
-        }, {
-          "private_apps_legacy" : [ "cms.pages.site_pages.read_write_publish", "content" ]
-        }, {
-          "private_apps_legacy" : [ "cms.pages.site_pages.read_write_publish", "cms.pages.site_pages.read_write" ]
-        }, {
-          "private_apps_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.site_pages.read_write", "content" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.site_pages.read_write_publish", "content" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.site_pages.read_write_publish", "cms.pages.site_pages.read_write" ]
-        }, {
-          "oauth2_legacy" : [ "content" ]
-        }, {
-          "private_apps_legacy" : [ "cms.pages.site_pages.read_write", "content" ]
-        } ]
-      }
-    },
-    "/cms/v3/pages/landing-pages/folders/batch/archive" : {
-      "post" : {
-        "tags" : [ "Landing Pages" ],
-        "summary" : "Delete a batch of Folders",
-        "description" : "Delete the Folder objects identified in the request body.",
-        "operationId" : "post-/cms/v3/pages/landing-pages/folders/batch/archive",
-        "parameters" : [ ],
-        "requestBody" : {
-          "description" : "The JSON array of Folder ids.",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/BatchInputString"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "204" : {
-            "description" : "No content",
-            "content" : { }
-          },
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          }
-        },
-        "security" : [ {
-          "private_apps_legacy" : [ "content" ]
-        }, {
-          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write", "content" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write_publish" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write_publish", "cms.pages.landing_pages.read_write" ]
-        }, {
-          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write_publish", "content" ]
-        }, {
-          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write_publish" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write_publish", "content" ]
-        }, {
-          "oauth2_legacy" : [ "content" ]
-        }, {
-          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write_publish", "cms.pages.landing_pages.read_write" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write", "content" ]
         } ]
       }
     },
@@ -3080,6 +3096,7 @@
         }, {
           "name" : "property",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -3152,25 +3169,25 @@
           }
         },
         "security" : [ {
+          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write", "cms.pages.landing_pages.read_write_publish" ]
+        }, {
           "private_apps_legacy" : [ "content" ]
         }, {
-          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write", "content" ]
+          "oauth2_legacy" : [ "content", "cms.pages.landing_pages.read_write" ]
         }, {
           "oauth2_legacy" : [ "cms.pages.landing_pages.read_write_publish" ]
         }, {
-          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write_publish", "cms.pages.landing_pages.read_write" ]
+          "private_apps_legacy" : [ "content", "cms.pages.landing_pages.read_write_publish" ]
         }, {
-          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write_publish", "content" ]
+          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write", "cms.pages.landing_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "content", "cms.pages.landing_pages.read_write_publish" ]
         }, {
           "private_apps_legacy" : [ "cms.pages.landing_pages.read_write_publish" ]
         }, {
-          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write_publish", "content" ]
-        }, {
           "oauth2_legacy" : [ "content" ]
         }, {
-          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write_publish", "cms.pages.landing_pages.read_write" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write", "content" ]
+          "private_apps_legacy" : [ "content", "cms.pages.landing_pages.read_write" ]
         } ]
       },
       "patch" : {
@@ -3345,67 +3362,25 @@
           }
         },
         "security" : [ {
+          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write", "cms.pages.landing_pages.read_write_publish" ]
+        }, {
           "private_apps_legacy" : [ "content" ]
         }, {
-          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write", "content" ]
+          "oauth2_legacy" : [ "content", "cms.pages.landing_pages.read_write" ]
         }, {
           "oauth2_legacy" : [ "cms.pages.landing_pages.read_write_publish" ]
         }, {
-          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write_publish", "cms.pages.landing_pages.read_write" ]
+          "private_apps_legacy" : [ "content", "cms.pages.landing_pages.read_write_publish" ]
         }, {
-          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write_publish", "content" ]
+          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write", "cms.pages.landing_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "content", "cms.pages.landing_pages.read_write_publish" ]
         }, {
           "private_apps_legacy" : [ "cms.pages.landing_pages.read_write_publish" ]
         }, {
-          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write_publish", "content" ]
-        }, {
           "oauth2_legacy" : [ "content" ]
         }, {
-          "private_apps_legacy" : [ "cms.pages.landing_pages.read_write_publish", "cms.pages.landing_pages.read_write" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.landing_pages.read_write", "content" ]
-        } ]
-      }
-    },
-    "/cms/v3/pages/site-pages/ab-test/rerun" : {
-      "post" : {
-        "tags" : [ "Site Pages" ],
-        "summary" : "Rerun a previous A/B test",
-        "description" : "Rerun a previous A/B test.",
-        "operationId" : "post-/cms/v3/pages/site-pages/ab-test/rerun",
-        "parameters" : [ ],
-        "requestBody" : {
-          "description" : "The JSON representation of the AbTestRerunRequest object.",
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/AbTestRerunRequestVNext"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "204" : {
-            "description" : "No content",
-            "content" : { }
-          },
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          }
-        },
-        "security" : [ {
-          "private_apps_legacy" : [ "content" ]
-        }, {
-          "private_apps_legacy" : [ "cms.pages.site_pages.read_write" ]
-        }, {
-          "private_apps_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
-        }, {
-          "oauth2_legacy" : [ "content" ]
-        }, {
-          "oauth2_legacy" : [ "cms.pages.site_pages.read_write" ]
+          "private_apps_legacy" : [ "content", "cms.pages.landing_pages.read_write" ]
         } ]
       }
     },
@@ -3464,6 +3439,48 @@
           "oauth2_legacy" : [ "content" ]
         }, {
           "private_apps_legacy" : [ "cms.pages.landing_pages.read_write" ]
+        } ]
+      }
+    },
+    "/cms/v3/pages/site-pages/ab-test/rerun" : {
+      "post" : {
+        "tags" : [ "Site Pages" ],
+        "summary" : "Rerun a previous A/B test",
+        "description" : "Rerun a previous A/B test.",
+        "operationId" : "post-/cms/v3/pages/site-pages/ab-test/rerun",
+        "parameters" : [ ],
+        "requestBody" : {
+          "description" : "The JSON representation of the AbTestRerunRequest object.",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/AbTestRerunRequestVNext"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "No content",
+            "content" : { }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "private_apps_legacy" : [ "content" ]
+        }, {
+          "private_apps_legacy" : [ "cms.pages.site_pages.read_write" ]
+        }, {
+          "private_apps_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
+        }, {
+          "oauth2_legacy" : [ "content" ]
+        }, {
+          "oauth2_legacy" : [ "cms.pages.site_pages.read_write" ]
         } ]
       }
     },
@@ -3537,6 +3554,7 @@
         }, {
           "name" : "property",
           "in" : "query",
+          "description" : "",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -3611,23 +3629,23 @@
         "security" : [ {
           "private_apps_legacy" : [ "content" ]
         }, {
-          "private_apps_legacy" : [ "cms.pages.site_pages.read_write_publish", "content" ]
+          "oauth2_legacy" : [ "content", "cms.pages.site_pages.read_write" ]
         }, {
-          "private_apps_legacy" : [ "cms.pages.site_pages.read_write_publish", "cms.pages.site_pages.read_write" ]
+          "private_apps_legacy" : [ "cms.pages.site_pages.read_write", "cms.pages.site_pages.read_write_publish" ]
         }, {
           "private_apps_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
         }, {
-          "oauth2_legacy" : [ "cms.pages.site_pages.read_write", "content" ]
+          "oauth2_legacy" : [ "content", "cms.pages.site_pages.read_write_publish" ]
         }, {
           "oauth2_legacy" : [ "cms.pages.site_pages.read_write_publish" ]
         }, {
-          "oauth2_legacy" : [ "cms.pages.site_pages.read_write_publish", "content" ]
+          "private_apps_legacy" : [ "content", "cms.pages.site_pages.read_write" ]
         }, {
-          "oauth2_legacy" : [ "cms.pages.site_pages.read_write_publish", "cms.pages.site_pages.read_write" ]
+          "oauth2_legacy" : [ "cms.pages.site_pages.read_write", "cms.pages.site_pages.read_write_publish" ]
         }, {
           "oauth2_legacy" : [ "content" ]
         }, {
-          "private_apps_legacy" : [ "cms.pages.site_pages.read_write", "content" ]
+          "private_apps_legacy" : [ "content", "cms.pages.site_pages.read_write_publish" ]
         } ]
       },
       "patch" : {
@@ -5087,11 +5105,11 @@
             "authorizationUrl" : "https://app.hubspot.com/oauth/authorize",
             "tokenUrl" : "https://api.hubapi.com/oauth/v1/token",
             "scopes" : {
-              "content" : "Read from and write to my Content",
               "cms.pages.landing_pages.read_write" : "Read and write access to Landing Pages",
+              "content" : "Read from and write to my Content",
               "cms.pages.landing_pages.read_write_publish" : "Read, write, and publish access to Landing Pages",
-              "cms.pages.site_pages.read_write_publish" : "Read, write, and publish access to Site Pages",
-              "cms.pages.site_pages.read_write" : "Read and write access to Site Pages"
+              "cms.pages.site_pages.read_write" : "Read and write access to Site Pages",
+              "cms.pages.site_pages.read_write_publish" : "Read, write, and publish access to Site Pages"
             }
           }
         }
