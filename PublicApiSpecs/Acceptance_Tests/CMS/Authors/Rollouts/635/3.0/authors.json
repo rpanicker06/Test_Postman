@@ -1,0 +1,8 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Acceptance test",
+    "description" : "Sample spec for Acceptance test",
+    "version" : "3.0"
+  }
+}
