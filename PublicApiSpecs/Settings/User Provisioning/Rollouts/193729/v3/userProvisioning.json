@@ -1,9 +1,18 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "Users",
+    "title" : "User Provisioning",
     "description" : "Add, manage, and remove users from your account",
-    "version" : "v3"
+    "version" : "v3",
+    "x-hubspot-product-tier-requirements" : {
+      "marketing" : "FREE",
+      "sales" : "FREE",
+      "service" : "FREE",
+      "cms" : "FREE"
+    },
+    "x-hubspot-documentation-banner" : "NONE",
+    "x-hubspot-api-use-case" : "You manage employee access data in a system outside of HubSpot, and you want to ensure that specific users are dynamically allocated to the right teams in your HubSpot account.",
+    "x-hubspot-introduction" : "Use the user provisioning API to create and manage users in your HubSpot account, along with their associated teams and roles."
   },
   "servers" : [ {
     "url" : "https://api.hubapiqa.com"
@@ -16,6 +25,64 @@
     "name" : "Users"
   } ],
   "paths" : {
+    "/settings/v3/users/teams" : {
+      "get" : {
+        "tags" : [ "Teams" ],
+        "summary" : "See details about this account's teams",
+        "description" : "View teams for this account",
+        "operationId" : "get-/settings/v3/users/teams",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResponsePublicTeamNoPaging"
+                }
+              }
+            }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "oauth2_legacy" : [ "settings.users.teams.read" ]
+        }, {
+          "private_apps_legacy" : [ "settings.users.teams.read" ]
+        } ]
+      }
+    },
+    "/settings/v3/users/roles" : {
+      "get" : {
+        "tags" : [ "Roles" ],
+        "summary" : "Retrieves the roles on an account",
+        "description" : "Retrieves the roles on an account",
+        "operationId" : "get-/settings/v3/users/roles",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CollectionResponsePublicPermissionSetNoPaging"
+                }
+              }
+            }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "private_apps_legacy" : [ "settings.users.read" ]
+        }, {
+          "oauth2_legacy" : [ "settings.users.read" ]
+        } ]
+      }
+    },
     "/settings/v3/users/" : {
       "get" : {
         "tags" : [ "Users" ],
@@ -100,35 +167,6 @@
           "private_apps_legacy" : [ "settings.users.write" ]
         }, {
           "oauth2_legacy" : [ "settings.users.write" ]
-        } ]
-      }
-    },
-    "/settings/v3/users/teams" : {
-      "get" : {
-        "tags" : [ "Teams" ],
-        "summary" : "See details about this account's teams",
-        "description" : "View teams for this account",
-        "operationId" : "get-/settings/v3/users/teams",
-        "parameters" : [ ],
-        "responses" : {
-          "200" : {
-            "description" : "successful operation",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/CollectionResponsePublicTeamNoPaging"
-                }
-              }
-            }
-          },
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          }
-        },
-        "security" : [ {
-          "oauth2_legacy" : [ "settings.users.teams.read" ]
-        }, {
-          "private_apps_legacy" : [ "settings.users.teams.read" ]
         } ]
       }
     },
@@ -278,35 +316,6 @@
           "oauth2_legacy" : [ "settings.users.write" ]
         } ]
       }
-    },
-    "/settings/v3/users/roles" : {
-      "get" : {
-        "tags" : [ "Roles" ],
-        "summary" : "Retrieves the roles on an account",
-        "description" : "Retrieves the roles on an account",
-        "operationId" : "get-/settings/v3/users/roles",
-        "parameters" : [ ],
-        "responses" : {
-          "200" : {
-            "description" : "successful operation",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/CollectionResponsePublicPermissionSetNoPaging"
-                }
-              }
-            }
-          },
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          }
-        },
-        "security" : [ {
-          "private_apps_legacy" : [ "settings.users.read" ]
-        }, {
-          "oauth2_legacy" : [ "settings.users.read" ]
-        } ]
-      }
     }
   },
   "components" : {
@@ -315,40 +324,48 @@
         "required" : [ "email", "id" ],
         "type" : "object",
         "properties" : {
-          "id" : {
+          "primaryTeamId" : {
             "type" : "string",
-            "description" : "The user's unique ID"
-          },
-          "email" : {
-            "type" : "string",
-            "description" : "The user's email"
-          },
-          "roleId" : {
-            "type" : "string",
-            "description" : "The user's role"
+            "description" : "The user's primary team",
+            "example" : "{\"id\":\"123\",\"email\":\"newUser@email.com\",\"roleId\":\"100\",\"primaryTeamId\":\"101\",\"secondaryTeamIds\":[\"102\"]}"
           },
           "roleIds" : {
             "type" : "array",
-            "items" : {
-              "type" : "string"
-            }
-          },
-          "primaryTeamId" : {
-            "type" : "string",
-            "description" : "The user's primary team"
-          },
-          "secondaryTeamIds" : {
-            "type" : "array",
-            "description" : "The user's additional teams",
+            "example" : "{\"id\":\"123\",\"email\":\"newUser@email.com\",\"roleId\":\"100\",\"primaryTeamId\":\"101\",\"secondaryTeamIds\":[\"102\"]}",
             "items" : {
               "type" : "string"
             }
           },
           "sendWelcomeEmail" : {
-            "type" : "boolean"
+            "type" : "boolean",
+            "example" : false
+          },
+          "roleId" : {
+            "type" : "string",
+            "description" : "The user's role",
+            "example" : "{\"id\":\"123\",\"email\":\"newUser@email.com\",\"roleId\":\"100\",\"primaryTeamId\":\"101\",\"secondaryTeamIds\":[\"102\"]}"
+          },
+          "secondaryTeamIds" : {
+            "type" : "array",
+            "description" : "The user's additional teams",
+            "example" : "{\"id\":\"123\",\"email\":\"newUser@email.com\",\"roleId\":\"100\",\"primaryTeamId\":\"101\",\"secondaryTeamIds\":[\"102\"]}",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "id" : {
+            "type" : "string",
+            "description" : "The user's unique ID",
+            "example" : "{\"id\":\"123\",\"email\":\"newUser@email.com\",\"roleId\":\"100\",\"primaryTeamId\":\"101\",\"secondaryTeamIds\":[\"102\"]}"
           },
           "superAdmin" : {
-            "type" : "boolean"
+            "type" : "boolean",
+            "example" : false
+          },
+          "email" : {
+            "type" : "string",
+            "description" : "The user's email",
+            "example" : "{\"id\":\"123\",\"email\":\"newUser@email.com\",\"roleId\":\"100\",\"primaryTeamId\":\"101\",\"secondaryTeamIds\":[\"102\"]}"
           }
         },
         "description" : "A user",
@@ -376,14 +393,14 @@
         "required" : [ "results" ],
         "type" : "object",
         "properties" : {
+          "paging" : {
+            "$ref" : "#/components/schemas/ForwardPaging"
+          },
           "results" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/PublicUser"
             }
-          },
-          "paging" : {
-            "$ref" : "#/components/schemas/ForwardPaging"
           }
         }
       },
@@ -391,28 +408,33 @@
         "required" : [ "email" ],
         "type" : "object",
         "properties" : {
-          "email" : {
+          "primaryTeamId" : {
             "type" : "string",
-            "description" : "The created user's email"
+            "description" : "The user's primary team",
+            "example" : "{\"email\":\"newUser@email.com\",\"roleId\":\"100\",\"primaryTeamId\":\"101\",\"secondaryTeamIds\":[\"102\"],\"sendWelcomeEmail\":\"true\"}"
+          },
+          "sendWelcomeEmail" : {
+            "type" : "boolean",
+            "description" : "Whether to send a welcome email",
+            "example" : false
           },
           "roleId" : {
             "type" : "string",
-            "description" : "The user's role"
-          },
-          "primaryTeamId" : {
-            "type" : "string",
-            "description" : "The user's primary team"
+            "description" : "The user's role",
+            "example" : "{\"email\":\"newUser@email.com\",\"roleId\":\"100\",\"primaryTeamId\":\"101\",\"secondaryTeamIds\":[\"102\"],\"sendWelcomeEmail\":\"true\"}"
           },
           "secondaryTeamIds" : {
             "type" : "array",
             "description" : "The user's additional teams",
+            "example" : "{\"email\":\"newUser@email.com\",\"roleId\":\"100\",\"primaryTeamId\":\"101\",\"secondaryTeamIds\":[\"102\"],\"sendWelcomeEmail\":\"true\"}",
             "items" : {
               "type" : "string"
             }
           },
-          "sendWelcomeEmail" : {
-            "type" : "boolean",
-            "description" : "Whether to send a welcome email"
+          "email" : {
+            "type" : "string",
+            "description" : "The created user's email",
+            "example" : "{\"email\":\"newUser@email.com\",\"roleId\":\"100\",\"primaryTeamId\":\"101\",\"secondaryTeamIds\":[\"102\"],\"sendWelcomeEmail\":\"true\"}"
           }
         },
         "description" : "A user creation request",
@@ -427,17 +449,20 @@
       "PublicUserUpdate" : {
         "type" : "object",
         "properties" : {
-          "roleId" : {
-            "type" : "string",
-            "description" : "The user's role"
-          },
           "primaryTeamId" : {
             "type" : "string",
-            "description" : "The user's primary team"
+            "description" : "The user's primary team",
+            "example" : "{\"roleId\":\"100\",\"primaryTeamId\":\"101\",\"secondaryTeamIds\":[\"102\"]}"
+          },
+          "roleId" : {
+            "type" : "string",
+            "description" : "The user's role",
+            "example" : "{\"roleId\":\"100\",\"primaryTeamId\":\"101\",\"secondaryTeamIds\":[\"102\"]}"
           },
           "secondaryTeamIds" : {
             "type" : "array",
             "description" : "The user's additional teams",
+            "example" : "{\"roleId\":\"100\",\"primaryTeamId\":\"101\",\"secondaryTeamIds\":[\"102\"]}",
             "items" : {
               "type" : "string"
             }
@@ -454,31 +479,10 @@
         "required" : [ "category", "correlationId", "message" ],
         "type" : "object",
         "properties" : {
-          "message" : {
-            "type" : "string",
-            "description" : "A human readable message describing the error along with remediation steps where appropriate",
-            "example" : "An error occurred"
-          },
-          "correlationId" : {
-            "type" : "string",
-            "description" : "A unique identifier for the request. Include this value with any error reports or support tickets",
-            "format" : "uuid",
-            "example" : "aeb5f871-7f07-4993-9211-075dc63e7cbf"
-          },
-          "category" : {
-            "type" : "string",
-            "description" : "The error category"
-          },
           "subCategory" : {
             "type" : "string",
-            "description" : "A specific category that contains more specific detail about the error"
-          },
-          "errors" : {
-            "type" : "array",
-            "description" : "further information about the error",
-            "items" : {
-              "$ref" : "#/components/schemas/ErrorDetail"
-            }
+            "description" : "A specific category that contains more specific detail about the error",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
           },
           "context" : {
             "type" : "object",
@@ -489,17 +493,38 @@
               }
             },
             "description" : "Context about the error condition",
-            "example" : {
-              "invalidPropertyName" : [ "propertyValue" ],
-              "missingScopes" : [ "scope1", "scope2" ]
-            }
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
+          },
+          "correlationId" : {
+            "type" : "string",
+            "description" : "A unique identifier for the request. Include this value with any error reports or support tickets",
+            "format" : "uuid"
           },
           "links" : {
             "type" : "object",
             "additionalProperties" : {
               "type" : "string"
             },
-            "description" : "A map of link names to associated URIs containing documentation about the error or recommended remediation steps"
+            "description" : "A map of link names to associated URIs containing documentation about the error or recommended remediation steps",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
+          },
+          "message" : {
+            "type" : "string",
+            "description" : "A human readable message describing the error along with remediation steps where appropriate",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
+          },
+          "category" : {
+            "type" : "string",
+            "description" : "The error category",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}"
+          },
+          "errors" : {
+            "type" : "array",
+            "description" : "further information about the error",
+            "example" : "{\"message\":\"Invalid input (details will vary based on the error)\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"category\":\"VALIDATION_ERROR\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"}}",
+            "items" : {
+              "$ref" : "#/components/schemas/ErrorDetail"
+            }
           }
         },
         "example" : {
@@ -515,17 +540,20 @@
         "required" : [ "id", "name", "requiresBillingWrite" ],
         "type" : "object",
         "properties" : {
-          "id" : {
-            "type" : "string",
-            "description" : "The role's unique ID"
+          "requiresBillingWrite" : {
+            "type" : "boolean",
+            "description" : "Whether this role has a paid seat and requires the billing-write scope to assign/unassign to users",
+            "example" : false
           },
           "name" : {
             "type" : "string",
-            "description" : "The role's name"
+            "description" : "The role's name",
+            "example" : "{\"id\":\"100\",\"name\":\"Test Role\",\"requiresBillingWrite\":\"False\"}"
           },
-          "requiresBillingWrite" : {
-            "type" : "boolean",
-            "description" : "Whether this role has a paid seat and requires the billing-write scope to assign/unassign to users"
+          "id" : {
+            "type" : "string",
+            "description" : "The role's unique ID",
+            "example" : "{\"id\":\"100\",\"name\":\"Test Role\",\"requiresBillingWrite\":\"False\"}"
           }
         },
         "description" : "A role that can be assigned to a user",
@@ -539,21 +567,17 @@
         "required" : [ "message" ],
         "type" : "object",
         "properties" : {
-          "message" : {
+          "subCategory" : {
             "type" : "string",
-            "description" : "A human readable message describing the error along with remediation steps where appropriate"
-          },
-          "in" : {
-            "type" : "string",
-            "description" : "The name of the field or parameter in which the error was found."
+            "description" : "A specific category that contains more specific detail about the error"
           },
           "code" : {
             "type" : "string",
             "description" : "The status code associated with the error detail"
           },
-          "subCategory" : {
+          "in" : {
             "type" : "string",
-            "description" : "A specific category that contains more specific detail about the error"
+            "description" : "The name of the field or parameter in which the error was found."
           },
           "context" : {
             "type" : "object",
@@ -567,6 +591,10 @@
             "example" : {
               "missingScopes" : [ "scope1", "scope2" ]
             }
+          },
+          "message" : {
+            "type" : "string",
+            "description" : "A human readable message describing the error along with remediation steps where appropriate"
           }
         }
       },
@@ -582,24 +610,28 @@
         "required" : [ "id", "name", "secondaryUserIds", "userIds" ],
         "type" : "object",
         "properties" : {
-          "id" : {
-            "type" : "string",
-            "description" : "The team's unique ID"
-          },
-          "name" : {
-            "type" : "string",
-            "description" : "The team's name"
-          },
           "userIds" : {
             "type" : "array",
             "description" : "Primary members of this team",
+            "example" : "{\"id\":\"100\",\"name\":\"Test Team\",\"userIds\":[\"123\"],\"secondaryUserIds\":[\"124\"]}",
             "items" : {
               "type" : "string"
             }
           },
+          "name" : {
+            "type" : "string",
+            "description" : "The team's name",
+            "example" : "{\"id\":\"100\",\"name\":\"Test Team\",\"userIds\":[\"123\"],\"secondaryUserIds\":[\"124\"]}"
+          },
+          "id" : {
+            "type" : "string",
+            "description" : "The team's unique ID",
+            "example" : "{\"id\":\"100\",\"name\":\"Test Team\",\"userIds\":[\"123\"],\"secondaryUserIds\":[\"124\"]}"
+          },
           "secondaryUserIds" : {
             "type" : "array",
             "description" : "Secondary or additional members of this team",
+            "example" : "{\"id\":\"100\",\"name\":\"Test Team\",\"userIds\":[\"123\"],\"secondaryUserIds\":[\"124\"]}",
             "items" : {
               "type" : "string"
             }
@@ -629,10 +661,10 @@
         "required" : [ "after" ],
         "type" : "object",
         "properties" : {
-          "after" : {
+          "link" : {
             "type" : "string"
           },
-          "link" : {
+          "after" : {
             "type" : "string"
           }
         }
@@ -658,8 +690,8 @@
             "authorizationUrl" : "https://app.hubspot.com/oauth/authorize",
             "tokenUrl" : "https://api.hubapi.com/oauth/v1/token",
             "scopes" : {
-              "settings.users.write" : "Create, modify, and delete users on your account",
               "settings.users.read" : "View account data.",
+              "settings.users.write" : "Create, modify, and delete users on your account",
               "settings.users.teams.read" : "View teams for this account."
             }
           }
