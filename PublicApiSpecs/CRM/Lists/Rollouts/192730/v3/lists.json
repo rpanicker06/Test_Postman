@@ -73,9 +73,9 @@
           }
         },
         "security" : [ {
-          "private_apps" : [ "crm.lists.write", "crm.lists.read" ]
+          "private_apps" : [ "crm.lists.read", "crm.lists.write" ]
         }, {
-          "oauth2" : [ "crm.lists.write", "crm.lists.read" ]
+          "oauth2" : [ "crm.lists.read", "crm.lists.write" ]
         } ]
       }
     },
@@ -172,9 +172,9 @@
           }
         },
         "security" : [ {
-          "private_apps" : [ "crm.lists.write", "crm.lists.read" ]
+          "private_apps" : [ "crm.lists.read", "crm.lists.write" ]
         }, {
-          "oauth2" : [ "crm.lists.write", "crm.lists.read" ]
+          "oauth2" : [ "crm.lists.read", "crm.lists.write" ]
         } ]
       }
     },
@@ -217,9 +217,9 @@
           }
         },
         "security" : [ {
-          "private_apps" : [ "crm.lists.write", "crm.lists.read" ]
+          "private_apps" : [ "crm.lists.read", "crm.lists.write" ]
         }, {
-          "oauth2" : [ "crm.lists.write", "crm.lists.read" ]
+          "oauth2" : [ "crm.lists.read", "crm.lists.write" ]
         } ]
       }
     },
@@ -334,9 +334,9 @@
           }
         },
         "security" : [ {
-          "private_apps" : [ "crm.lists.write", "crm.lists.read" ]
+          "private_apps" : [ "crm.lists.read", "crm.lists.write" ]
         }, {
-          "oauth2" : [ "crm.lists.write", "crm.lists.read" ]
+          "oauth2" : [ "crm.lists.read", "crm.lists.write" ]
         } ]
       }
     },
@@ -393,9 +393,9 @@
           }
         },
         "security" : [ {
-          "private_apps" : [ "crm.lists.write", "crm.lists.read" ]
+          "private_apps" : [ "crm.lists.read", "crm.lists.write" ]
         }, {
-          "oauth2" : [ "crm.lists.write", "crm.lists.read" ]
+          "oauth2" : [ "crm.lists.read", "crm.lists.write" ]
         } ]
       }
     }
@@ -734,15 +734,15 @@
             "description" : "The **ILS ID** of the list.",
             "format" : "int32"
           },
-          "processingStatus" : {
-            "type" : "string",
-            "description" : "The processing status of the list.",
-            "example" : "{\"objectTypeId\":\"0-1\",\"processingType\":\"SNAPSHOT\",\"updatedById\":1,\"filtersUpdatedAt\":\"2023-09-28T22:03:17.998Z\",\"listId\":123,\"createdAt\":\"2023-09-28T22:03:17.998Z\",\"processingStatus\":\"COMPLETED\",\"listVersion\":1,\"name\":\"Test list\",\"additionalProperties\":{\"hs_list_size\":59,\"hs_last_record_added_at\":1695938616824,\"hs_list_reference_count\":0,\"hs_list_size_week_delta\":-1}}"
-          },
           "createdAt" : {
             "type" : "string",
             "description" : "The time when the list was created.",
             "format" : "date-time"
+          },
+          "processingStatus" : {
+            "type" : "string",
+            "description" : "The processing status of the list.",
+            "example" : "{\"objectTypeId\":\"0-1\",\"processingType\":\"SNAPSHOT\",\"updatedById\":1,\"filtersUpdatedAt\":\"2023-09-28T22:03:17.998Z\",\"listId\":123,\"createdAt\":\"2023-09-28T22:03:17.998Z\",\"processingStatus\":\"COMPLETED\",\"listVersion\":1,\"name\":\"Test list\",\"additionalProperties\":{\"hs_list_size\":59,\"hs_last_record_added_at\":1695938616824,\"hs_list_reference_count\":0,\"hs_list_size_week_delta\":-1}}"
           },
           "deletedAt" : {
             "type" : "string",
