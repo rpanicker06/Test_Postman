@@ -11,6 +11,10 @@
     },
     "x-hubspot-documentation-banner" : "BETA",
     "x-hubspot-api-use-case" : "a good use case!",
+    "x-hubspot-related-documentation" : [ {
+      "name" : "test@url.com",
+      "url" : "related guide name"
+    } ],
     "x-hubspot-introduction" : "new intro!"
   },
   "servers" : [ {
