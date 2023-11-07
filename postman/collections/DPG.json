@@ -2674,13 +2674,377 @@
 				}
 			],
 			"id": "fc5075ba-9f1c-48ba-a3a9-06cf520e8639"
+		},
+		{
+			"name": "post-/automation/v4/actions/callbacks/{callback Id}/complete",
+			"id": "e3725280-5fe0-4008-a34e-598703ca82b5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "scope",
+							"value": "automation",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://api.hubapi.com/oauth/v1/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://app.hubspot.com/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"outputFields\": {\n    \"nulla_7e\": \"<string>\",\n    \"nostrud_3f7\": \"<string>\",\n    \"nostrud_128\": \"<string>\"\n  }\n}",
+					"options": {
+						"raw": {
+							"headerFamily": "json",
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/automation/v4/actions/callbacks/:callbackId/complete",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"automation",
+						"v4",
+						"actions",
+						"callbacks",
+						":callbackId",
+						"complete"
+					],
+					"variable": [
+						{
+							"key": "callbackId",
+							"value": "<string>"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "7416bc67-403c-472a-822a-fb3f34b29a19",
+					"name": "No content",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"outputFields\": {\n    \"nulla_7e\": \"<string>\",\n    \"nostrud_3f7\": \"<string>\",\n    \"nostrud_128\": \"<string>\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/automation/v4/actions/callbacks/:callbackId/complete",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"automation",
+								"v4",
+								"actions",
+								"callbacks",
+								":callbackId",
+								"complete"
+							],
+							"variable": [
+								{
+									"key": "callbackId"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": []
+				},
+				{
+					"id": "c77b2886-308a-4983-a998-0352731ad7a0",
+					"name": "An error occurred.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"outputFields\": {\n    \"nulla_7e\": \"<string>\",\n    \"nostrud_3f7\": \"<string>\",\n    \"nostrud_128\": \"<string>\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/automation/v4/actions/callbacks/:callbackId/complete",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"automation",
+								"v4",
+								"actions",
+								"callbacks",
+								":callbackId",
+								"complete"
+							],
+							"variable": [
+								{
+									"key": "callbackId"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"context\": {\n    \"dolor_a\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"Lorem__f2\": \"<string>\",\n    \"id_f9d\": \"<string>\",\n    \"quis_e4\": \"<string>\"\n  },\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"code\": \"<string>\",\n      \"in\": \"<string>\",\n      \"context\": {\n        \"nostrud834\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"enim_39\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"code\": \"<string>\",\n      \"in\": \"<string>\",\n      \"context\": {\n        \"esse_0\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"voluptate_65\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"dolor6d4\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}"
+				}
+			]
+		},
+		{
+			"name": "post-/automation/v4/actions/callbacks/complete",
+			"id": "94bf0d91-acf5-4b92-ad30-7024cd32fcf8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "scope",
+							"value": "automation",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://api.hubapi.com/oauth/v1/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://app.hubspot.com/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"inputs\": [\n    {\n      \"callbackId\": \"<string>\",\n      \"outputFields\": {\n        \"do03\": \"<string>\"\n      }\n    },\n    {\n      \"callbackId\": \"<string>\",\n      \"outputFields\": {\n        \"ea_e1a\": \"<string>\"\n      }\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"headerFamily": "json",
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/automation/v4/actions/callbacks/complete",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"automation",
+						"v4",
+						"actions",
+						"callbacks",
+						"complete"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "eba926c5-1ac8-448c-80a5-201bccfc6e27",
+					"name": "No content",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inputs\": [\n    {\n      \"callbackId\": \"<string>\",\n      \"outputFields\": {\n        \"do03\": \"<string>\"\n      }\n    },\n    {\n      \"callbackId\": \"<string>\",\n      \"outputFields\": {\n        \"ea_e1a\": \"<string>\"\n      }\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/automation/v4/actions/callbacks/complete",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"automation",
+								"v4",
+								"actions",
+								"callbacks",
+								"complete"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": []
+				},
+				{
+					"id": "0cb53a37-c579-4b68-a3d8-63db9adbc184",
+					"name": "An error occurred.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inputs\": [\n    {\n      \"callbackId\": \"<string>\",\n      \"outputFields\": {\n        \"do03\": \"<string>\"\n      }\n    },\n    {\n      \"callbackId\": \"<string>\",\n      \"outputFields\": {\n        \"ea_e1a\": \"<string>\"\n      }\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/automation/v4/actions/callbacks/complete",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"automation",
+								"v4",
+								"actions",
+								"callbacks",
+								"complete"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"context\": {\n    \"dolor_a\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"Lorem__f2\": \"<string>\",\n    \"id_f9d\": \"<string>\",\n    \"quis_e4\": \"<string>\"\n  },\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"code\": \"<string>\",\n      \"in\": \"<string>\",\n      \"context\": {\n        \"nostrud834\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"enim_39\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"code\": \"<string>\",\n      \"in\": \"<string>\",\n      \"context\": {\n        \"esse_0\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"voluptate_65\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"dolor6d4\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}"
+				}
+			]
 		}
 	],
 	"variable": [
 		{
 			"id": "903af410-f3c4-49a0-a1ca-f1016e79fee7",
 			"key": "baseUrl",
-			"value": "https://api.hubapiqa.com"
+			"value": "https://api.hubapiqa.com",
+			"type": "string"
 		}
 	]
 }
