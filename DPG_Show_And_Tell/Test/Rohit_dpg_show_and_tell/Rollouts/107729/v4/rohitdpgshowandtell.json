@@ -16,6 +16,8 @@
     "url" : "https://api.hubapiqa.com"
   } ],
   "tags" : [ {
+    "name" : "Public_Callbacks"
+  }, {
     "name" : "Definitions"
   }, {
     "name" : "Functions"
@@ -23,6 +25,77 @@
     "name" : "Revisions"
   } ],
   "paths" : {
+    "/automation/v4/actions/callbacks/{callbackId}/complete" : {
+      "post" : {
+        "tags" : [ "Public_Callbacks" ],
+        "operationId" : "post-/automation/v4/actions/callbacks/{callbackId}/complete",
+        "parameters" : [ {
+          "name" : "callbackId",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CallbackCompletionRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "No content",
+            "content" : { }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "oauth2_legacy" : [ "automation" ]
+        }, {
+          "private_apps_legacy" : [ "automation" ]
+        } ]
+      }
+    },
+    "/automation/v4/actions/callbacks/complete" : {
+      "post" : {
+        "tags" : [ "Public_Callbacks" ],
+        "operationId" : "post-/automation/v4/actions/callbacks/complete",
+        "parameters" : [ ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/BatchInputCallbackCompletionBatchRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "No content",
+            "content" : { }
+          },
+          "default" : {
+            "$ref" : "#/components/responses/Error"
+          }
+        },
+        "security" : [ {
+          "oauth2_legacy" : [ "automation" ]
+        }, {
+          "private_apps_legacy" : [ "automation" ]
+        } ]
+      }
+    },
     "/automation/v4/actions/{appId}" : {
       "get" : {
         "tags" : [ "Definitions" ],
@@ -1343,133 +1416,6 @@
   },
   "components" : {
     "schemas" : {
-      "ExtensionActionDefinitionPatch" : {
-        "type" : "object",
-        "properties" : {
-          "inputFields" : {
-            "type" : "array",
-            "description" : "The list of input fields to display in this custom action.",
-            "items" : {
-              "$ref" : "#/components/schemas/InputFieldDefinition"
-            }
-          },
-          "actionUrl" : {
-            "type" : "string",
-            "description" : "The URL that will accept an HTTPS request each time workflows executes the custom action."
-          },
-          "inputFieldDependencies" : {
-            "type" : "array",
-            "description" : "A list of dependencies between the input fields. These configure when the input fields should be visible.",
-            "items" : {
-              "oneOf" : [ {
-                "$ref" : "#/components/schemas/SingleFieldDependency"
-              }, {
-                "$ref" : "#/components/schemas/ConditionalSingleFieldDependency"
-              } ]
-            }
-          },
-          "published" : {
-            "type" : "boolean",
-            "description" : "Whether this custom action is published to customers."
-          },
-          "executionRules" : {
-            "type" : "array",
-            "description" : "A list of execution rules that will be matched against to determine what message to display on the Workflows history page. The first rule that matches the execution outputs is used.",
-            "items" : {
-              "$ref" : "#/components/schemas/ExecutionTranslationRule"
-            }
-          },
-          "objectTypes" : {
-            "type" : "array",
-            "description" : "The object types that this custom action supports.",
-            "items" : {
-              "type" : "string"
-            }
-          },
-          "objectRequestOptions" : {
-            "$ref" : "#/components/schemas/ObjectRequestOptions"
-          },
-          "labels" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "$ref" : "#/components/schemas/ActionLabels"
-            },
-            "description" : "The user-facing labels for the custom action."
-          }
-        },
-        "description" : "Fields on custom workflow action to be updated.",
-        "example" : {
-          "actionUrl" : "https://example.com/custom-workflow-action",
-          "published" : true,
-          "inputFields" : [ {
-            "typeDefinition" : {
-              "name" : "widgetName",
-              "type" : "string",
-              "fieldType" : "text"
-            },
-            "required" : true,
-            "supportedValueTypes" : [ "OBJECT_PROPERTY" ]
-          }, {
-            "typeDefinition" : {
-              "name" : "widgetColor",
-              "type" : "string",
-              "fieldType" : "enumeration",
-              "options" : [ {
-                "label" : "Blue",
-                "value" : "blue"
-              }, {
-                "label" : "Red",
-                "value" : "red"
-              } ]
-            },
-            "required" : false,
-            "supportedValueTypes" : [ "STATIC_VALUE" ]
-          }, {
-            "typeDefinition" : {
-              "name" : "widgetSize",
-              "type" : "string",
-              "fieldType" : "enumeration",
-              "optionsUrl" : "https://example.com/widget-sizes"
-            },
-            "required" : false,
-            "supportedValueTypes" : [ "STATIC_VALUE" ]
-          } ],
-          "inputFieldDependencies" : [ {
-            "dependencyType" : "SINGLE_FIELD",
-            "dependentFieldNames" : [ "widgetName", "widgetColor" ],
-            "controllingFieldName" : "widgetSize"
-          } ],
-          "objectRequestOptions" : {
-            "properties" : [ "firstname", "lastname", "preferred_widget" ]
-          },
-          "labels" : {
-            "en" : {
-              "inputFieldLabels" : {
-                "widgetName" : "Widget Name",
-                "widgetColor" : "Widget Color",
-                "widgetSize" : "Widget Size"
-              },
-              "inputFieldDescriptions" : {
-                "widgetName" : "Enter the full widget name. I support <a href=\"https://hubspot.com\">links</a> too.",
-                "widgetColor" : "This is the color that will be used to paint the widget."
-              },
-              "executionRules" : {
-                "alreadyExists" : "The widget with name {{ widgetName }} already exists."
-              },
-              "actionName" : "Create new widget",
-              "actionDescription" : "This action will create a new widget in our system. So cool!",
-              "actionCardContent" : "Create new widget {{ widgetName }}"
-            }
-          },
-          "executionRules" : [ {
-            "labelName" : "alreadyExists",
-            "conditions" : {
-              "errorCode" : "ALREADY_EXISTS"
-            }
-          } ],
-          "objectTypes" : [ "CONTACT", "COMPANY" ]
-        }
-      },
       "ActionRevision" : {
         "required" : [ "createdAt", "definition", "revisionId" ],
         "type" : "object",
@@ -1491,67 +1437,6 @@
           }
         },
         "description" : "A revision of this custom action."
-      },
-      "Error" : {
-        "required" : [ "category", "correlationId", "message" ],
-        "type" : "object",
-        "properties" : {
-          "subCategory" : {
-            "type" : "string",
-            "description" : "A specific category that contains more specific detail about the error"
-          },
-          "context" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "type" : "array",
-              "items" : {
-                "type" : "string"
-              }
-            },
-            "description" : "Context about the error condition",
-            "example" : {
-              "missingScopes" : [ "scope1", "scope2" ],
-              "invalidPropertyName" : [ "propertyValue" ]
-            }
-          },
-          "correlationId" : {
-            "type" : "string",
-            "description" : "A unique identifier for the request. Include this value with any error reports or support tickets",
-            "format" : "uuid",
-            "example" : "aeb5f871-7f07-4993-9211-075dc63e7cbf"
-          },
-          "links" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "type" : "string"
-            },
-            "description" : "A map of link names to associated URIs containing documentation about the error or recommended remediation steps"
-          },
-          "message" : {
-            "type" : "string",
-            "description" : "A human readable message describing the error along with remediation steps where appropriate",
-            "example" : "An error occurred"
-          },
-          "category" : {
-            "type" : "string",
-            "description" : "The error category"
-          },
-          "errors" : {
-            "type" : "array",
-            "description" : "further information about the error",
-            "items" : {
-              "$ref" : "#/components/schemas/ErrorDetail"
-            }
-          }
-        },
-        "example" : {
-          "message" : "Invalid input (details will vary based on the error)",
-          "correlationId" : "aeb5f871-7f07-4993-9211-075dc63e7cbf",
-          "category" : "VALIDATION_ERROR",
-          "links" : {
-            "knowledge-base" : "https://www.hubspot.com/products/service/knowledge-base"
-          }
-        }
       },
       "ExtensionActionDefinitionInput" : {
         "required" : [ "actionUrl", "functions", "inputFields", "labels", "objectTypes", "published" ],
@@ -1691,41 +1576,6 @@
             }
           } ],
           "objectTypes" : [ "CONTACT", "COMPANY" ]
-        }
-      },
-      "CollectionResponseActionRevisionForwardPaging" : {
-        "required" : [ "results" ],
-        "type" : "object",
-        "properties" : {
-          "paging" : {
-            "$ref" : "#/components/schemas/ForwardPaging"
-          },
-          "results" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/ActionRevision"
-            }
-          }
-        }
-      },
-      "ActionFunctionIdentifier" : {
-        "required" : [ "functionType" ],
-        "type" : "object",
-        "properties" : {
-          "functionType" : {
-            "type" : "string",
-            "description" : "The type of function. This determines when the function will be called.",
-            "enum" : [ "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION" ]
-          },
-          "id" : {
-            "type" : "string",
-            "description" : "The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types."
-          }
-        },
-        "description" : "A serverless function associated with this custom workflow action.",
-        "example" : {
-          "functionType" : "PRE_FETCH_OPTIONS",
-          "id" : "widgetColor"
         }
       },
       "ErrorDetail" : {
@@ -1887,81 +1737,6 @@
           "properties" : [ "firstname", "lastname", "preferred_widget" ]
         }
       },
-      "ExtensionActionDefinition" : {
-        "required" : [ "actionUrl", "functions", "id", "inputFields", "labels", "objectTypes", "published" ],
-        "type" : "object",
-        "properties" : {
-          "revisionId" : {
-            "type" : "string"
-          },
-          "inputFields" : {
-            "type" : "array",
-            "description" : "The list of input fields to display in this custom action.",
-            "items" : {
-              "$ref" : "#/components/schemas/InputFieldDefinition"
-            }
-          },
-          "archivedAt" : {
-            "type" : "integer",
-            "description" : "The date that this custom action was archived, if the custom action is archived.",
-            "format" : "int64"
-          },
-          "functions" : {
-            "type" : "array",
-            "description" : "A list of functions associated with the custom workflow action.",
-            "items" : {
-              "$ref" : "#/components/schemas/ActionFunctionIdentifier"
-            }
-          },
-          "actionUrl" : {
-            "type" : "string",
-            "description" : "The URL that will accept an HTTPS request each time workflows executes the custom action."
-          },
-          "inputFieldDependencies" : {
-            "type" : "array",
-            "description" : "A list of dependencies between the input fields. These configure when the input fields should be visible.",
-            "items" : {
-              "oneOf" : [ {
-                "$ref" : "#/components/schemas/SingleFieldDependency"
-              }, {
-                "$ref" : "#/components/schemas/ConditionalSingleFieldDependency"
-              } ]
-            }
-          },
-          "id" : {
-            "type" : "string",
-            "description" : "The ID of the custom action."
-          },
-          "published" : {
-            "type" : "boolean",
-            "description" : "Whether this custom action is published to customers."
-          },
-          "executionRules" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/ExecutionTranslationRule"
-            }
-          },
-          "objectTypes" : {
-            "type" : "array",
-            "description" : "The object types that this custom action supports. This can be one of the standard HubSpot object types (`CONTACT`, `COMPANY`, `TICKET`, `DEAL`, and `QUOTE`) or a custom object type in the format `{meta_type}-{object_type_id}` (see the docs on <a href=\"https://developers.hubspot.com/docs/api/crm/crm-custom-objects\">custom objects</a> for more information about custom object types).",
-            "items" : {
-              "type" : "string"
-            }
-          },
-          "objectRequestOptions" : {
-            "$ref" : "#/components/schemas/ObjectRequestOptions"
-          },
-          "labels" : {
-            "type" : "object",
-            "additionalProperties" : {
-              "$ref" : "#/components/schemas/ActionLabels"
-            },
-            "description" : "The user-facing labels for the custom action."
-          }
-        },
-        "description" : "Configuration for custom workflow action."
-      },
       "SingleFieldDependency" : {
         "title" : "SINGLE_FIELD",
         "required" : [ "controllingFieldName", "dependencyType", "dependentFieldNames" ],
@@ -1981,41 +1756,6 @@
           "controllingFieldName" : {
             "type" : "string"
           }
-        }
-      },
-      "Option" : {
-        "required" : [ "label", "value" ],
-        "type" : "object",
-        "properties" : {
-          "hidden" : {
-            "type" : "boolean"
-          },
-          "displayOrder" : {
-            "type" : "integer",
-            "format" : "int32"
-          },
-          "doubleData" : {
-            "type" : "number"
-          },
-          "description" : {
-            "type" : "string"
-          },
-          "readOnly" : {
-            "type" : "boolean"
-          },
-          "label" : {
-            "type" : "string",
-            "description" : "The user-facing label for the option."
-          },
-          "value" : {
-            "type" : "string",
-            "description" : "The internal value for the option. This is what will be included in the execution request to the `actionUrl`."
-          }
-        },
-        "description" : "An option for a field value.",
-        "example" : {
-          "label" : "User-facing label text",
-          "value" : "Internal value that will be sent to your webhook"
         }
       },
       "ConditionalSingleFieldDependency" : {
@@ -2038,18 +1778,6 @@
             "type" : "string"
           },
           "controllingFieldValue" : {
-            "type" : "string"
-          }
-        }
-      },
-      "NextPage" : {
-        "required" : [ "after" ],
-        "type" : "object",
-        "properties" : {
-          "link" : {
-            "type" : "string"
-          },
-          "after" : {
             "type" : "string"
           }
         }
@@ -2125,6 +1853,390 @@
           }
         }
       },
+      "ExtensionActionDefinitionPatch" : {
+        "type" : "object",
+        "properties" : {
+          "inputFields" : {
+            "type" : "array",
+            "description" : "The list of input fields to display in this custom action.",
+            "items" : {
+              "$ref" : "#/components/schemas/InputFieldDefinition"
+            }
+          },
+          "actionUrl" : {
+            "type" : "string",
+            "description" : "The URL that will accept an HTTPS request each time workflows executes the custom action."
+          },
+          "inputFieldDependencies" : {
+            "type" : "array",
+            "description" : "A list of dependencies between the input fields. These configure when the input fields should be visible.",
+            "items" : {
+              "oneOf" : [ {
+                "$ref" : "#/components/schemas/SingleFieldDependency"
+              }, {
+                "$ref" : "#/components/schemas/ConditionalSingleFieldDependency"
+              } ]
+            }
+          },
+          "published" : {
+            "type" : "boolean",
+            "description" : "Whether this custom action is published to customers."
+          },
+          "executionRules" : {
+            "type" : "array",
+            "description" : "A list of execution rules that will be matched against to determine what message to display on the Workflows history page. The first rule that matches the execution outputs is used.",
+            "items" : {
+              "$ref" : "#/components/schemas/ExecutionTranslationRule"
+            }
+          },
+          "objectTypes" : {
+            "type" : "array",
+            "description" : "The object types that this custom action supports.",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "objectRequestOptions" : {
+            "$ref" : "#/components/schemas/ObjectRequestOptions"
+          },
+          "labels" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "$ref" : "#/components/schemas/ActionLabels"
+            },
+            "description" : "The user-facing labels for the custom action."
+          }
+        },
+        "description" : "Fields on custom workflow action to be updated.",
+        "example" : {
+          "actionUrl" : "https://example.com/custom-workflow-action",
+          "published" : true,
+          "inputFields" : [ {
+            "typeDefinition" : {
+              "name" : "widgetName",
+              "type" : "string",
+              "fieldType" : "text"
+            },
+            "required" : true,
+            "supportedValueTypes" : [ "OBJECT_PROPERTY" ]
+          }, {
+            "typeDefinition" : {
+              "name" : "widgetColor",
+              "type" : "string",
+              "fieldType" : "enumeration",
+              "options" : [ {
+                "label" : "Blue",
+                "value" : "blue"
+              }, {
+                "label" : "Red",
+                "value" : "red"
+              } ]
+            },
+            "required" : false,
+            "supportedValueTypes" : [ "STATIC_VALUE" ]
+          }, {
+            "typeDefinition" : {
+              "name" : "widgetSize",
+              "type" : "string",
+              "fieldType" : "enumeration",
+              "optionsUrl" : "https://example.com/widget-sizes"
+            },
+            "required" : false,
+            "supportedValueTypes" : [ "STATIC_VALUE" ]
+          } ],
+          "inputFieldDependencies" : [ {
+            "dependencyType" : "SINGLE_FIELD",
+            "dependentFieldNames" : [ "widgetName", "widgetColor" ],
+            "controllingFieldName" : "widgetSize"
+          } ],
+          "objectRequestOptions" : {
+            "properties" : [ "firstname", "lastname", "preferred_widget" ]
+          },
+          "labels" : {
+            "en" : {
+              "inputFieldLabels" : {
+                "widgetName" : "Widget Name",
+                "widgetColor" : "Widget Color",
+                "widgetSize" : "Widget Size"
+              },
+              "inputFieldDescriptions" : {
+                "widgetName" : "Enter the full widget name. I support <a href=\"https://hubspot.com\">links</a> too.",
+                "widgetColor" : "This is the color that will be used to paint the widget."
+              },
+              "executionRules" : {
+                "alreadyExists" : "The widget with name {{ widgetName }} already exists."
+              },
+              "actionName" : "Create new widget",
+              "actionDescription" : "This action will create a new widget in our system. So cool!",
+              "actionCardContent" : "Create new widget {{ widgetName }}"
+            }
+          },
+          "executionRules" : [ {
+            "labelName" : "alreadyExists",
+            "conditions" : {
+              "errorCode" : "ALREADY_EXISTS"
+            }
+          } ],
+          "objectTypes" : [ "CONTACT", "COMPANY" ]
+        }
+      },
+      "CallbackCompletionRequest" : {
+        "required" : [ "outputFields" ],
+        "type" : "object",
+        "properties" : {
+          "outputFields" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "Error" : {
+        "required" : [ "category", "correlationId", "message" ],
+        "type" : "object",
+        "properties" : {
+          "subCategory" : {
+            "type" : "string",
+            "description" : "A specific category that contains more specific detail about the error"
+          },
+          "context" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            },
+            "description" : "Context about the error condition",
+            "example" : {
+              "missingScopes" : [ "scope1", "scope2" ],
+              "invalidPropertyName" : [ "propertyValue" ]
+            }
+          },
+          "correlationId" : {
+            "type" : "string",
+            "description" : "A unique identifier for the request. Include this value with any error reports or support tickets",
+            "format" : "uuid",
+            "example" : "aeb5f871-7f07-4993-9211-075dc63e7cbf"
+          },
+          "links" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "string"
+            },
+            "description" : "A map of link names to associated URIs containing documentation about the error or recommended remediation steps"
+          },
+          "message" : {
+            "type" : "string",
+            "description" : "A human readable message describing the error along with remediation steps where appropriate",
+            "example" : "An error occurred"
+          },
+          "category" : {
+            "type" : "string",
+            "description" : "The error category"
+          },
+          "errors" : {
+            "type" : "array",
+            "description" : "further information about the error",
+            "items" : {
+              "$ref" : "#/components/schemas/ErrorDetail"
+            }
+          }
+        },
+        "example" : {
+          "message" : "Invalid input (details will vary based on the error)",
+          "correlationId" : "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+          "category" : "VALIDATION_ERROR",
+          "links" : {
+            "knowledge-base" : "https://www.hubspot.com/products/service/knowledge-base"
+          }
+        }
+      },
+      "CollectionResponseActionRevisionForwardPaging" : {
+        "required" : [ "results" ],
+        "type" : "object",
+        "properties" : {
+          "paging" : {
+            "$ref" : "#/components/schemas/ForwardPaging"
+          },
+          "results" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ActionRevision"
+            }
+          }
+        }
+      },
+      "ActionFunctionIdentifier" : {
+        "required" : [ "functionType" ],
+        "type" : "object",
+        "properties" : {
+          "functionType" : {
+            "type" : "string",
+            "description" : "The type of function. This determines when the function will be called.",
+            "enum" : [ "PRE_ACTION_EXECUTION", "PRE_FETCH_OPTIONS", "POST_FETCH_OPTIONS", "POST_ACTION_EXECUTION" ]
+          },
+          "id" : {
+            "type" : "string",
+            "description" : "The ID qualifier for the function. This is used to specify which input field a function is associated with for `PRE_FETCH_OPTIONS` and `POST_FETCH_OPTIONS` function types."
+          }
+        },
+        "description" : "A serverless function associated with this custom workflow action.",
+        "example" : {
+          "functionType" : "PRE_FETCH_OPTIONS",
+          "id" : "widgetColor"
+        }
+      },
+      "CallbackCompletionBatchRequest" : {
+        "required" : [ "callbackId", "outputFields" ],
+        "type" : "object",
+        "properties" : {
+          "outputFields" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "string"
+            }
+          },
+          "callbackId" : {
+            "type" : "string"
+          }
+        }
+      },
+      "BatchInputCallbackCompletionBatchRequest" : {
+        "required" : [ "inputs" ],
+        "type" : "object",
+        "properties" : {
+          "inputs" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/CallbackCompletionBatchRequest"
+            }
+          }
+        }
+      },
+      "ExtensionActionDefinition" : {
+        "required" : [ "actionUrl", "functions", "id", "inputFields", "labels", "objectTypes", "published" ],
+        "type" : "object",
+        "properties" : {
+          "revisionId" : {
+            "type" : "string"
+          },
+          "inputFields" : {
+            "type" : "array",
+            "description" : "The list of input fields to display in this custom action.",
+            "items" : {
+              "$ref" : "#/components/schemas/InputFieldDefinition"
+            }
+          },
+          "archivedAt" : {
+            "type" : "integer",
+            "description" : "The date that this custom action was archived, if the custom action is archived.",
+            "format" : "int64"
+          },
+          "functions" : {
+            "type" : "array",
+            "description" : "A list of functions associated with the custom workflow action.",
+            "items" : {
+              "$ref" : "#/components/schemas/ActionFunctionIdentifier"
+            }
+          },
+          "actionUrl" : {
+            "type" : "string",
+            "description" : "The URL that will accept an HTTPS request each time workflows executes the custom action."
+          },
+          "inputFieldDependencies" : {
+            "type" : "array",
+            "description" : "A list of dependencies between the input fields. These configure when the input fields should be visible.",
+            "items" : {
+              "oneOf" : [ {
+                "$ref" : "#/components/schemas/SingleFieldDependency"
+              }, {
+                "$ref" : "#/components/schemas/ConditionalSingleFieldDependency"
+              } ]
+            }
+          },
+          "id" : {
+            "type" : "string",
+            "description" : "The ID of the custom action."
+          },
+          "published" : {
+            "type" : "boolean",
+            "description" : "Whether this custom action is published to customers."
+          },
+          "executionRules" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ExecutionTranslationRule"
+            }
+          },
+          "objectTypes" : {
+            "type" : "array",
+            "description" : "The object types that this custom action supports. This can be one of the standard HubSpot object types (`CONTACT`, `COMPANY`, `TICKET`, `DEAL`, and `QUOTE`) or a custom object type in the format `{meta_type}-{object_type_id}` (see the docs on <a href=\"https://developers.hubspot.com/docs/api/crm/crm-custom-objects\">custom objects</a> for more information about custom object types).",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "objectRequestOptions" : {
+            "$ref" : "#/components/schemas/ObjectRequestOptions"
+          },
+          "labels" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "$ref" : "#/components/schemas/ActionLabels"
+            },
+            "description" : "The user-facing labels for the custom action."
+          }
+        },
+        "description" : "Configuration for custom workflow action."
+      },
+      "Option" : {
+        "required" : [ "label", "value" ],
+        "type" : "object",
+        "properties" : {
+          "hidden" : {
+            "type" : "boolean"
+          },
+          "displayOrder" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "doubleData" : {
+            "type" : "number"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "readOnly" : {
+            "type" : "boolean"
+          },
+          "label" : {
+            "type" : "string",
+            "description" : "The user-facing label for the option."
+          },
+          "value" : {
+            "type" : "string",
+            "description" : "The internal value for the option. This is what will be included in the execution request to the `actionUrl`."
+          }
+        },
+        "description" : "An option for a field value.",
+        "example" : {
+          "label" : "User-facing label text",
+          "value" : "Internal value that will be sent to your webhook"
+        }
+      },
+      "NextPage" : {
+        "required" : [ "after" ],
+        "type" : "object",
+        "properties" : {
+          "link" : {
+            "type" : "string"
+          },
+          "after" : {
+            "type" : "string"
+          }
+        }
+      },
       "ActionFunction" : {
         "required" : [ "functionSource", "functionType" ],
         "type" : "object",
@@ -2164,10 +2276,27 @@
       }
     },
     "securitySchemes" : {
+      "oauth2_legacy" : {
+        "type" : "oauth2",
+        "flows" : {
+          "authorizationCode" : {
+            "authorizationUrl" : "https://app.hubspot.com/oauth/authorize",
+            "tokenUrl" : "https://api.hubapi.com/oauth/v1/token",
+            "scopes" : {
+              "automation" : "Read from and write to my Workflows"
+            }
+          }
+        }
+      },
       "developer_hapikey" : {
         "type" : "apiKey",
         "name" : "hapikey",
         "in" : "query"
+      },
+      "private_apps_legacy" : {
+        "type" : "apiKey",
+        "name" : "private-app-legacy",
+        "in" : "header"
       }
     }
   }
