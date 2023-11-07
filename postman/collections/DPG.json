@@ -2674,13 +2674,377 @@
 				}
 			],
 			"id": "ae9f98b4-bf87-4f3a-bd34-eaa4062aa263"
+		},
+		{
+			"name": "post-/automation/v4/actions/callbacks/{callback Id}/complete",
+			"id": "85688c21-4353-4a4a-9b6b-47c4a34cdfb7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "scope",
+							"value": "automation",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://api.hubapi.com/oauth/v1/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://app.hubspot.com/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"outputFields\": {\n    \"consectetur_6a\": \"<string>\",\n    \"consequat_7\": \"<string>\",\n    \"laboris_03\": \"<string>\"\n  }\n}",
+					"options": {
+						"raw": {
+							"headerFamily": "json",
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/automation/v4/actions/callbacks/:callbackId/complete",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"automation",
+						"v4",
+						"actions",
+						"callbacks",
+						":callbackId",
+						"complete"
+					],
+					"variable": [
+						{
+							"key": "callbackId",
+							"value": "<string>"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "3e7571ea-de08-45d6-af93-4d3463a8b06d",
+					"name": "No content",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"outputFields\": {\n    \"consectetur_6a\": \"<string>\",\n    \"consequat_7\": \"<string>\",\n    \"laboris_03\": \"<string>\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/automation/v4/actions/callbacks/:callbackId/complete",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"automation",
+								"v4",
+								"actions",
+								"callbacks",
+								":callbackId",
+								"complete"
+							],
+							"variable": [
+								{
+									"key": "callbackId"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": []
+				},
+				{
+					"id": "54b78553-8b86-4191-b10f-cc32baeca132",
+					"name": "An error occurred.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"outputFields\": {\n    \"consectetur_6a\": \"<string>\",\n    \"consequat_7\": \"<string>\",\n    \"laboris_03\": \"<string>\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/automation/v4/actions/callbacks/:callbackId/complete",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"automation",
+								"v4",
+								"actions",
+								"callbacks",
+								":callbackId",
+								"complete"
+							],
+							"variable": [
+								{
+									"key": "callbackId"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"context\": {\n    \"dolor01e\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"in305\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"Ut_222\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sint9\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"ad5\": \"<string>\",\n    \"non541\": \"<string>\"\n  },\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"code\": \"<string>\",\n      \"in\": \"<string>\",\n      \"context\": {\n        \"est__\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"code\": \"<string>\",\n      \"in\": \"<string>\",\n      \"context\": {\n        \"quis2e7\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"adipisicing_1e6\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"temporf\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"consectetur_7\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}"
+				}
+			]
+		},
+		{
+			"name": "post-/automation/v4/actions/callbacks/complete",
+			"id": "369e0415-9498-4add-8b4f-47a2471df16e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "scope",
+							"value": "automation",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://api.hubapi.com/oauth/v1/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://app.hubspot.com/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"inputs\": [\n    {\n      \"callbackId\": \"<string>\",\n      \"outputFields\": {\n        \"ute1\": \"<string>\"\n      }\n    },\n    {\n      \"callbackId\": \"<string>\",\n      \"outputFields\": {\n        \"sunt__\": \"<string>\",\n        \"est_aa\": \"<string>\"\n      }\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"headerFamily": "json",
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/automation/v4/actions/callbacks/complete",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"automation",
+						"v4",
+						"actions",
+						"callbacks",
+						"complete"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "07abf654-73ca-4502-ba0f-3fdb89b78473",
+					"name": "No content",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inputs\": [\n    {\n      \"callbackId\": \"<string>\",\n      \"outputFields\": {\n        \"ute1\": \"<string>\"\n      }\n    },\n    {\n      \"callbackId\": \"<string>\",\n      \"outputFields\": {\n        \"sunt__\": \"<string>\",\n        \"est_aa\": \"<string>\"\n      }\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/automation/v4/actions/callbacks/complete",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"automation",
+								"v4",
+								"actions",
+								"callbacks",
+								"complete"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": []
+				},
+				{
+					"id": "c918e438-f752-4832-8aa0-0ba99c3fcd91",
+					"name": "An error occurred.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inputs\": [\n    {\n      \"callbackId\": \"<string>\",\n      \"outputFields\": {\n        \"ute1\": \"<string>\"\n      }\n    },\n    {\n      \"callbackId\": \"<string>\",\n      \"outputFields\": {\n        \"sunt__\": \"<string>\",\n        \"est_aa\": \"<string>\"\n      }\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/automation/v4/actions/callbacks/complete",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"automation",
+								"v4",
+								"actions",
+								"callbacks",
+								"complete"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"context\": {\n    \"dolor01e\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"in305\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"Ut_222\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sint9\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"ad5\": \"<string>\",\n    \"non541\": \"<string>\"\n  },\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"code\": \"<string>\",\n      \"in\": \"<string>\",\n      \"context\": {\n        \"est__\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"code\": \"<string>\",\n      \"in\": \"<string>\",\n      \"context\": {\n        \"quis2e7\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"adipisicing_1e6\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"temporf\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"consectetur_7\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}"
+				}
+			]
 		}
 	],
 	"variable": [
 		{
 			"id": "6103ba0d-eacc-455a-a19f-0ea9c8223a71",
 			"key": "baseUrl",
-			"value": "https://api.hubapiqa.com"
+			"value": "https://api.hubapiqa.com",
+			"type": "string"
 		}
 	]
 }
