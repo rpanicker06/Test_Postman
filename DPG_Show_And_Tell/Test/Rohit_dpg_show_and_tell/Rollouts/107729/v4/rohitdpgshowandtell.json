@@ -1,7 +1,7 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "Test Rohit_dpg_show_and_tell",
+    "title" : "Test Rohit_dpg_show_and_tell_V3",
     "description" : "Create custom workflow actions",
     "version" : "v4",
     "x-hubspot-product-tier-requirements" : {
