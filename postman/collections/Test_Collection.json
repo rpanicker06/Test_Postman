@@ -3024,6 +3024,171 @@
 					"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"Duis i\",\n      \"in\": \"quis pariatur mollit\",\n      \"code\": \"in eu minim cupidatat\",\n      \"subCategory\": \"consequat aute i\",\n      \"context\": {\n        \"auteb0d\": [\n          \"do dolore deserunt\",\n          \"ad mollit Ut ipsum pariatur\"\n        ],\n        \"Excepteur_c\": [\n          \"deserunt quis eu amet pariatur\",\n          \"sed\"\n        ],\n        \"ut8e3\": [\n          \"ips\",\n          \"irure commodo\"\n        ],\n        \"id3\": [\n          \"magna tempor sit nostrud occaecat\",\n          \"eiusmod occaecat\"\n        ]\n      }\n    },\n    {\n      \"message\": \"cupidatat esse anim ea\",\n      \"in\": \"iru\",\n      \"code\": \"in laboris ut proident\",\n      \"subCategory\": \"culpa consectetur et\",\n      \"context\": {\n        \"labore916\": [\n          \"dolore\",\n          \"s\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Excepteur_01\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"fugiat_\": \"<string>\",\n    \"deserunt4\": \"<string>\"\n  }\n}"
 				}
 			]
+		},
+		{
+			"name": "Test-forked",
+			"id": "4825498d-b6b2-47bf-8183-5c46854cc448",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "private-app-legacy",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "{{apiKey}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"minim id commodo\"\n}",
+					"options": {
+						"raw": {
+							"headerFamily": "json",
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/test/new-endpoint/test/forked",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"test",
+						"new-endpoint",
+						"test",
+						"forked"
+					]
+				},
+				"description": "Detach a Blog Author from a multi-language group."
+			},
+			"response": [
+				{
+					"id": "07e32a33-8bd3-4e16-90f3-14345b638906",
+					"name": "successful operation",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"description": "Added as a part of security scheme: apikey",
+								"key": "private-app-legacy",
+								"value": "<API Key>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"minim id commodo\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/test/new-endpoint/test/forked",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"test",
+								"new-endpoint",
+								"test",
+								"forked"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": []
+				},
+				{
+					"id": "44296663-b49b-4db7-a9e7-2951f8885345",
+					"name": "An error occurred.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"description": "Added as a part of security scheme: apikey",
+								"key": "private-app-legacy",
+								"value": "<API Key>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"minim id commodo\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/test/new-endpoint/test/forked",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"test",
+								"new-endpoint",
+								"test",
+								"forked"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"ullamco dolore\",\n      \"in\": \"dolore in dolore id\",\n      \"code\": \"cupidatat minim dolore\",\n      \"subCategory\": \"do Lorem in\",\n      \"context\": {\n        \"laboris763\": [\n          \"adip\",\n          \"labore\"\n        ],\n        \"dolor_d\": [\n          \"nisi in adipisicing culpa mollit\",\n          \"fugiat\"\n        ]\n      }\n    },\n    {\n      \"message\": \"ex adipisicing aliquip Lorem\",\n      \"in\": \"enim nostrud sunt dolor elit\",\n      \"code\": \"tempor sint\",\n      \"subCategory\": \"dolore\",\n      \"context\": {\n        \"eiusmod_9\": [\n          \"nostrud velit dolor laborum\",\n          \"veniam sint aute mollit\"\n        ],\n        \"in_47e\": [\n          \"nostrud\",\n          \"reprehenderit adipisicing\"\n        ],\n        \"magna_dcc\": [\n          \"aute consectetur fugiat i\",\n          \"dolore aliqua sunt Duis\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"eiusmod_c18\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"consectetur_d3\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"consequat_c\": \"<string>\"\n  }\n}"
+				}
+			]
 		}
 	],
 	"variable": [
