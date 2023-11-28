@@ -1,0 +1,3037 @@
+{
+	"info": {
+		"_postman_id": "10da620a-6ac2-4948-bc6c-0f87efa523ec",
+		"name": "Test_Collection",
+		"description": "Use these endpoints for interacting with Blog Posts, Blog Authors, and Blog Tags",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "29216613-10da620a-6ac2-4948-bc6c-0f87efa523ec"
+	},
+	"item": [
+		{
+			"name": "Blog Authors",
+			"item": [
+				{
+					"name": "Retrieve a Blog Author",
+					"id": "1b75e31d-cc51-4c8d-b3e0-f2aa2ee05554",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "private-app-legacy",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors/:objectId?archived=<boolean>&property=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors",
+								":objectId"
+							],
+							"query": [
+								{
+									"description": "Specifies whether to return deleted Blog Authors. Defaults to `false`.",
+									"key": "archived",
+									"value": "<boolean>"
+								},
+								{
+									"key": "property",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "objectId",
+									"value": "<string>"
+								}
+							]
+						},
+						"description": "Retrieve the Blog Author object identified by the id in the path."
+					},
+					"response": [
+						{
+							"id": "c1f7cca0-9d7f-4fa2-9698-04a5725cc750",
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/:objectId?archived=<boolean>&property=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										":objectId"
+									],
+									"query": [
+										{
+											"description": "Specifies whether to return deleted Blog Authors. Defaults to `false`.",
+											"key": "archived",
+											"value": "<boolean>"
+										},
+										{
+											"key": "property",
+											"value": "<string>"
+										}
+									],
+									"variable": [
+										{
+											"key": "objectId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"avatar\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"deletedAt\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"facebook\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"language\": \"en-bw\",\n  \"linkedin\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"translatedFromId\": \"<long>\",\n  \"twitter\": \"<string>\",\n  \"updated\": \"<dateTime>\",\n  \"website\": \"<string>\"\n}"
+						},
+						{
+							"id": "c8d4d444-7e3f-425a-8c61-2693905e08a8",
+							"name": "An error occurred.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/:objectId?archived=<boolean>&property=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										":objectId"
+									],
+									"query": [
+										{
+											"description": "Specifies whether to return deleted Blog Authors. Defaults to `false`.",
+											"key": "archived",
+											"value": "<boolean>"
+										},
+										{
+											"key": "property",
+											"value": "<string>"
+										}
+									],
+									"variable": [
+										{
+											"key": "objectId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"ipsum228\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sunt_c\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mollit__\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"laborum_5f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"nulla_1c5\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut00\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"sintc2_\": \"<string>\",\n    \"inb8\": \"<string>\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a Blog Author",
+					"id": "cf9b4982-29eb-475d-9b79-36a762656e51",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "private-app-legacy",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors/:objectId?archived=<boolean>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors",
+								":objectId"
+							],
+							"query": [
+								{
+									"description": "Whether to return only results that have been archived.",
+									"key": "archived",
+									"value": "<boolean>"
+								}
+							],
+							"variable": [
+								{
+									"key": "objectId",
+									"value": "<string>"
+								}
+							]
+						},
+						"description": "Delete the Blog Author object identified by the id in the path."
+					},
+					"response": [
+						{
+							"id": "24787659-06d2-44a0-8aaf-dd77f866fcb8",
+							"name": "No content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/:objectId?archived=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										":objectId"
+									],
+									"query": [
+										{
+											"description": "Whether to return only results that have been archived.",
+											"key": "archived",
+											"value": "<boolean>"
+										}
+									],
+									"variable": [
+										{
+											"key": "objectId"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						},
+						{
+							"id": "8216461d-b4e4-43fb-b3bf-d88f390364b3",
+							"name": "An error occurred.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/:objectId?archived=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										":objectId"
+									],
+									"query": [
+										{
+											"description": "Whether to return only results that have been archived.",
+											"key": "archived",
+											"value": "<boolean>"
+										}
+									],
+									"variable": [
+										{
+											"key": "objectId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"ipsum228\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sunt_c\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mollit__\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"laborum_5f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"nulla_1c5\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut00\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"sintc2_\": \"<string>\",\n    \"inb8\": \"<string>\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a Blog Author",
+					"id": "bd4f3a1c-b61b-4646-890f-9085bc2df57d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "private-app-legacy",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"avatar\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"deletedAt\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"facebook\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"language\": \"en-bw\",\n  \"linkedin\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"translatedFromId\": \"<long>\",\n  \"twitter\": \"<string>\",\n  \"updated\": \"<dateTime>\",\n  \"website\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors/:objectId?archived=<boolean>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors",
+								":objectId"
+							],
+							"query": [
+								{
+									"description": "Specifies whether to update deleted Blog Authors. Defaults to `false`.",
+									"key": "archived",
+									"value": "<boolean>"
+								}
+							],
+							"variable": [
+								{
+									"key": "objectId",
+									"value": "<string>"
+								}
+							]
+						},
+						"description": "Sparse updates a single Blog Author object identified by the id in the path.\nAll the column values need not be specified. Only the that need to be modified can be specified.\n"
+					},
+					"response": [
+						{
+							"id": "dc28ac5a-1951-4c8c-a80a-d54ef9432aa7",
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"avatar\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"deletedAt\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"facebook\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"language\": \"en-bw\",\n  \"linkedin\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"translatedFromId\": \"<long>\",\n  \"twitter\": \"<string>\",\n  \"updated\": \"<dateTime>\",\n  \"website\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/:objectId?archived=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										":objectId"
+									],
+									"query": [
+										{
+											"description": "Specifies whether to update deleted Blog Authors. Defaults to `false`.",
+											"key": "archived",
+											"value": "<boolean>"
+										}
+									],
+									"variable": [
+										{
+											"key": "objectId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"avatar\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"deletedAt\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"facebook\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"language\": \"en-bw\",\n  \"linkedin\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"translatedFromId\": \"<long>\",\n  \"twitter\": \"<string>\",\n  \"updated\": \"<dateTime>\",\n  \"website\": \"<string>\"\n}"
+						},
+						{
+							"id": "a41e1a85-5907-411d-a74a-2b447d60e269",
+							"name": "An error occurred.",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"avatar\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"deletedAt\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"facebook\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"language\": \"en-bw\",\n  \"linkedin\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"translatedFromId\": \"<long>\",\n  \"twitter\": \"<string>\",\n  \"updated\": \"<dateTime>\",\n  \"website\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/:objectId?archived=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										":objectId"
+									],
+									"query": [
+										{
+											"description": "Specifies whether to update deleted Blog Authors. Defaults to `false`.",
+											"key": "archived",
+											"value": "<boolean>"
+										}
+									],
+									"variable": [
+										{
+											"key": "objectId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"ipsum228\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sunt_c\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mollit__\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"laborum_5f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"nulla_1c5\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut00\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"sintc2_\": \"<string>\",\n    \"inb8\": \"<string>\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Detach a Blog Author from a multi-language group",
+					"id": "d67b543c-6fe4-4dd0-ad91-a5659800fea1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "private-app-legacy",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/detach-from-lang-group",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors",
+								"multi-language",
+								"detach-from-lang-group"
+							]
+						},
+						"description": "Detach a Blog Author from a multi-language group."
+					},
+					"response": [
+						{
+							"id": "dd7666ca-67bb-4214-ab4d-2c531284ad78",
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/detach-from-lang-group",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"multi-language",
+										"detach-from-lang-group"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						},
+						{
+							"id": "9eca1b46-4b80-4ae9-ab04-a670e7f7ff92",
+							"name": "An error occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/detach-from-lang-group",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"multi-language",
+										"detach-from-lang-group"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"ipsum228\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sunt_c\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mollit__\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"laborum_5f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"nulla_1c5\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut00\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"sintc2_\": \"<string>\",\n    \"inb8\": \"<string>\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a batch of Blog Authors",
+					"id": "9e1ed938-6e42-4a18-bb53-333f2d0d4470",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "private-app-legacy",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inputs\": []\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/update?archived=<boolean>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors",
+								"batch",
+								"update"
+							],
+							"query": [
+								{
+									"description": "Specifies whether to update deleted Blog Authors. Defaults to `false`.",
+									"key": "archived",
+									"value": "<boolean>"
+								}
+							]
+						},
+						"description": "Update the Blog Author objects identified in the request body."
+					},
+					"response": [
+						{
+							"id": "0abdc6ad-8cc1-4d9b-a353-80befe8a1aec",
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"inputs\": []\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/update?archived=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"batch",
+										"update"
+									],
+									"query": [
+										{
+											"description": "Specifies whether to update deleted Blog Authors. Defaults to `false`.",
+											"key": "archived",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"completedAt\": \"<dateTime>\",\n  \"results\": [\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"ar-bh\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    },\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"vi\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    }\n  ],\n  \"startedAt\": \"<dateTime>\",\n  \"status\": \"PENDING\",\n  \"requestedAt\": \"<dateTime>\",\n  \"links\": {\n    \"dodf\": \"<string>\"\n  }\n}"
+						},
+						{
+							"id": "0a9f86a2-c141-4293-b6d5-233d717c85e4",
+							"name": "multiple statuses",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"inputs\": []\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/update?archived=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"batch",
+										"update"
+									],
+									"query": [
+										{
+											"description": "Specifies whether to update deleted Blog Authors. Defaults to `false`.",
+											"key": "archived",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Multi-Status (WebDAV) (RFC 4918)",
+							"code": 207,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"completedAt\": \"<dateTime>\",\n  \"results\": [\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"fr-km\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    },\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"de-gr\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    }\n  ],\n  \"startedAt\": \"<dateTime>\",\n  \"status\": \"PENDING\",\n  \"numErrors\": \"<integer>\",\n  \"errors\": [\n    {\n      \"category\": \"<string>\",\n      \"context\": {\n        \"inb\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"cillum_8a\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"errors\": [\n        {\n          \"message\": \"<string>\",\n          \"in\": \"<string>\",\n          \"code\": \"<string>\",\n          \"subCategory\": \"<string>\",\n          \"context\": {\n            \"eiusmodc0\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"message\": \"<string>\",\n          \"in\": \"<string>\",\n          \"code\": \"<string>\",\n          \"subCategory\": \"<string>\",\n          \"context\": {\n            \"non8\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"labore30\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"Utdf_\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"links\": {\n        \"non3\": \"<string>\",\n        \"ind\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"status\": \"<string>\",\n      \"id\": \"<string>\",\n      \"subCategory\": {}\n    },\n    {\n      \"category\": \"<string>\",\n      \"context\": {\n        \"aliqua_3\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"errors\": [\n        {\n          \"message\": \"<string>\",\n          \"in\": \"<string>\",\n          \"code\": \"<string>\",\n          \"subCategory\": \"<string>\",\n          \"context\": {\n            \"ad7\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"reprehenderitc32\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"message\": \"<string>\",\n          \"in\": \"<string>\",\n          \"code\": \"<string>\",\n          \"subCategory\": \"<string>\",\n          \"context\": {\n            \"esse_5\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"links\": {\n        \"eu_f7\": \"<string>\",\n        \"ipsum0_\": \"<string>\",\n        \"proidentd\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"status\": \"<string>\",\n      \"id\": \"<string>\",\n      \"subCategory\": {}\n    }\n  ],\n  \"requestedAt\": \"<dateTime>\",\n  \"links\": {\n    \"ina\": \"<string>\"\n  }\n}"
+						},
+						{
+							"id": "e7289a17-4c22-47d1-a623-3faf6405b51d",
+							"name": "An error occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"inputs\": []\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/update?archived=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"batch",
+										"update"
+									],
+									"query": [
+										{
+											"description": "Specifies whether to update deleted Blog Authors. Defaults to `false`.",
+											"key": "archived",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"ipsum228\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sunt_c\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mollit__\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"laborum_5f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"nulla_1c5\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut00\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"sintc2_\": \"<string>\",\n    \"inb8\": \"<string>\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Set a new primary language",
+					"id": "50de67f0-dbe7-41be-8caa-9e19eb26bf24",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "private-app-legacy",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/set-new-lang-primary",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors",
+								"multi-language",
+								"set-new-lang-primary"
+							]
+						},
+						"description": "Set a Blog Author as the primary language of a multi-language group."
+					},
+					"response": [
+						{
+							"id": "ef107735-3407-4e54-813d-8cabf983b342",
+							"name": "No content",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/set-new-lang-primary",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"multi-language",
+										"set-new-lang-primary"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						},
+						{
+							"id": "e1ec8312-ee0a-4e2b-bfe6-27b7b8ae36cb",
+							"name": "An error occurred.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/set-new-lang-primary",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"multi-language",
+										"set-new-lang-primary"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"ipsum228\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sunt_c\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mollit__\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"laborum_5f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"nulla_1c5\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut00\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"sintc2_\": \"<string>\",\n    \"inb8\": \"<string>\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a batch of Blog Authors",
+					"id": "4aa2addf-eb30-4db5-94ae-f48ba54c38de",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "private-app-legacy",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inputs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/archive",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors",
+								"batch",
+								"archive"
+							]
+						},
+						"description": "Delete the Blog Author objects identified in the request body."
+					},
+					"response": [
+						{
+							"id": "38bb3ba4-3176-4a0d-9335-b87b0b9090cf",
+							"name": "No content",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"inputs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/archive",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"batch",
+										"archive"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						},
+						{
+							"id": "b067b445-ee32-4ddd-9360-8bfd724a99c2",
+							"name": "An error occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"inputs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/archive",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"batch",
+										"archive"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"ipsum228\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sunt_c\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mollit__\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"laborum_5f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"nulla_1c5\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut00\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"sintc2_\": \"<string>\",\n    \"inb8\": \"<string>\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a batch of Blog Authors",
+					"id": "25ddee5d-cde5-4e66-b6cd-b609f1034102",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "private-app-legacy",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inputs\": [\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"fr-mr\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    },\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"yav\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors",
+								"batch",
+								"create"
+							]
+						},
+						"description": "Create the Blog Author objects detailed in the request body."
+					},
+					"response": [
+						{
+							"id": "00be8d1c-01a9-4afc-b800-e21065de54bd",
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"inputs\": [\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"fr-mr\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    },\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"yav\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"batch",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"completedAt\": \"<dateTime>\",\n  \"results\": [\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"ar-bh\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    },\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"vi\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    }\n  ],\n  \"startedAt\": \"<dateTime>\",\n  \"status\": \"PENDING\",\n  \"requestedAt\": \"<dateTime>\",\n  \"links\": {\n    \"dodf\": \"<string>\"\n  }\n}"
+						},
+						{
+							"id": "3a231402-91b8-4433-bcb9-1f125d250c95",
+							"name": "multiple statuses",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"inputs\": [\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"fr-mr\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    },\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"yav\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"batch",
+										"create"
+									]
+								}
+							},
+							"status": "Multi-Status (WebDAV) (RFC 4918)",
+							"code": 207,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"completedAt\": \"<dateTime>\",\n  \"results\": [\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"fr-km\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    },\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"de-gr\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    }\n  ],\n  \"startedAt\": \"<dateTime>\",\n  \"status\": \"PENDING\",\n  \"numErrors\": \"<integer>\",\n  \"errors\": [\n    {\n      \"category\": \"<string>\",\n      \"context\": {\n        \"inb\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"cillum_8a\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"errors\": [\n        {\n          \"message\": \"<string>\",\n          \"in\": \"<string>\",\n          \"code\": \"<string>\",\n          \"subCategory\": \"<string>\",\n          \"context\": {\n            \"eiusmodc0\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"message\": \"<string>\",\n          \"in\": \"<string>\",\n          \"code\": \"<string>\",\n          \"subCategory\": \"<string>\",\n          \"context\": {\n            \"non8\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"labore30\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"Utdf_\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"links\": {\n        \"non3\": \"<string>\",\n        \"ind\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"status\": \"<string>\",\n      \"id\": \"<string>\",\n      \"subCategory\": {}\n    },\n    {\n      \"category\": \"<string>\",\n      \"context\": {\n        \"aliqua_3\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"errors\": [\n        {\n          \"message\": \"<string>\",\n          \"in\": \"<string>\",\n          \"code\": \"<string>\",\n          \"subCategory\": \"<string>\",\n          \"context\": {\n            \"ad7\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"reprehenderitc32\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"message\": \"<string>\",\n          \"in\": \"<string>\",\n          \"code\": \"<string>\",\n          \"subCategory\": \"<string>\",\n          \"context\": {\n            \"esse_5\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"links\": {\n        \"eu_f7\": \"<string>\",\n        \"ipsum0_\": \"<string>\",\n        \"proidentd\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"status\": \"<string>\",\n      \"id\": \"<string>\",\n      \"subCategory\": {}\n    }\n  ],\n  \"requestedAt\": \"<dateTime>\",\n  \"links\": {\n    \"ina\": \"<string>\"\n  }\n}"
+						},
+						{
+							"id": "e62538de-c53f-4c00-8693-ce5a98389cd9",
+							"name": "An error occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"inputs\": [\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"fr-mr\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    },\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"yav\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"batch",
+										"create"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"ipsum228\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sunt_c\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mollit__\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"laborum_5f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"nulla_1c5\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut00\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"sintc2_\": \"<string>\",\n    \"inb8\": \"<string>\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve a batch of Blog Authors",
+					"id": "1ca6eaec-da5d-4b18-af3c-3e6113802fb7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "private-app-legacy",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"inputs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/read?archived=<boolean>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors",
+								"batch",
+								"read"
+							],
+							"query": [
+								{
+									"description": "Specifies whether to return deleted Blog Authors. Defaults to `false`.",
+									"key": "archived",
+									"value": "<boolean>"
+								}
+							]
+						},
+						"description": "Retrieve the Blog Author objects identified in the request body."
+					},
+					"response": [
+						{
+							"id": "cdc10bfb-2835-4e03-ad93-39488297f9d0",
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"inputs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/read?archived=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"batch",
+										"read"
+									],
+									"query": [
+										{
+											"description": "Specifies whether to return deleted Blog Authors. Defaults to `false`.",
+											"key": "archived",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"completedAt\": \"<dateTime>\",\n  \"results\": [\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"ar-bh\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    },\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"vi\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    }\n  ],\n  \"startedAt\": \"<dateTime>\",\n  \"status\": \"PENDING\",\n  \"requestedAt\": \"<dateTime>\",\n  \"links\": {\n    \"dodf\": \"<string>\"\n  }\n}"
+						},
+						{
+							"id": "3c6c0625-d16f-4302-93d3-494779a1ad61",
+							"name": "multiple statuses",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"inputs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/read?archived=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"batch",
+										"read"
+									],
+									"query": [
+										{
+											"description": "Specifies whether to return deleted Blog Authors. Defaults to `false`.",
+											"key": "archived",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Multi-Status (WebDAV) (RFC 4918)",
+							"code": 207,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"completedAt\": \"<dateTime>\",\n  \"results\": [\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"fr-km\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    },\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"de-gr\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    }\n  ],\n  \"startedAt\": \"<dateTime>\",\n  \"status\": \"PENDING\",\n  \"numErrors\": \"<integer>\",\n  \"errors\": [\n    {\n      \"category\": \"<string>\",\n      \"context\": {\n        \"inb\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"cillum_8a\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"errors\": [\n        {\n          \"message\": \"<string>\",\n          \"in\": \"<string>\",\n          \"code\": \"<string>\",\n          \"subCategory\": \"<string>\",\n          \"context\": {\n            \"eiusmodc0\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"message\": \"<string>\",\n          \"in\": \"<string>\",\n          \"code\": \"<string>\",\n          \"subCategory\": \"<string>\",\n          \"context\": {\n            \"non8\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"labore30\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"Utdf_\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"links\": {\n        \"non3\": \"<string>\",\n        \"ind\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"status\": \"<string>\",\n      \"id\": \"<string>\",\n      \"subCategory\": {}\n    },\n    {\n      \"category\": \"<string>\",\n      \"context\": {\n        \"aliqua_3\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"errors\": [\n        {\n          \"message\": \"<string>\",\n          \"in\": \"<string>\",\n          \"code\": \"<string>\",\n          \"subCategory\": \"<string>\",\n          \"context\": {\n            \"ad7\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"reprehenderitc32\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        },\n        {\n          \"message\": \"<string>\",\n          \"in\": \"<string>\",\n          \"code\": \"<string>\",\n          \"subCategory\": \"<string>\",\n          \"context\": {\n            \"esse_5\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        }\n      ],\n      \"links\": {\n        \"eu_f7\": \"<string>\",\n        \"ipsum0_\": \"<string>\",\n        \"proidentd\": \"<string>\"\n      },\n      \"message\": \"<string>\",\n      \"status\": \"<string>\",\n      \"id\": \"<string>\",\n      \"subCategory\": {}\n    }\n  ],\n  \"requestedAt\": \"<dateTime>\",\n  \"links\": {\n    \"ina\": \"<string>\"\n  }\n}"
+						},
+						{
+							"id": "041ac362-bd53-4179-a4cb-4cbe294f4a3b",
+							"name": "An error occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"inputs\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/batch/read?archived=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"batch",
+										"read"
+									],
+									"query": [
+										{
+											"description": "Specifies whether to return deleted Blog Authors. Defaults to `false`.",
+											"key": "archived",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"ipsum228\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sunt_c\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mollit__\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"laborum_5f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"nulla_1c5\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut00\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"sintc2_\": \"<string>\",\n    \"inb8\": \"<string>\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all Blog Authors",
+					"id": "72f7817a-f018-43d7-b59b-43ff6ff32a7f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "private-app-legacy",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors?createdAt=<dateTime>&createdAfter=<dateTime>&createdBefore=<dateTime>&updatedAt=<dateTime>&updatedAfter=<dateTime>&updatedBefore=<dateTime>&sort=<string>&sort=<string>&after=<string>&limit=<integer>&archived=<boolean>&property=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors"
+							],
+							"query": [
+								{
+									"description": "Only return Blog Authors created at exactly the specified time.",
+									"key": "createdAt",
+									"value": "<dateTime>"
+								},
+								{
+									"description": "Only return Blog Authors created after the specified time.",
+									"key": "createdAfter",
+									"value": "<dateTime>"
+								},
+								{
+									"description": "Only return Blog Authors created before the specified time.",
+									"key": "createdBefore",
+									"value": "<dateTime>"
+								},
+								{
+									"description": "Only return Blog Authors last updated at exactly the specified time.",
+									"key": "updatedAt",
+									"value": "<dateTime>"
+								},
+								{
+									"description": "Only return Blog Authors last updated after the specified time.",
+									"key": "updatedAfter",
+									"value": "<dateTime>"
+								},
+								{
+									"description": "Only return Blog Authors last updated before the specified time.",
+									"key": "updatedBefore",
+									"value": "<dateTime>"
+								},
+								{
+									"description": "Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.",
+									"key": "sort",
+									"value": "<string>"
+								},
+								{
+									"description": "Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.",
+									"key": "sort",
+									"value": "<string>"
+								},
+								{
+									"description": "The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.",
+									"key": "after",
+									"value": "<string>"
+								},
+								{
+									"description": "The maximum number of results to return. Default is 100.",
+									"key": "limit",
+									"value": "<integer>"
+								},
+								{
+									"description": "Specifies whether to return deleted Blog Authors. Defaults to `false`.",
+									"key": "archived",
+									"value": "<boolean>"
+								},
+								{
+									"key": "property",
+									"value": "<string>"
+								}
+							]
+						},
+						"description": "Get the list of blog authors. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.\n"
+					},
+					"response": [
+						{
+							"id": "dcf3ea6c-e8b7-4d38-9dd1-3efdd4746ff1",
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors?createdAt=<dateTime>&createdAfter=<dateTime>&createdBefore=<dateTime>&updatedAt=<dateTime>&updatedAfter=<dateTime>&updatedBefore=<dateTime>&sort=<string>&after=<string>&limit=<integer>&archived=<boolean>&property=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors"
+									],
+									"query": [
+										{
+											"description": "Only return Blog Authors created at exactly the specified time.",
+											"key": "createdAt",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Only return Blog Authors created after the specified time.",
+											"key": "createdAfter",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Only return Blog Authors created before the specified time.",
+											"key": "createdBefore",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Only return Blog Authors last updated at exactly the specified time.",
+											"key": "updatedAt",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Only return Blog Authors last updated after the specified time.",
+											"key": "updatedAfter",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Only return Blog Authors last updated before the specified time.",
+											"key": "updatedBefore",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.",
+											"key": "sort",
+											"value": "<string>"
+										},
+										{
+											"description": "The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.",
+											"key": "after",
+											"value": "<string>"
+										},
+										{
+											"description": "The maximum number of results to return. Default is 100.",
+											"key": "limit",
+											"value": "<integer>"
+										},
+										{
+											"description": "Specifies whether to return deleted Blog Authors. Defaults to `false`.",
+											"key": "archived",
+											"value": "<boolean>"
+										},
+										{
+											"key": "property",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"results\": [\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"ca-ad\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    },\n    {\n      \"avatar\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"created\": \"<dateTime>\",\n      \"deletedAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"facebook\": \"<string>\",\n      \"fullName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"language\": \"qu-pe\",\n      \"linkedin\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"translatedFromId\": \"<long>\",\n      \"twitter\": \"<string>\",\n      \"updated\": \"<dateTime>\",\n      \"website\": \"<string>\"\n    }\n  ],\n  \"total\": \"<integer>\",\n  \"paging\": {\n    \"next\": {\n      \"after\": \"<string>\",\n      \"link\": \"<string>\"\n    }\n  }\n}"
+						},
+						{
+							"id": "5f01ef77-451c-462f-813e-aa4588978e25",
+							"name": "An error occurred.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors?createdAt=<dateTime>&createdAfter=<dateTime>&createdBefore=<dateTime>&updatedAt=<dateTime>&updatedAfter=<dateTime>&updatedBefore=<dateTime>&sort=<string>&after=<string>&limit=<integer>&archived=<boolean>&property=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors"
+									],
+									"query": [
+										{
+											"description": "Only return Blog Authors created at exactly the specified time.",
+											"key": "createdAt",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Only return Blog Authors created after the specified time.",
+											"key": "createdAfter",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Only return Blog Authors created before the specified time.",
+											"key": "createdBefore",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Only return Blog Authors last updated at exactly the specified time.",
+											"key": "updatedAt",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Only return Blog Authors last updated after the specified time.",
+											"key": "updatedAfter",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Only return Blog Authors last updated before the specified time.",
+											"key": "updatedBefore",
+											"value": "<dateTime>"
+										},
+										{
+											"description": "Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.",
+											"key": "sort",
+											"value": "<string>"
+										},
+										{
+											"description": "The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.",
+											"key": "after",
+											"value": "<string>"
+										},
+										{
+											"description": "The maximum number of results to return. Default is 100.",
+											"key": "limit",
+											"value": "<integer>"
+										},
+										{
+											"description": "Specifies whether to return deleted Blog Authors. Defaults to `false`.",
+											"key": "archived",
+											"value": "<boolean>"
+										},
+										{
+											"key": "property",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"ipsum228\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sunt_c\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mollit__\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"laborum_5f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"nulla_1c5\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut00\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"sintc2_\": \"<string>\",\n    \"inb8\": \"<string>\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a new Blog Author",
+					"id": "bfaae9b7-c7a8-443a-93bb-70a4da1ede48",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "private-app-legacy",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"avatar\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"deletedAt\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"facebook\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"language\": \"en-bw\",\n  \"linkedin\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"translatedFromId\": \"<long>\",\n  \"twitter\": \"<string>\",\n  \"updated\": \"<dateTime>\",\n  \"website\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors"
+							]
+						},
+						"description": "Create a new Blog Author."
+					},
+					"response": [
+						{
+							"id": "88f40b76-b1c0-45b8-b553-5589626e8468",
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"avatar\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"deletedAt\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"facebook\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"language\": \"en-bw\",\n  \"linkedin\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"translatedFromId\": \"<long>\",\n  \"twitter\": \"<string>\",\n  \"updated\": \"<dateTime>\",\n  \"website\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"avatar\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"deletedAt\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"facebook\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"language\": \"en-bw\",\n  \"linkedin\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"translatedFromId\": \"<long>\",\n  \"twitter\": \"<string>\",\n  \"updated\": \"<dateTime>\",\n  \"website\": \"<string>\"\n}"
+						},
+						{
+							"id": "41f7fed5-c13b-4dcc-b406-c0c5bc3d15ea",
+							"name": "An error occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"avatar\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"deletedAt\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"facebook\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"language\": \"en-bw\",\n  \"linkedin\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"translatedFromId\": \"<long>\",\n  \"twitter\": \"<string>\",\n  \"updated\": \"<dateTime>\",\n  \"website\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"ipsum228\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sunt_c\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mollit__\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"laborum_5f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"nulla_1c5\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut00\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"sintc2_\": \"<string>\",\n    \"inb8\": \"<string>\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a new language variation",
+					"id": "60fa54ff-2610-4145-84b0-c06f5debecd8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "private-app-legacy",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"blogAuthor\": {\n    \"avatar\": \"<string>\",\n    \"bio\": \"<string>\",\n    \"created\": \"<dateTime>\",\n    \"deletedAt\": \"<dateTime>\",\n    \"displayName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"facebook\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"id\": \"<string>\",\n    \"language\": \"lo-la\",\n    \"linkedin\": \"<string>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"translatedFromId\": \"<long>\",\n    \"twitter\": \"<string>\",\n    \"updated\": \"<dateTime>\",\n    \"website\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"language\": \"<string>\",\n  \"primaryLanguage\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/create-language-variation",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors",
+								"multi-language",
+								"create-language-variation"
+							]
+						},
+						"description": "Create a new language variation from an existing Blog Author."
+					},
+					"response": [
+						{
+							"id": "8474384e-f42a-4fbf-b6e0-94cc731c0b8d",
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"blogAuthor\": {\n    \"avatar\": \"<string>\",\n    \"bio\": \"<string>\",\n    \"created\": \"<dateTime>\",\n    \"deletedAt\": \"<dateTime>\",\n    \"displayName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"facebook\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"id\": \"<string>\",\n    \"language\": \"lo-la\",\n    \"linkedin\": \"<string>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"translatedFromId\": \"<long>\",\n    \"twitter\": \"<string>\",\n    \"updated\": \"<dateTime>\",\n    \"website\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"language\": \"<string>\",\n  \"primaryLanguage\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/create-language-variation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"multi-language",
+										"create-language-variation"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"avatar\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"deletedAt\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"facebook\": \"<string>\",\n  \"fullName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"language\": \"en-bw\",\n  \"linkedin\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"translatedFromId\": \"<long>\",\n  \"twitter\": \"<string>\",\n  \"updated\": \"<dateTime>\",\n  \"website\": \"<string>\"\n}"
+						},
+						{
+							"id": "622f8209-0213-4a85-86af-17d6eb6b4dd0",
+							"name": "An error occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"blogAuthor\": {\n    \"avatar\": \"<string>\",\n    \"bio\": \"<string>\",\n    \"created\": \"<dateTime>\",\n    \"deletedAt\": \"<dateTime>\",\n    \"displayName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"facebook\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"id\": \"<string>\",\n    \"language\": \"lo-la\",\n    \"linkedin\": \"<string>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"translatedFromId\": \"<long>\",\n    \"twitter\": \"<string>\",\n    \"updated\": \"<dateTime>\",\n    \"website\": \"<string>\"\n  },\n  \"id\": \"<string>\",\n  \"language\": \"<string>\",\n  \"primaryLanguage\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/create-language-variation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"multi-language",
+										"create-language-variation"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"ipsum228\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sunt_c\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mollit__\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"laborum_5f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"nulla_1c5\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut00\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"sintc2_\": \"<string>\",\n    \"inb8\": \"<string>\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Attach a Blog Author to a multi-language group",
+					"id": "cb85d827-034d-4150-ab38-6cbfb3a5a862",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "private-app-legacy",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"<string>\",\n  \"language\": \"<string>\",\n  \"primaryId\": \"<string>\",\n  \"primaryLanguage\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/attach-to-lang-group",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors",
+								"multi-language",
+								"attach-to-lang-group"
+							]
+						},
+						"description": "Attach a Blog Author to a multi-language group."
+					},
+					"response": [
+						{
+							"id": "a8d7918e-b0e3-4a11-b39c-7df79a8a5dc9",
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<string>\",\n  \"language\": \"<string>\",\n  \"primaryId\": \"<string>\",\n  \"primaryLanguage\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/attach-to-lang-group",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"multi-language",
+										"attach-to-lang-group"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						},
+						{
+							"id": "f9c225c7-3215-412c-a3ec-c77b4fce8660",
+							"name": "An error occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<string>\",\n  \"language\": \"<string>\",\n  \"primaryId\": \"<string>\",\n  \"primaryLanguage\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/attach-to-lang-group",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"multi-language",
+										"attach-to-lang-group"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"ipsum228\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sunt_c\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mollit__\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"laborum_5f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"nulla_1c5\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut00\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"sintc2_\": \"<string>\",\n    \"inb8\": \"<string>\"\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update languages of multi-language group",
+					"id": "e1bd8de6-0cd8-428d-8370-a97a03b85fd7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "private-app-legacy",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{apiKey}}",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"languages\": {\n    \"in_135\": \"<string>\",\n    \"quis_174\": \"<string>\"\n  },\n  \"primaryId\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/update-languages",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cms",
+								"v3",
+								"blogs",
+								"authors",
+								"multi-language",
+								"update-languages"
+							]
+						},
+						"description": "Explicitly set new languages for each Blog Author in a multi-language group."
+					},
+					"response": [
+						{
+							"id": "6b36bc00-8adb-442f-99a7-bc49181fa5a4",
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"languages\": {\n    \"in_135\": \"<string>\",\n    \"quis_174\": \"<string>\"\n  },\n  \"primaryId\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/update-languages",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"multi-language",
+										"update-languages"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": []
+						},
+						{
+							"id": "a2096589-f0ae-4ab7-b4f1-6342587c5f76",
+							"name": "An error occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"description": "Added as a part of security scheme: apikey",
+										"key": "private-app-legacy",
+										"value": "<API Key>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"languages\": {\n    \"in_135\": \"<string>\",\n    \"quis_174\": \"<string>\"\n  },\n  \"primaryId\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cms/v3/blogs/authors/multi-language/update-languages",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cms",
+										"v3",
+										"blogs",
+										"authors",
+										"multi-language",
+										"update-languages"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"ipsum228\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"sunt_c\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"mollit__\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"laborum_5f\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"message\": \"<string>\",\n      \"in\": \"<string>\",\n      \"code\": \"<string>\",\n      \"subCategory\": \"<string>\",\n      \"context\": {\n        \"nulla_1c5\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Ut00\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"sintc2_\": \"<string>\",\n    \"inb8\": \"<string>\"\n  }\n}"
+						}
+					]
+				}
+			],
+			"id": "bacac3d6-1be4-427b-8f58-363169b36f4d"
+		},
+		{
+			"name": "Detach a Blog Author from a multi-language group",
+			"id": "76ffc477-40ca-4943-9974-9980b6f2a4d5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "private-app-legacy",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "{{apiKey}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"Excepteur nostrud anim ullamco\"\n}",
+					"options": {
+						"raw": {
+							"headerFamily": "json",
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/test/new-endpoint/update",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"test",
+						"new-endpoint",
+						"update"
+					]
+				},
+				"description": "Detach a Blog Author from a multi-language group."
+			},
+			"response": [
+				{
+					"id": "f7f05cdf-d978-4af2-a8c5-7d7616daf772",
+					"name": "successful operation",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"description": "Added as a part of security scheme: apikey",
+								"key": "private-app-legacy",
+								"value": "<API Key>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"Excepteur nostrud anim ullamco\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/test/new-endpoint/update",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"test",
+								"new-endpoint",
+								"update"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": []
+				},
+				{
+					"id": "c0ce9c72-1c8f-428f-ad65-23e5f528b52e",
+					"name": "An error occurred.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							},
+							{
+								"description": "Added as a part of security scheme: apikey",
+								"key": "private-app-legacy",
+								"value": "<API Key>"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"Excepteur nostrud anim ullamco\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/test/new-endpoint/update",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"test",
+								"new-endpoint",
+								"update"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"category\": \"<string>\",\n  \"correlationId\": \"<uuid>\",\n  \"message\": \"<string>\",\n  \"subCategory\": \"<string>\",\n  \"errors\": [\n    {\n      \"message\": \"Duis i\",\n      \"in\": \"quis pariatur mollit\",\n      \"code\": \"in eu minim cupidatat\",\n      \"subCategory\": \"consequat aute i\",\n      \"context\": {\n        \"auteb0d\": [\n          \"do dolore deserunt\",\n          \"ad mollit Ut ipsum pariatur\"\n        ],\n        \"Excepteur_c\": [\n          \"deserunt quis eu amet pariatur\",\n          \"sed\"\n        ],\n        \"ut8e3\": [\n          \"ips\",\n          \"irure commodo\"\n        ],\n        \"id3\": [\n          \"magna tempor sit nostrud occaecat\",\n          \"eiusmod occaecat\"\n        ]\n      }\n    },\n    {\n      \"message\": \"cupidatat esse anim ea\",\n      \"in\": \"iru\",\n      \"code\": \"in laboris ut proident\",\n      \"subCategory\": \"culpa consectetur et\",\n      \"context\": {\n        \"labore916\": [\n          \"dolore\",\n          \"s\"\n        ]\n      }\n    }\n  ],\n  \"context\": {\n    \"Excepteur_01\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"links\": {\n    \"fugiat_\": \"<string>\",\n    \"deserunt4\": \"<string>\"\n  }\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"id": "d81ad6cc-a321-430a-aed4-28ad4313315b",
+			"key": "baseUrl",
+			"value": "https://api.hubapi.com",
+			"type": "string"
+		}
+	]
+}
