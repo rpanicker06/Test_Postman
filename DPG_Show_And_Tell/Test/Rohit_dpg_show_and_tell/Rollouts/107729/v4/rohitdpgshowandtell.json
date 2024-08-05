@@ -25,46 +25,6 @@
     "name" : "Revisions"
   } ],
   "paths" : {
-    "/automation/v4/actions/callbacks/{callbackId}/complete" : {
-      "post" : {
-        "tags" : [ "Public_Callbacks" ],
-        "operationId" : "post-/automation/v4/actions/callbacks/{callbackId}/complete",
-        "parameters" : [ {
-          "name" : "callbackId",
-          "in" : "path",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/CallbackCompletionRequest"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "204" : {
-            "description" : "No content",
-            "content" : { }
-          },
-          "default" : {
-            "$ref" : "#/components/responses/Error"
-          }
-        },
-        "security" : [ {
-          "oauth2_legacy" : [ "automation" ]
-        }, {
-          "private_apps_legacy" : [ "automation" ]
-        } ]
-      }
-    },
     "/automation/v4/actions/callbacks/complete" : {
       "post" : {
         "tags" : [ "Public_Callbacks" ],
